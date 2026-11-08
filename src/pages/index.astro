@@ -11,9 +11,22 @@ import Portfolio from '../components/Portfolio.jsx';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mateo Paredes | Front-End & UX/UI</title>
+    
+    <!-- Enlace al Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body class="bg-[#070708] text-[#F5F5F7] selection:bg-white min-h-screen">
     
+    <!-- PANTALLA DE CARGA (PRELOADER) -->
+    <div id="loader-screen" class="fixed inset-0 z-[999] bg-[#070708] flex items-center justify-center transition-opacity duration-1000">
+      <img 
+        src="/favicon.svg" 
+        alt="Isotipo Mateo Studio" 
+        class="w-20 md:w-28 opacity-0 transition-all duration-1000 scale-90" 
+        id="loader-logo"
+      />
+    </div>
+
     <!-- Filtro de ruido fotográfico de fondo -->
     <div class="studio-grain pointer-events-none fixed inset-0 z-[60] opacity-50 mix-blend-soft-light"></div>
     
@@ -21,6 +34,82 @@ import Portfolio from '../components/Portfolio.jsx';
     <Header />
     <Portfolio client:load />
     <Footer />
+
+    <!-- 1. MOTOR GLOBAL DE ESTILOS DE ANIMACIÓN -->
+    <style is:global>
+      .hero-slide-up { display: inline-block; transform: translateY(115%); opacity: 0; transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease; }
+      .hero-slide-up.ready { transform: translateY(0%); opacity: 1; }
+      .scroll-reveal { display: inline-block; transform: translateY(105%); opacity: 0; transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease; }
+      .scroll-reveal.in-view { transform: translateY(0%); opacity: 1; }
+      .scroll-card { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease-out, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+      .scroll-card.in-view { opacity: 1; transform: translateY(0px); }
+      .draw-border { position: relative; }
+      .draw-border::after {
+        content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px;
+        background: #FF6B00; transform: scaleX(0); transform-origin: left center;
+        transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+      }
+      .draw-border.in-view::after { transform: scaleX(1); }
+      .card-zoom-img { transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease !important; }
+      .group:hover .card-zoom-img { transform: scale(1.045) !important; }
+      .magnetic-arrow { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, color 0.25s ease; }
+      .group:hover .magnetic-arrow { transform: translate(4px, -4px) scale(1.08); }
+      .svg-draw-live { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: drawVectorLive 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+      @keyframes drawVectorLive { to { stroke-dashoffset: 0; } }
+
+      /* Animación específica para el logo del preloader */
+      .logo-breathe {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        filter: drop-shadow(0 0 25px rgba(255, 107, 0, 0.15));
+      }
+    </style>
+
+    <!-- 2. MOTOR GLOBAL DETECTOR DE SCROLL Y PRELOADER -->
+    <script>
+      // A. LÓGICA DE LA PANTALLA DE CARGA
+      window.addEventListener('load', () => {
+        const loaderScreen = document.getElementById('loader-screen');
+        const loaderLogo = document.getElementById('loader-logo');
+        
+        // Bloqueamos el scroll para que el usuario no baje mientras carga
+        document.body.style.overflow = 'hidden';
+
+        // 1. El logo aparece suavemente y hace un ligero zoom (respira)
+        setTimeout(() => {
+          if (loaderLogo) loaderLogo.classList.add('logo-breathe');
+        }, 100);
+
+        // 2. Tras 1.8 segundos, desvanecemos toda la pantalla negra
+        setTimeout(() => {
+          if (loaderScreen) loaderScreen.style.opacity = '0';
+          document.body.style.overflow = ''; // Restauramos el scroll
+          
+          // 3. Destruimos el contenedor para que no bloquee clics
+          setTimeout(() => {
+            if (loaderScreen) loaderScreen.remove();
+          }, 1000);
+        }, 1800);
+      });
+
+      // B. LÓGICA DE ANIMACIÓN AL HACER SCROLL
+      function initAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+            }
+          });
+        }, { threshold: 0.15 }); 
+
+        const elements = document.querySelectorAll(".scroll-reveal, .draw-border, .scroll-card");
+        elements.forEach((el) => observer.observe(el));
+      }
+
+      document.addEventListener('DOMContentLoaded', initAnimations);
+      setTimeout(initAnimations, 300);
+      setTimeout(initAnimations, 1000);
+    </script>
     
   </body>
 </html>

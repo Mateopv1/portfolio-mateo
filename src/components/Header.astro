@@ -5,9 +5,14 @@
   
   <nav class="mx-auto flex w-full max-w-[1720px] items-center justify-between px-6 py-5 md:px-10 md:py-6 lg:px-12" aria-label="Primary navigation">
     
-    <!-- Logo Izquierda -->
-    <a href="#top" class="font-display font-bold uppercase text-[#F5F5F7] relative z-[60]" style="text-decoration: none; font-size: 14px; letter-spacing: -0.02em;">
-      Mateo Paredes / Studio
+    <!-- Logo Izquierda (Sustituido por imagen) -->
+    <a href="#top" class="relative z-[60] flex items-center" style="text-decoration: none;">
+      <img 
+        id="header-logo"
+        src="/logotipo.png" 
+        alt="Mateo Paredes Studio" 
+        class="h-12 md:h-16 w-auto object-contain transition-all duration-500 hover:scale-105"
+      />
     </a>
 
     <!-- Enlaces Centro (Ocultos en móvil) -->
@@ -41,7 +46,7 @@
     </div>
   </nav>
 
-  <!-- Cortina del Menú Móvil Premium (AHORA TOTALMENTE CENTRADA) -->
+  <!-- Cortina del Menú Móvil Premium (TOTALMENTE CENTRADA) -->
   <div id="mobile-menu" class="mobile-menu-overlay fixed inset-0 bg-[#070708] flex flex-col items-center justify-center px-6 z-40 h-[100svh]">
     
     <div class="flex flex-col items-center text-center gap-8 font-display text-4xl font-bold uppercase tracking-[-0.02em]">
@@ -158,4 +163,18 @@
   if(btnEnMobile) btnEnMobile.addEventListener('click', () => { setLanguage('en'); setTimeout(() => btn.click(), 400); });
   if(btnEsDesktop) btnEsDesktop.addEventListener('click', () => setLanguage('es'));
   if(btnEnDesktop) btnEnDesktop.addEventListener('click', () => setLanguage('en'));
+
+  // Detector de scroll para volver el logotipo blanco
+  window.addEventListener('scroll', () => {
+    const logo = document.getElementById('header-logo');
+    if (logo) {
+      if (window.scrollY > 50) {
+        // Al bajar: oscurece la imagen al máximo (negro) y luego la invierte (blanco)
+        logo.style.filter = 'brightness(0) invert(1)';
+      } else {
+        // Al volver arriba: quita el filtro y recupera el naranja original
+        logo.style.filter = 'none';
+      }
+    }
+  });
 </script>

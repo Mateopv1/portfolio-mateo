@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 // --- TRADUCCIONES NATIVAS (ES / EN) ---
 const TRANSLATIONS = {
   es: {
+    heroTitle1: "CÓDIGO",
+    heroTitle2: "/ DISEÑO",
     roleLocation: "Desarrollador Front-End | Diseñador UX/UI | Marketing Digital\nLuarca / Madrid / Remoto",
     heroBio: "Construyo interfaces digitales donde el rigor del código se encuentra con la dirección de arte. Transformo conceptos complejos en experiencias web precisas, accesibles y diseñadas para convertir.",
     selectedPortfolio: "Portfolio seleccionado\n2017—2026",
@@ -34,6 +36,8 @@ const TRANSLATIONS = {
     inspectDossier: "INSPECCIONAR PROYECTO →",
   },
   en: {
+    heroTitle1: "FORM",
+    heroTitle2: "/ FUNCTION",
     roleLocation: "Front-End Developer | UX/UI Designer | Digital Marketing\nLuarca / Madrid / Remote",
     heroBio: "Building digital interfaces where code rigor meets art direction. Turning complex concepts into precise, accessible, and conversion-driven web experiences.",
     selectedPortfolio: "Selected portfolio\n2017—2026",
@@ -716,11 +720,9 @@ export default function Portfolio() {
         [ INSPECT ]
       </div>
 
-   
-
       {/* SECCIÓN 1: HERO */}
       <section className="relative mx-auto flex min-h-[100svh] max-w-[1720px] flex-col justify-between px-mobile-safe pb-8 pt-[16vh] md:pb-10 md:pt-[22vh]">
-      <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <p className="font-mono-tech text-[10px] uppercase leading-5 tracking-[0.18em] text-[#8A8A93] whitespace-pre-line w-full md:max-w-[38rem]">
               {t.roleLocation}
@@ -736,14 +738,14 @@ export default function Portfolio() {
         <div className="my-auto py-12 sm:py-20 lg:py-24 w-full overflow-hidden">
           <h1 className="font-display font-extrabold uppercase text-white hero-title">
             <span style={{ overflow: "hidden", display: "block" }}>
-              <span className={`hero-slide-up ${heroLoaded ? "ready" : ""}`}>Form</span>
+              <span className={`hero-slide-up ${heroLoaded ? "ready" : ""}`}>{t.heroTitle1}</span>
             </span>
             <span style={{ overflow: "hidden", display: "block" }}>
               <span
                 className={`hero-slide-up hero-title-offset ${heroLoaded ? "ready" : ""} text-[#52525B]`}
                 style={{ transitionDelay: "160ms" }}
               >
-                / Function
+                {t.heroTitle2}
               </span>
             </span>
           </h1>

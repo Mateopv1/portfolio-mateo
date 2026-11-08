@@ -1,35 +1,45 @@
 ---
 // src/components/Footer.astro
 ---
-<footer id="contact" class="bg-[#F5F5F7] text-[#070708] pt-24 pb-12 px-5 md:px-10 lg:px-12">
+<footer id="contact" class="bg-[#F5F5F7] text-[#070708] pt-24 pb-12 px-5 md:px-10 lg:px-12 overflow-hidden">
   <div class="mx-auto max-w-[1720px]">
     <!-- Etiqueta superior -->
-    <p class="font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93] mb-12">
+    <p class="font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93] mb-12 scroll-card">
       04 / Commission inquiry
     </p>
 
     <!-- Contenedor principal del texto gigante y contacto -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-32">
-      <!-- Texto gigante -->
+      
+      <!-- Texto gigante: Usando scroll-card directo para garantizar la animación sin romper el grid -->
       <div class="lg:col-span-8">
-       <h2 class="font-display text-[clamp(2.5rem,10vw,11rem)] font-extrabold uppercase leading-[0.85] tracking-[-0.04em] text-[#070708] break-words">
+        <h2 class="font-display text-[clamp(2.5rem,10vw,11rem)] font-extrabold uppercase leading-[0.85] tracking-[-0.04em] text-[#070708] break-words scroll-card">
           Let's make<br/>something<br/>exact.
         </h2>
       </div>
       
-      <!-- Bloque derecho de contacto -->
+      <!-- Bloque derecho de contacto animado en cascada -->
       <div class="lg:col-span-4 flex flex-col justify-end pb-4">
-        <p class="text-sm md:text-base leading-relaxed text-[#52525B] mb-8 max-w-sm">
+        
+        <!-- LOGOTIPO INSERTADO AQUÍ -->
+        <img 
+          src="/logofooter.png" 
+          alt="Mateo Studio Logo" 
+          class="w-50 md:w-72 lg:w-80 mb-10 mx-auto scroll-card"
+          style="transition-delay: 200ms;"
+        />
+
+        <p class="text-sm md:text-base leading-relaxed text-[#52525B] mb-8 max-w-sm scroll-card" style="transition-delay: 300ms;">
           Selected collaborations for digital products, cultural commissions, and editorial image-making.
         </p>
         
-        <a href="mailto:mateoparedes082@gmail.com" class="group flex items-center justify-between border-y border-[#070708]/10 py-5 font-mono-tech text-[10px] uppercase tracking-[0.14em] text-[#070708] transition-colors hover:border-[#070708]/30">
+        <a href="mailto:mateoparedes082@gmail.com" class="scroll-card group flex items-center justify-between border-y border-[#070708]/10 py-5 font-mono-tech text-[10px] uppercase tracking-[0.14em] text-[#070708] transition-colors hover:border-[#070708]/30" style="transition-delay: 400ms;">
           mateoparedes082@gmail.com
           <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" style="width: 24px; height: 24px;" fill="none"><path d="M5 19 19 5M8 5h11v11" stroke="currentColor" stroke-width="1.5" /></svg>
         </a>
 
         <!-- Redes Sociales -->
-        <div class="flex items-center gap-6 pt-6">
+        <div class="flex items-center gap-6 pt-6 scroll-card" style="transition-delay: 500ms;">
           <!-- LinkedIn -->
           <a href="https://linkedin.com/in/mateo-paredes-vega-design/" target="_blank" rel="noopener noreferrer" class="text-[#070708] hover:text-[#8A8A93] transition-transform hover:-translate-y-1 duration-300">
             <span class="sr-only">LinkedIn</span>
@@ -57,7 +67,7 @@
     </div>
 
     <!-- Créditos inferiores -->
-    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-[#070708]/10 pt-6 font-mono-tech text-[9px] uppercase tracking-[0.14em] text-[#8A8A93] gap-4">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-[#070708]/10 pt-6 font-mono-tech text-[9px] uppercase tracking-[0.14em] text-[#8A8A93] gap-4 scroll-card" style="transition-delay: 600ms;">
       <span>© 2026 MATEO PAREDES / STUDIO. ALL RIGHTS RESERVED.</span>
       <span class="hidden md:inline">DESIGN SYSTEMS × FRONT-END × UX/UI</span>
       <a href="#top" class="text-[#070708] hover:opacity-50 transition-opacity font-bold">BACK TO TOP ↑</a>
