@@ -256,3 +256,34 @@ html, body {
 .mobile-menu-overlay.is-active {
   clip-path: inset(0 0 0 0); /* Se revela a pantalla completa */
 }
+/* ==========================================================================
+   MOTOR DEL CARRUSEL INFINITO (MARQUEE)
+   ========================================================================== */
+
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.track-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 550s linear infinite; 
+}
+
+.track-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 550s linear infinite;
+}
+
+.marquee-typography {
+  font-size: clamp(5rem, 13vw, 15rem);
+  line-height: 0.9;
+  white-space: nowrap;
+}

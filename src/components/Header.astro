@@ -5,7 +5,7 @@
   
   <nav class="mx-auto flex w-full max-w-[1720px] items-center justify-between px-6 py-5 md:px-10 md:py-6 lg:px-12" aria-label="Primary navigation">
     
-    <!-- Logo Izquierda (Sustituido por imagen) -->
+    <!-- Logo Izquierda -->
     <a href="#top" class="relative z-[60] flex items-center" style="text-decoration: none;">
       <img 
         id="header-logo"
@@ -15,11 +15,12 @@
       />
     </a>
 
-    <!-- Enlaces Centro (Ocultos en móvil) -->
+    <!-- Enlaces Centro (Ocultos en móvil) - MODIFICADOS PARA EFECTO HOVER -->
     <div class="hidden md:flex items-center gap-10 font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93]">
-      <a href="#work" data-i18n="work" class="transition-colors hover:text-[#F5F5F7]">Proyectos</a>
-      <a href="#method" data-i18n="method" class="transition-colors hover:text-[#F5F5F7]">Perfil 360º</a>
-      <a href="#archive" data-i18n="archive" class="transition-colors hover:text-[#F5F5F7]">Arte & CV</a>
+      <!-- Se añade la clase 'nav-link' para el script y 'font-normal hover:font-bold' -->
+      <a href="#work" data-i18n="work" class="nav-link w-[85px] text-center font-normal transition-all duration-300 hover:text-[#F5F5F7] hover:font-bold">Proyectos</a>
+      <a href="#method" data-i18n="method" class="nav-link w-[95px] text-center font-normal transition-all duration-300 hover:text-[#F5F5F7] hover:font-bold">Perfil 360º</a>
+      <a href="#archive" data-i18n="archive" class="nav-link w-[85px] text-center font-normal transition-all duration-300 hover:text-[#F5F5F7] hover:font-bold">Arte & CV</a>
     </div>
 
     <!-- Botón Hamburguesa (Visible en móvil) -->
@@ -94,7 +95,11 @@
   function updateHeaderLanguage(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if(headerDict[lang] && headerDict[lang][key]) el.innerText = headerDict[lang][key];
+      if(headerDict[lang] && headerDict[lang][key]) {
+        el.innerText = headerDict[lang][key];
+        // Guardamos el texto original para el efecto Scramble
+        el.setAttribute('data-original-text', headerDict[lang][key]);
+      }
     });
   }
 
@@ -169,12 +174,49 @@
     const logo = document.getElementById('header-logo');
     if (logo) {
       if (window.scrollY > 50) {
-        // Al bajar: oscurece la imagen al máximo (negro) y luego la invierte (blanco)
         logo.style.filter = 'brightness(0) invert(1)';
       } else {
-        // Al volver arriba: quita el filtro y recupera el naranja original
         logo.style.filter = 'none';
       }
     }
+  });
+
+  // --- EFECTO SCRAMBLE PARA LOS ENLACES DEL MENÚ ---
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789//×";
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  navLinks.forEach(link => {
+    // Guardar el texto inicial al cargar
+    link.setAttribute('data-original-text', link.innerText);
+
+    let scrambleInterval;
+    
+    link.addEventListener('mouseenter', () => {
+      clearInterval(scrambleInterval);
+      const originalText = link.getAttribute('data-original-text');
+      let iteration = 0;
+      
+      scrambleInterval = setInterval(() => {
+        link.innerText = originalText
+          .split("")
+          .map((letter, index) => {
+            if (letter === " ") return " ";
+            if (index < iteration) return originalText[index];
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join("");
+        
+        if (iteration >= originalText.length) {
+          clearInterval(scrambleInterval);
+          link.innerText = originalText;
+        }
+        iteration += 1 / 2;
+      }, 25);
+    });
+
+    link.addEventListener('mouseleave', () => {
+      clearInterval(scrambleInterval);
+      link.innerText = link.getAttribute('data-original-text');
+    });
   });
 </script>

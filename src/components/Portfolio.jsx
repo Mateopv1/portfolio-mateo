@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 // --- TRADUCCIONES NATIVAS (ES / EN) ---
 const TRANSLATIONS = {
   es: {
-    heroTitle1: "CÓDIGO",
-    heroTitle2: "/ DISEÑO",
+   heroMarquee1: "CÓDIGO  FRONT-END  REACT  JAVASCRIPT  ",
+    heroMarquee2: "DISEÑO  UX/UI  BELLAS ARTES  FIGMA  ",
     roleLocation: "Desarrollador Front-End | Diseñador UX/UI | Marketing Digital\nLuarca / Madrid / Remoto",
     heroBio: "Construyo interfaces digitales donde el rigor del código se encuentra con la dirección de arte. Transformo conceptos complejos en experiencias web precisas, accesibles y diseñadas para convertir.",
     selectedPortfolio: "Portfolio seleccionado\n2017—2026",
@@ -36,8 +36,8 @@ const TRANSLATIONS = {
     inspectDossier: "INSPECCIONAR PROYECTO →",
   },
   en: {
-    heroTitle1: "FORM",
-    heroTitle2: "/ FUNCTION",
+    heroMarquee1: "CODE ✦ FRONT-END ✦ REACT ✦ JAVASCRIPT ✦ ",
+    heroMarquee2: "DESIGN ✦ UX/UI ✦ FINE ARTS ✦ FIGMA ✦ ",
     roleLocation: "Front-End Developer | UX/UI Designer | Digital Marketing\nLuarca / Madrid / Remote",
     heroBio: "Building digital interfaces where code rigor meets art direction. Turning complex concepts into precise, accessible, and conversion-driven web experiences.",
     selectedPortfolio: "Selected portfolio\n2017—2026",
@@ -86,6 +86,7 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000",
       dimensions: "REACT + FASTAPI // AGILE GIT",
       year: "2026",
+      brandColor: "rgba(139, 92, 246, 0.09)", // MORADO ARATALENT
       metrics: [
         { label: "STACK FRONT-END", value: "REACT / CSS" },
         { label: "INTEGRACIÓN", value: "APOLLO API" },
@@ -105,6 +106,7 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
       dimensions: "MOBILE-FIRST // SEO & SEM",
       year: "2023—ACTUALIDAD",
+      brandColor: "rgba(59, 130, 246, 0.09)", // AZUL LUARCACOM
       metrics: [
         { label: "ARQUITECTURA", value: "MOBILE-FIRST" },
         { label: "PLATAFORMAS", value: "WP & JOOMLA" },
@@ -124,6 +126,7 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1000",
       dimensions: "WEB CORPORATIVA // BRANDING",
       year: "2026",
+      brandColor: "rgba(139, 92, 246, 0.09)", // MORADO ARATALENT
       metrics: [
         { label: "ENFOQUE", value: "CONVERSIÓN" },
         { label: "IDENTIDAD", value: "REBRANDING" },
@@ -143,6 +146,7 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000",
       dimensions: "MULTI-RESOLUCIÓN // ADOBE CC",
       year: "2021—2022",
+      brandColor: "rgba(245, 158, 11, 0.09)", // NARANJA LA PILA
       metrics: [
         { label: "ENTORNOS", value: "WEB & DIGITAL" },
         { label: "ENTREGABLES", value: "BRAND MANUALS" },
@@ -162,6 +166,7 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=1200",
       dimensions: "ESCALA ARQUITECTÓNICA // USAL",
       year: "2020—2021",
+      brandColor: "rgba(236, 72, 153, 0.09)", // ROSA USAL
       metrics: [
         { label: "DISCIPLINA", value: "BELLAS ARTES" },
         { label: "FORMATO", value: "MURAL APS" },
@@ -183,6 +188,7 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000",
       dimensions: "REACT + FASTAPI // AGILE GIT",
       year: "2026",
+      brandColor: "rgba(139, 92, 246, 0.09)",
       metrics: [
         { label: "FRONT-END STACK", value: "REACT / CSS" },
         { label: "INTEGRATION", value: "APOLLO API" },
@@ -202,6 +208,7 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
       dimensions: "MOBILE-FIRST // SEO & SEM",
       year: "2023—PRESENT",
+      brandColor: "rgba(59, 130, 246, 0.09)",
       metrics: [
         { label: "ARCHITECTURE", value: "MOBILE-FIRST" },
         { label: "PLATFORMS", value: "WP & JOOMLA" },
@@ -221,6 +228,7 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1000",
       dimensions: "CORPORATE WEB // BRANDING",
       year: "2026",
+      brandColor: "rgba(139, 92, 246, 0.09)",
       metrics: [
         { label: "FOCUS", value: "CONVERSION" },
         { label: "IDENTITY", value: "REBRANDING" },
@@ -240,6 +248,7 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000",
       dimensions: "MULTI-RESOLUTION // ADOBE CC",
       year: "2021—2022",
+      brandColor: "rgba(245, 158, 11, 0.09)",
       metrics: [
         { label: "ENVIRONMENTS", value: "WEB & DIGITAL" },
         { label: "DELIVERABLES", value: "BRAND MANUALS" },
@@ -259,6 +268,7 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=1200",
       dimensions: "ARCHITECTURAL SCALE // USAL",
       year: "2020—2021",
+      brandColor: "rgba(236, 72, 153, 0.09)",
       metrics: [
         { label: "DISCIPLINE", value: "FINE ARTS" },
         { label: "FORMAT", value: "PUBLIC MURAL" },
@@ -377,7 +387,7 @@ function HybridDisciplineDiagram({ activeLayer }) {
         <rect width="800" height="500" fill="url(#swissGrid)" />
         <circle cx="400" cy="250" r="220" fill="url(#obsidianGlow)" />
 
-        <g style={{ opacity: showSystem ? 1 : 0.12, transition: "opacity 700ms ease" }}>
+        <g style={{ opacity: showSystem ? 1 : 0.12, transition: "opacity 1500ms ease" }}>
           <rect className="svg-draw-live" x="120" y="76" width="560" height="348" stroke="rgba(245,245,247,0.3)" strokeWidth="1" />
           <line className="svg-draw-live" x1="466" y1="76" x2="466" y2="424" stroke="rgba(245,245,247,0.22)" strokeWidth="1" />
           <line className="svg-draw-live" x1="466" y1="290" x2="680" y2="290" stroke="rgba(245,245,247,0.22)" strokeWidth="1" />
@@ -394,7 +404,7 @@ function HybridDisciplineDiagram({ activeLayer }) {
           <text x="478" y="308" fill="#8A8A93" fontSize="9" fontFamily="JetBrains Mono" letterSpacing="1.5">SEO / SEM / ANALYTICS</text>
         </g>
 
-        <g style={{ opacity: showInk ? 1 : 0.12, transition: "opacity 700ms ease" }}>
+        <g style={{ opacity: showInk ? 1 : 0.12, transition: "opacity 1500ms ease" }}>
           <path className="svg-draw-live" d="M 145 375 C 195 140, 325 95, 410 235 C 485 355, 585 320, 645 125" stroke="#F5F5F7" strokeWidth="3.2" strokeLinecap="round" />
           <path className="svg-draw-live" d="M 160 390 C 215 165, 335 120, 420 250 C 495 370, 595 330, 660 145" stroke="rgba(245,245,247,0.6)" strokeWidth="1.3" strokeLinecap="round" />
           <path className="svg-draw-live" d="M 130 355 C 180 115, 315 70, 398 218 C 475 340, 570 305, 630 105" stroke="rgba(245,245,247,0.35)" strokeWidth="0.9" strokeLinecap="round" />
@@ -415,13 +425,19 @@ function HybridDisciplineDiagram({ activeLayer }) {
   );
 }
 
-// --- TARJETA DE PROYECTO ---
-function ProjectCard({ project, onOpen, onHoverChange }) {
+// --- TARJETA DE PROYECTO (ACTUALIZADA PARA ENVIAR EL COLOR) ---
+function ProjectCard({ project, onOpen, onHoverChange, setHoveredColor }) {
   return (
     <article
-      className={`${gridSpanClasses[project.gridSpan]} group scroll-card`}
-      onMouseEnter={() => onHoverChange(true)}
-      onMouseLeave={() => onHoverChange(false)}
+      className={`${gridSpanClasses[project.gridSpan]} group scroll-card relative z-10`}
+      onMouseEnter={() => { 
+        onHoverChange(true); 
+        setHoveredColor(project.brandColor); 
+      }}
+      onMouseLeave={() => { 
+        onHoverChange(false); 
+        setHoveredColor(null); 
+      }}
     >
       <button type="button" onClick={() => onOpen(project)} className="block w-full cursor-pointer text-left bg-transparent border-0 p-0 text-inherit">
         <div className={`plate-frame ${heightClasses[project.gridSpan]}`}>
@@ -482,7 +498,7 @@ function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
-    };
+    }
   }, [project, onClose]);
 
   if (!project) return null;
@@ -552,15 +568,61 @@ function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
   );
 }
 
+// --- MODAL PARA OBRAS DE ARTE (LIGHTBOX) ---
+function ArtModal({ art, onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => { if (e.key === "Escape") onClose(); };
+    if (art) {
+      document.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    }
+  }, [art, onClose]);
+
+  if (!art) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] bg-[#070708]/98 flex flex-col animate-fadeIn cursor-zoom-out" onClick={onClose}>
+      <div className="flex-1 flex items-center justify-center p-6 md:p-12">
+        <img 
+          src={art.image} 
+          alt={art.title} 
+          className="max-w-full max-h-full object-contain drop-shadow-2xl" 
+        />
+      </div>
+      
+      {/* Pie de foto flotante */}
+      <div className="absolute bottom-8 left-0 w-full text-center pointer-events-none">
+        <h3 className="font-display text-xl font-bold uppercase tracking-[-0.02em] text-[#F5F5F7] mb-2">{art.title}</h3>
+        <p className="font-mono-tech text-[9px] uppercase tracking-[0.2em] text-[#8A8A93]">{art.medium} // {art.dimensions}</p>
+      </div>
+
+      <button 
+        type="button" 
+        className="absolute top-6 right-6 px-4 py-2 font-mono-tech text-[10px] tracking-[0.2em] uppercase text-[#F5F5F7] hairline-box hover:bg-[#F5F5F7] hover:text-[#070708] transition-colors cursor-pointer bg-transparent z-50 pointer-events-auto"
+      >
+        CERRAR [ESC]
+      </button>
+    </div>
+  );
+}
 // --- COMPONENTE PRINCIPAL ---
 export default function Portfolio() {
   const [lang, setLang] = useState("es");
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [activeLayer, setActiveLayer] = useState("BOTH");
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [selectedArt, setSelectedArt] = useState(null); // <-- NUEVO: Controla el autoplay
   const [selectedProject, setSelectedProject] = useState(null);
   const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
   const [isHoveringCard, setIsHoveringCard] = useState(false);
   const [heroLoaded, setHeroLoaded] = useState(false);
+  
+  // NUEVO ESTADO: CONTROL DEL COLOR DE FONDO GLOBAL
+  const [hoveredColor, setHoveredColor] = useState(null);
 
   const t = TRANSLATIONS[lang];
   const currentProjects = FEATURED_PROJECTS_DATA[lang];
@@ -578,7 +640,6 @@ export default function Portfolio() {
     { value: "INK", label: t.layerInk },
   ];
 
-  // Escuchar el cambio de idioma desde el Menú Hamburguesa de Astro
   useEffect(() => {
     const handleLanguageChange = (e) => {
       if(e.detail) setLang(e.detail);
@@ -587,13 +648,11 @@ export default function Portfolio() {
     return () => window.removeEventListener("changeLanguage", handleLanguageChange);
   }, []);
 
-  // Dispara la animación de entrada del Hero al montar la página
   useEffect(() => {
     const timer = setTimeout(() => setHeroLoaded(true), 120);
     return () => clearTimeout(timer);
   }, []);
 
-  // Observador para animar elementos a medida que haces scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -612,7 +671,6 @@ export default function Portfolio() {
     return () => observer.disconnect();
   }, [activeFilter, lang]);
 
-  // Cursor flotante
   useEffect(() => {
     const moveCursor = (e) => {
       setCursorPos({ x: e.clientX, y: e.clientY });
@@ -620,82 +678,68 @@ export default function Portfolio() {
     window.addEventListener("mousemove", moveCursor);
     return () => window.removeEventListener("mousemove", moveCursor);
   }, []);
+  // NUEVO: Motor que rota las capas del diagrama automáticamente
+  useEffect(() => {
+    if (!isAutoPlaying) return; // Si el usuario ha interactuado, se detiene el temporizador
+
+    const layers = ["BOTH", "SYSTEM", "INK"];
+    
+    const intervalId = setInterval(() => {
+      setActiveLayer((currentLayer) => {
+        const currentIndex = layers.indexOf(currentLayer);
+        const nextIndex = (currentIndex + 1) % layers.length;
+        return layers[nextIndex];
+      });
+    }, 6000); // Cambia cada 4 segundos. Puedes subirlo a 5000 si lo quieres más lento.
+
+    return () => clearInterval(intervalId); // Limpia el temporizador al salir
+  }, [isAutoPlaying]);
 
   const visibleProjects = activeFilter === "ALL"
     ? currentProjects
     : currentProjects.filter((p) => p.category === activeFilter);
 
   return (
-    <main id="top">
-      {/* MOTOR DE ANIMACIONES INYECTADO DIRECTAMENTE (A PRUEBA DE CACHÉ) */}
+    <main id="top" className="relative">
+      
+     {/* CAPA DE BRILLO/TINTE GLOBAL QUE CAMBIA CON EL HOVER */}
+      <div 
+        className="fixed inset-0 pointer-events-none transition-colors duration-1000 ease-out z-[5] mix-blend-screen"
+        style={{ backgroundColor: hoveredColor || 'transparent' }}
+      ></div>
+
+      {/* NUEVO: LINTERNA DE CUADRÍCULA (SPOTLIGHT GRID) */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-[1]"
+        style={{
+          // Dibujamos la cuadrícula sutil (líneas de 1px cada 40px)
+          backgroundImage: `
+            linear-gradient(rgba(245, 245, 247, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(245, 245, 247, 0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+          // Hacemos que solo sea visible en un círculo de 400px alrededor del ratón
+          WebkitMaskImage: `radial-gradient(circle 400px at ${cursorPos.x}px ${cursorPos.y}px, black 0%, transparent 100%)`,
+          maskImage: `radial-gradient(circle 400px at ${cursorPos.x}px ${cursorPos.y}px, black 0%, transparent 100%)`,
+        }}
+      />
+
       <style>{`
-        .hero-slide-up {
-          display: inline-block;
-          transform: translateY(115%);
-          opacity: 0;
-          transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease;
-        }
-        .hero-slide-up.ready {
-          transform: translateY(0%);
-          opacity: 1;
-        }
-        .scroll-reveal {
-          display: inline-block;
-          transform: translateY(105%);
-          opacity: 0;
-          transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
-        }
-        .scroll-reveal.in-view {
-          transform: translateY(0%);
-          opacity: 1;
-        }
-        .scroll-card {
-          opacity: 0;
-          transform: translateY(40px);
-          transition: opacity 0.9s ease-out, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .scroll-card.in-view {
-          opacity: 1;
-          transform: translateY(0px);
-        }
-        .draw-border {
-          position: relative;
-        }
-        .draw-border::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 100%;
-          height: 1px;
-          background: rgba(255, 255, 255, 0.14);
-          transform: scaleX(0);
-          transform-origin: left center;
-          transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
-        }
-        .draw-border.in-view::after {
-          transform: scaleX(1);
-        }
-        .card-zoom-img {
-          transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease !important;
-        }
-        .group:hover .card-zoom-img {
-          transform: scale(1.045) !important;
-        }
-        .magnetic-arrow {
-          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, color 0.25s ease;
-        }
-        .group:hover .magnetic-arrow {
-          transform: translate(4px, -4px) scale(1.08);
-        }
-        .svg-draw-live {
-          stroke-dasharray: 1400;
-          stroke-dashoffset: 1400;
-          animation: drawVectorLive 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes drawVectorLive {
-          to { stroke-dashoffset: 0; }
-        }
+        .hero-slide-up { display: inline-block; transform: translateY(115%); opacity: 0; transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease; }
+        .hero-slide-up.ready { transform: translateY(0%); opacity: 1; }
+        .scroll-reveal { display: inline-block; transform: translateY(105%); opacity: 0; transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease; }
+        .scroll-reveal.in-view { transform: translateY(0%); opacity: 1; }
+        .scroll-card { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease-out, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .scroll-card.in-view { opacity: 1; transform: translateY(0px); }
+        .draw-border { position: relative; }
+        .draw-border::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: rgba(255, 255, 255, 0.14); transform: scaleX(0); transform-origin: left center; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s; }
+        .draw-border.in-view::after { transform: scaleX(1); }
+        .card-zoom-img { transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease !important; }
+        .group:hover .card-zoom-img { transform: scale(1.045) !important; }
+        .magnetic-arrow { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, color 0.25s ease; }
+        .group:hover .magnetic-arrow { transform: translate(4px, -4px) scale(1.08); }
+        .svg-draw-live { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: drawVectorLive 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes drawVectorLive { to { stroke-dashoffset: 0; } }
       `}</style>
 
       {/* CURSOR TÉCNICO FLOTANTE [ INSPECT ] */}
@@ -720,9 +764,9 @@ export default function Portfolio() {
         [ INSPECT ]
       </div>
 
-      {/* SECCIÓN 1: HERO */}
+  {/* SECCIÓN 1: HERO */}
       <section className="relative mx-auto flex min-h-[100svh] max-w-[1720px] flex-col justify-between px-mobile-safe pb-8 pt-[16vh] md:pb-10 md:pt-[22vh]">
-        <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-12 relative z-10">
           <div className="lg:col-span-6">
             <p className="font-mono-tech text-[10px] uppercase leading-5 tracking-[0.18em] text-[#8A8A93] whitespace-pre-line w-full md:max-w-[38rem]">
               {t.roleLocation}
@@ -735,23 +779,30 @@ export default function Portfolio() {
           </div>
         </div>
 
-        <div className="my-auto py-12 sm:py-20 lg:py-24 w-full overflow-hidden">
-          <h1 className="font-display font-extrabold uppercase text-white hero-title">
-            <span style={{ overflow: "hidden", display: "block" }}>
-              <span className={`hero-slide-up ${heroLoaded ? "ready" : ""}`}>{t.heroTitle1}</span>
-            </span>
-            <span style={{ overflow: "hidden", display: "block" }}>
-              <span
-                className={`hero-slide-up hero-title-offset ${heroLoaded ? "ready" : ""} text-[#52525B]`}
-                style={{ transitionDelay: "160ms" }}
-              >
-                {t.heroTitle2}
-              </span>
-            </span>
-          </h1>
+        {/* CONTENEDOR DEL CARRUSEL INFINITO (Sustituye al H1 antiguo) */}
+        <div className="my-auto py-12 sm:py-20 w-full overflow-hidden relative z-10 flex flex-col gap-2">
+          
+          {/* LÍNEA 1: Hacia la izquierda (Blanco) */}
+          <div className={`transition-opacity duration-1000 ${heroLoaded ? "opacity-100" : "opacity-0"}`}>
+            <div className="track-left">
+              <h1 className="font-display font-extrabold uppercase text-[#F5F5F7] marquee-typography">
+                {Array(8).fill(t.heroMarquee1).join('')}
+              </h1>
+            </div>
+          </div>
+          
+          {/* LÍNEA 2: Hacia la derecha (Gris) */}
+          <div className={`transition-opacity duration-1000 ${heroLoaded ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "200ms" }}>
+            <div className="track-right">
+              <h1 className="font-display font-extrabold uppercase text-[#52525B] marquee-typography">
+                {Array(8).fill(t.heroMarquee2).join('')}
+              </h1>
+            </div>
+          </div>
+
         </div>
 
-        <div className="grid grid-cols-2 items-end gap-5 hairline-t pt-5 md:grid-cols-12 w-full">
+        <div className="grid grid-cols-2 items-end gap-5 hairline-t pt-5 md:grid-cols-12 w-full relative z-10">
           <p className="font-mono-tech text-[9px] uppercase leading-4 tracking-[0.16em] text-[#8A8A93] md:col-span-3 md:text-[10px] whitespace-pre-line">
             {t.selectedPortfolio}
           </p>
@@ -765,10 +816,10 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* SECCIÓN 2, 3 y 4: WORK INDEX */}
-      <section id="work" className="scroll-mt-20 hairline-t">
+      {/* SECCIÓN 2: WORK INDEX */}
+      <section id="work" className="scroll-mt-20 hairline-t relative z-10">
         <div className="mx-auto max-w-[1720px] px-5 py-24 md:px-10 md:py-32 lg:px-12">
-          <div className="mb-16 grid grid-cols-1 gap-10 md:grid-cols-12 lg:mb-24 items-end">
+          <div className="mb-16 grid grid-cols-1 gap-10 md:grid-cols-12 lg:mb-24 items-end relative z-10">
             <div className="md:col-span-7">
               <p className="mb-5 font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93]">
                 {t.sec01Tag}
@@ -804,21 +855,22 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="bento-grid">
+          <div className="bento-grid relative z-10">
             {visibleProjects.map((project) => (
               <ProjectCard
                 key={project.id}
                 project={project}
                 onOpen={setSelectedProject}
                 onHoverChange={setIsHoveringCard}
+                setHoveredColor={setHoveredColor}
               />
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECCIÓN 5: CRAFT PHILOSOPHY (LOGIC MEETS GESTURE) */}
-      <section id="method" className="scroll-mt-20 hairline-y bg-[#0A0A0C]">
+      {/* SECCIÓN 5: CRAFT PHILOSOPHY */}
+      <section id="method" className="scroll-mt-20 hairline-y bg-[#0A0A0C] relative z-10">
         <div className="mx-auto max-w-[1720px] px-5 py-24 md:px-10 md:py-32 lg:px-12">
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-10 items-center">
             <div className="lg:col-span-4">
@@ -835,11 +887,14 @@ export default function Portfolio() {
               </p>
 
               <div className="mt-10 flex gap-2">
-                {CRAFT_LAYERS.map((layer) => (
+              {CRAFT_LAYERS.map((layer) => (
                   <button
                     key={layer.value}
                     type="button"
-                    onClick={() => setActiveLayer(layer.value)}
+                    onClick={() => {
+                      setActiveLayer(layer.value);
+                      setIsAutoPlaying(false); // <-- NUEVO: Detiene la rotación automática para siempre al hacer clic
+                    }}
                     className={`cursor-pointer px-4 py-2.5 font-mono-tech text-[9px] uppercase tracking-[0.16em] transition-colors ${
                       activeLayer === layer.value
                         ? "bg-[#F5F5F7] text-[#070708] border border-[#F5F5F7]"
@@ -867,8 +922,8 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* SECCIÓN 6 Y 7: ARCHIVE (MATERIAL STUDIES & FORMACIÓN ACADÉMICA) */}
-      <section id="archive" className="scroll-mt-20">
+      {/* SECCIÓN 6 Y 7: ARCHIVE */}
+      <section id="archive" className="scroll-mt-20 relative z-10">
         <div className="mx-auto max-w-[1720px] px-5 py-24 md:px-10 md:py-32 lg:px-12">
           <div className="mb-16 flex flex-col justify-between gap-8 draw-border pb-8 md:flex-row md:items-end lg:mb-24">
             <div>
@@ -892,32 +947,38 @@ export default function Portfolio() {
           <div className="art-grid">
             {FINE_ART_PLATES.map((plate, index) => (
               <article key={plate.id} className={`group scroll-card ${index % 2 === 1 ? "art-offset" : ""}`}>
-                <div className="plate-frame plate-art">
-                  <img
-                    src={plate.image}
-                    alt={plate.title}
-                    className="card-zoom-img grayscale group-hover:grayscale-0"
-                  />
-                </div>
-                <div className="draw-border py-5">
-                  <div className="mb-3 flex justify-between font-mono-tech text-[9px] uppercase tracking-[0.15em] text-[#52525B]">
-                    <span><ScrambleText text={plate.plateNumber} /></span>
-                    <span>{plate.year}</span>
+                {/* Envolvemos en un botón que abre el modal al hacer clic */}
+                <button 
+                  type="button" 
+                  onClick={() => setSelectedArt(plate)} 
+                  className="block w-full cursor-zoom-in text-left bg-transparent border-0 p-0 text-inherit"
+                >
+                  <div className="plate-frame plate-art">
+                    <img
+                      src={plate.image}
+                      alt={plate.title}
+                      className="card-zoom-img grayscale group-hover:grayscale-0"
+                    />
                   </div>
-                  <h3 className="font-display text-lg font-bold uppercase tracking-[-0.02em] text-[#F5F5F7]">
-                    {plate.title}
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-[#8A8A93]">{plate.medium}</p>
-                  <div className="mt-4 flex justify-between font-mono-tech text-[9px] uppercase tracking-[0.12em] text-[#52525B]">
-                    <span>{plate.dimensions}</span>
-                    <span>{plate.edition}</span>
+                  <div className="draw-border py-5">
+                    <div className="mb-3 flex justify-between font-mono-tech text-[9px] uppercase tracking-[0.15em] text-[#52525B]">
+                      <span><ScrambleText text={plate.plateNumber} /></span>
+                      <span>{plate.year}</span>
+                    </div>
+                    <h3 className="font-display text-lg font-bold uppercase tracking-[-0.02em] text-[#F5F5F7] group-hover:text-white transition-colors">
+                      {plate.title}
+                    </h3>
+                    <p className="mt-2 text-xs leading-relaxed text-[#8A8A93]">{plate.medium}</p>
+                    <div className="mt-4 flex justify-between font-mono-tech text-[9px] uppercase tracking-[0.12em] text-[#52525B]">
+                      <span>{plate.dimensions}</span>
+                      <span>{plate.edition}</span>
+                    </div>
                   </div>
-                </div>
+                </button>
               </article>
             ))}
           </div>
 
-          {/* SECCIÓN 7: FORMACIÓN ACADÉMICA Y CERTIFICACIONES */}
           <div className="mt-28 lg:mt-36">
             <div className="grid grid-cols-1 gap-8 hairline-t pt-8 lg:grid-cols-12">
               <h3 className="font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93] lg:col-span-3">
@@ -949,6 +1010,11 @@ export default function Portfolio() {
         onSelectProject={setSelectedProject}
         allProjects={currentProjects}
         t={t}
+      />
+      {/* NUEVO: Llamada al modal de arte */}
+      <ArtModal 
+        art={selectedArt} 
+        onClose={() => setSelectedArt(null)} 
       />
     </main>
   );
