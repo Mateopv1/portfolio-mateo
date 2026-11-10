@@ -714,8 +714,8 @@ export default function Portfolio() {
         style={{
           // Dibujamos la cuadrícula sutil (líneas de 1px cada 40px)
           backgroundImage: `
-            linear-gradient(rgba(245, 245, 247, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(245, 245, 247, 0.03) 1px, transparent 1px)
+            linear-gradient(rgba(245, 245, 247, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(245, 245, 247, 0.08) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px',
           // Hacemos que solo sea visible en un círculo de 400px alrededor del ratón
