@@ -16,7 +16,7 @@ const TRANSLATIONS = {
     filterUx: "Desarrollo / UX",
     filterArt: "Diseño y Arte",
     sec02Tag: "02 / Perfil Híbrido 360º",
-    sec02Title: "Código y diseño.",
+    sec02Title: "Código y diseño",
     sec02Desc: "Fusiono usabilidad, creatividad y lógica de programación para construir interfaces eficientes, responsive y orientadas a la conversión. Acostumbrado a trabajar con metodologías ágiles, consumo de APIs y control de versiones.",
     layerBoth: "Síntesis 360º",
     layerSystem: "Front-End / UX",
@@ -28,7 +28,7 @@ const TRANSLATIONS = {
     ],
     sec03Tag: "03 / Obra Plástica e Ilustración",
     sec03Title1: "Bellas Artes",
-    sec03Title2: "& gráfica.",
+    sec03Title2: "& gráfica",
     sec03Desc: "Selección de obra plástica original, pintura mural, ilustración vectorial y exploración visual.",
     exhibitionsTitle: "Formación Académica y Certificaciones",
     closeEsc: "CERRAR [ESC]",
@@ -36,8 +36,8 @@ const TRANSLATIONS = {
     inspectDossier: "INSPECCIONAR PROYECTO →",
   },
   en: {
-    heroMarquee1: "CODE ✦ FRONT-END ✦ REACT ✦ JAVASCRIPT ✦ ",
-    heroMarquee2: "DESIGN ✦ UX/UI ✦ FINE ARTS ✦ FIGMA ✦ ",
+    heroMarquee1: "CODE  FRONT-END  REACT  JAVASCRIPT ✦ ",
+    heroMarquee2: "DESIGN  UX/UI  FINE ARTS  FIGMA  ",
     roleLocation: "Front-End Developer | UX/UI Designer | Digital Marketing\nLuarca / Madrid / Remote",
     heroBio: "Building digital interfaces where code rigor meets art direction. Turning complex concepts into precise, accessible, and conversion-driven web experiences.",
     selectedPortfolio: "Selected portfolio\n2017—2026",
@@ -49,7 +49,7 @@ const TRANSLATIONS = {
     filterUx: "Dev / UX",
     filterArt: "Design & Art",
     sec02Tag: "02 / 360º Hybrid Profile",
-    sec02Title: "Code meets craft.",
+    sec02Title: "Code meets craft",
     sec02Desc: "Merging usability, creativity, and programming logic to build efficient, responsive, conversion-driven interfaces. Experienced in Agile workflows, REST API integration, and Git version control.",
     layerBoth: "360º Synthesis",
     layerSystem: "Front-End / UX",
@@ -61,7 +61,7 @@ const TRANSLATIONS = {
     ],
     sec03Tag: "03 / Fine Art & Illustration",
     sec03Title1: "Material",
-    sec03Title2: "studies.",
+    sec03Title2: "studies",
     sec03Desc: "Selected archive of physical paintings, collective murals, vector illustration, and visual identity.",
     exhibitionsTitle: "Academic Background & Certifications",
     closeEsc: "CLOSE [ESC]",
@@ -86,11 +86,19 @@ const FEATURED_PROJECTS_DATA = {
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000",
       dimensions: "REACT + FASTAPI // AGILE GIT",
       year: "2026",
-      brandColor: "rgba(139, 92, 246, 0.09)", // MORADO ARATALENT
+      brandColor: "rgba(139, 92, 246, 0.09)", 
       metrics: [
         { label: "STACK FRONT-END", value: "REACT / CSS" },
         { label: "INTEGRACIÓN", value: "APOLLO API" },
         { label: "BACKEND SYNC", value: "PYTHON / GIT" }
+      ],
+      // NUEVOS CAMPOS DE CASO DE ESTUDIO
+      challenge: "El reto consistía en unificar la visualización de vacantes y automatizar el contacto comercial sin perder el toque humano, integrando grandes volúmenes de datos en un único panel intuitivo.",
+      solution: "Se desarrolló una interfaz modular en React conectada a la API de Apollo.io, estructurando la información mediante un diseño limpio en Figma que optimiza el flujo de trabajo diario del equipo comercial.",
+      gallery: [
+        "/rutas-reales/aratalent-ia-detalle1.jpg", // Detalle UI
+        "/rutas-reales/aratalent-ia-detalle2.jpg", // Detalle código/componente
+        "/rutas-reales/aratalent-ia-fullpage.jpg"  // Captura FireShot vertical
       ]
     },
     {
@@ -111,6 +119,13 @@ const FEATURED_PROJECTS_DATA = {
         { label: "ARQUITECTURA", value: "MOBILE-FIRST" },
         { label: "PLATAFORMAS", value: "WP & JOOMLA" },
         { label: "ESTRATEGIA", value: "SEO / RRSS" }
+      ],
+      challenge: "El cliente necesitaba unificar varias plataformas obsoletas en un ecosistema web corporativo ágil, moderno y completamente optimizado para dispositivos móviles y motores de búsqueda.",
+      solution: "Se implementó una arquitectura Mobile-First gestionada a través de WordPress y Joomla, rediseñando la jerarquía visual para mejorar la retención de usuarios y los tiempos de carga en campañas SEM.",
+      gallery: [
+        "/rutas-reales/luarcacom-mockup-mobile.jpg",
+        "/rutas-reales/luarcacom-seo-dashboard.jpg",
+        "/rutas-reales/luarcacom-fireshot.jpg"
       ]
     },
     {
@@ -131,6 +146,13 @@ const FEATURED_PROJECTS_DATA = {
         { label: "ENFOQUE", value: "CONVERSIÓN" },
         { label: "IDENTIDAD", value: "REBRANDING" },
         { label: "CMS", value: "WORDPRESS" }
+      ],
+      challenge: "La marca carecía de una identidad visual sólida y su presencia digital anterior presentaba graves problemas de usabilidad que afectaban directamente a las tasas de conversión.",
+      solution: "Construcción de un manual de marca desde cero, rediseño del logotipo y desarrollo de una web corporativa a medida centrada en la experiencia de usuario y la captación de leads.",
+      gallery: [
+        "/rutas-reales/aratalent-web-brand1.jpg",
+        "/rutas-reales/aratalent-web-brand2.jpg",
+        "/rutas-reales/aratalent-web-fullpage.jpg"
       ]
     },
     {
@@ -151,6 +173,13 @@ const FEATURED_PROJECTS_DATA = {
         { label: "ENTORNOS", value: "WEB & DIGITAL" },
         { label: "ENTREGABLES", value: "BRAND MANUALS" },
         { label: "SUITE", value: "ADOBE CC" }
+      ],
+      challenge: "Crear un sistema de identidad visual versátil que pudiera adaptarse dinámicamente a múltiples resoluciones de pantalla y formatos de publicidad digital interactiva.",
+      solution: "Producción de manuales de marca rigurosos y maquetación de piezas gráficas modulares que garantizan la consistencia de la identidad visual en cualquier dispositivo.",
+      gallery: [
+        "/rutas-reales/lapila-grid.jpg",
+        "/rutas-reales/lapila-mockups.jpg",
+        "/rutas-reales/lapila-manual.jpg"
       ]
     },
     {
@@ -171,6 +200,13 @@ const FEATURED_PROJECTS_DATA = {
         { label: "DISCIPLINA", value: "BELLAS ARTES" },
         { label: "FORMATO", value: "MURAL APS" },
         { label: "ROL", value: "COORDINACIÓN" }
+      ],
+      challenge: "Transformar un espacio arquitectónico frío en una herramienta de comunicación educativa, requiriendo coordinación exacta entre el diseño previo a escala y la pintura manual in situ.",
+      solution: "Generación de previsualizaciones digitales precisas que sirvieron como mapa topográfico para el equipo, liderando la traslación de la pantalla geométrica al muro real.",
+      gallery: [
+        "/rutas-reales/usal-boceto-digital.jpg",
+        "/rutas-reales/usal-proceso-equipo.jpg",
+        "/rutas-reales/usal-mural-final.jpg"
       ]
     }
   ],
@@ -193,6 +229,13 @@ const FEATURED_PROJECTS_DATA = {
         { label: "FRONT-END STACK", value: "REACT / CSS" },
         { label: "INTEGRATION", value: "APOLLO API" },
         { label: "BACKEND SYNC", value: "PYTHON / GIT" }
+      ],
+      challenge: "The challenge was to unify vacancy visualization and automate commercial outreach without losing the human touch, integrating large data volumes into a single intuitive dashboard.",
+      solution: "Developed a modular React interface connected to the Apollo.io API, structuring information through a clean Figma design that optimizes the sales team's daily workflow.",
+      gallery: [
+        "/rutas-reales/aratalent-ia-detalle1.jpg",
+        "/rutas-reales/aratalent-ia-detalle2.jpg",
+        "/rutas-reales/aratalent-ia-fullpage.jpg"
       ]
     },
     {
@@ -213,6 +256,13 @@ const FEATURED_PROJECTS_DATA = {
         { label: "ARCHITECTURE", value: "MOBILE-FIRST" },
         { label: "PLATFORMS", value: "WP & JOOMLA" },
         { label: "STRATEGY", value: "SEO / SOCIAL" }
+      ],
+      challenge: "The client needed to unify several obsolete platforms into an agile, modern corporate web ecosystem fully optimized for mobile devices and search engines.",
+      solution: "Implemented a Mobile-First architecture managed through WordPress and Joomla, redesigning the visual hierarchy to improve user retention and loading times in SEM campaigns.",
+      gallery: [
+        "/rutas-reales/luarcacom-mockup-mobile.jpg",
+        "/rutas-reales/luarcacom-seo-dashboard.jpg",
+        "/rutas-reales/luarcacom-fireshot.jpg"
       ]
     },
     {
@@ -233,6 +283,13 @@ const FEATURED_PROJECTS_DATA = {
         { label: "FOCUS", value: "CONVERSION" },
         { label: "IDENTITY", value: "REBRANDING" },
         { label: "CMS", value: "WORDPRESS" }
+      ],
+      challenge: "The brand lacked a strong visual identity and its previous digital presence had severe usability issues that directly affected conversion rates.",
+      solution: "Built a brand manual from scratch, redesigned the logo, and developed a custom corporate website focused on user experience and lead generation.",
+      gallery: [
+        "/rutas-reales/aratalent-web-brand1.jpg",
+        "/rutas-reales/aratalent-web-brand2.jpg",
+        "/rutas-reales/aratalent-web-fullpage.jpg"
       ]
     },
     {
@@ -253,6 +310,13 @@ const FEATURED_PROJECTS_DATA = {
         { label: "ENVIRONMENTS", value: "WEB & DIGITAL" },
         { label: "DELIVERABLES", value: "BRAND MANUALS" },
         { label: "SUITE", value: "ADOBE CC" }
+      ],
+      challenge: "To create a versatile visual identity system capable of dynamically adapting to multiple screen resolutions and interactive digital advertising formats.",
+      solution: "Produced rigorous brand manuals and layout of modular graphic pieces that ensure visual identity consistency across any device.",
+      gallery: [
+        "/rutas-reales/lapila-grid.jpg",
+        "/rutas-reales/lapila-mockups.jpg",
+        "/rutas-reales/lapila-manual.jpg"
       ]
     },
     {
@@ -273,17 +337,80 @@ const FEATURED_PROJECTS_DATA = {
         { label: "DISCIPLINE", value: "FINE ARTS" },
         { label: "FORMAT", value: "PUBLIC MURAL" },
         { label: "ROLE", value: "COORDINATION" }
+      ],
+      challenge: "Transforming a cold architectural space into an educational communication tool, requiring exact coordination between scaled digital design and on-site manual painting.",
+      solution: "Generated precise digital pre-visualizations that served as a topographical map for the team, leading the translation from the geometric screen to the physical wall.",
+      gallery: [
+        "/rutas-reales/usal-boceto-digital.jpg",
+        "/rutas-reales/usal-proceso-equipo.jpg",
+        "/rutas-reales/usal-mural-final.jpg"
       ]
     }
   ]
 };
-
 // --- GALERÍA DE BELLAS ARTES E ILUSTRACIÓN ---
 const FINE_ART_PLATES = [
-  { id: 1, plateNumber: "SERIE I // USAL", year: "2021", title: "Estudio Anatómico y Claroscuro", medium: "Grafito, carbón prensado y técnica mixta sobre papel", dimensions: "100 × 70 CM", edition: "OBRA ORIGINAL", image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&q=80&w=800" },
-  { id: 2, plateNumber: "SERIE II // VECTOR", year: "2022", title: "Ilustración Vectorial Avanzada", medium: "Adobe Illustrator & Composición Geométrica Digital", dimensions: "4000 × 5000 PX", edition: "SERIE DIGITAL", image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=800" },
-  { id: 3, plateNumber: "SERIE III // MURAL", year: "2021", title: "Boceto Estructural 'Los Muros'", medium: "Previsualización digital y pintura acrílica exterior", dimensions: "ESCALA MURAL", edition: "PROYECTO APS", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800" },
-  { id: 4, plateNumber: "SERIE IV // BRAND", year: "2020", title: "Sistemas de Símbolos & Logotipos", medium: "Construcción sobre retícula constructiva e identidad", dimensions: "VECTORIAL 1:1", edition: "FREELANCE ARCHIVE", image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=800" }
+  { 
+    id: 1, 
+    plateNumber: "SERIE I // USAL", 
+    year: "2021", 
+    title: "Estudio Anatómico y Claroscuro", 
+    medium: "Grafito, carbón prensado y técnica mixta sobre papel", 
+    dimensions: "100 × 70 CM", 
+    edition: "OBRA ORIGINAL", 
+    image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&q=80&w=800",
+    gallery: [
+      "/rutas-reales/anatomia-detalle-1.jpg",
+      "/rutas-reales/anatomia-detalle-2.jpg"
+    ],
+    description: "Estudio anatómico enfocado en la tensión muscular y el volumen corporal mediante la técnica de claroscuro clásico, desarrollado durante mi etapa en la USAL."
+  },
+  { 
+    id: 2, 
+    plateNumber: "SERIE II // VECTOR", 
+    year: "2022", 
+    title: "Ilustración Vectorial Avanzada", 
+    medium: "Adobe Illustrator & Composición Geométrica Digital", 
+    dimensions: "4000 × 5000 PX", 
+    edition: "SERIE DIGITAL", 
+    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=800",
+    gallery: [
+      "/rutas-reales/vector-proceso.jpg",
+      "/rutas-reales/vector-zoom.jpg"
+    ],
+    description: "Exploración de la geometría pura y el color mediante herramientas digitales. La obra se basa en una retícula matemática estricta para lograr un equilibrio visual perfecto."
+  },
+  { 
+    id: 3, 
+    plateNumber: "SERIE III // MURAL", 
+    year: "2021", 
+    title: "Boceto Estructural 'Los Muros'", 
+    medium: "Previsualización digital y pintura acrílica exterior", 
+    dimensions: "ESCALA MURAL", 
+    edition: "PROYECTO APS", 
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
+    gallery: [
+      "/rutas-reales/mural-boceto.jpg",
+      "/rutas-reales/mural-resultado.jpg"
+    ],
+    description: "Fase de ideación y desarrollo estructural para el proyecto mural 'Los Muros'. Combina la planificación arquitectónica digital con la ejecución pictórica tradicional."
+  },
+  { 
+    id: 4, 
+    plateNumber: "SERIE IV // BRAND", 
+    year: "2020", 
+    title: "Sistemas de Símbolos & Logotipos", 
+    medium: "Construcción sobre retícula constructiva e identidad", 
+    dimensions: "VECTORIAL 1:1", 
+    edition: "FREELANCE ARCHIVE", 
+    image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=800",
+    gallery: [
+      "/rutas-reales/logo-grid.jpg",
+      "/rutas-reales/logo-mockup.jpg",
+      "/rutas-reales/logo-variations.jpg"
+    ],
+    description: "Archivo de desarrollo de marcas e identidades visuales. Cada símbolo está diseñado siguiendo estrictas proporciones áureas y retículas modulares para garantizar su escalabilidad."
+  }
 ];
 
 // --- FORMACIÓN ACADÉMICA Y CERTIFICACIONES (ES / EN) ---
@@ -425,7 +552,7 @@ function HybridDisciplineDiagram({ activeLayer }) {
   );
 }
 
-// --- TARJETA DE PROYECTO (ACTUALIZADA PARA ENVIAR EL COLOR) ---
+// --- TARJETA DE PROYECTO  ---
 function ProjectCard({ project, onOpen, onHoverChange, setHoveredColor }) {
   return (
     <article
@@ -487,9 +614,11 @@ function ProjectCard({ project, onOpen, onHoverChange, setHoveredColor }) {
   );
 }
 
-// --- MODAL DE PROYECTO (DOSSIER) ---
+// --- MODAL DE CASO DE ESTUDIO (CASE STUDY) ---
 function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
-  useEffect(() => {
+  
+  // Bloqueo de scroll en el fondo y cierre con la tecla ESC
+ useEffect(() => {
     const handleKeyDown = (e) => { if (e.key === "Escape") onClose(); };
     if (project) {
       document.addEventListener("keydown", handleKeyDown);
@@ -502,27 +631,27 @@ function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
   }, [project, onClose]);
 
   if (!project) return null;
-  const currentIndex = allProjects.findIndex((p) => p.id === project.id);
-  const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
+
+  // Calculamos cuál es el siguiente proyecto en el array para el botón del footer
+  const currentIndex = allProjects.findIndex(p => p.id === project.id);
+  const nextProject = allProjects[currentIndex + 1] || allProjects[0]; 
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#070708]/95 backdrop-blur-xl overflow-y-auto animate-fadeIn">
-      <div className="sticky top-0 z-30 bg-[#070708]/90 backdrop-blur-md hairline-b px-6 md:px-12 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <span className="font-mono-tech text-[10px] tracking-[0.2em] text-[#8A8A93]">DOSSIER // {project.index}</span>
-          <span className="text-white/20">/</span>
-          <span className="font-mono-tech text-[10px] tracking-[0.16em] text-[#F5F5F7]">{project.disciplineTag}</span>
-        </div>
-        <button
-          type="button"
-          onClick={onClose}
-          className="px-4 py-1.5 font-mono-tech text-[10px] tracking-[0.2em] uppercase text-[#F5F5F7] hairline-box hover:bg-[#F5F5F7] hover:text-[#070708] transition-colors cursor-pointer bg-transparent"
-        >
-          {t.closeEsc}
-        </button>
-      </div>
+    <div className="fixed inset-0 z-[100] bg-[#070708] animate-fadeIn overflow-y-auto">
+      
+      {/* BOTÓN CERRAR FIJO ARRIBA A LA DERECHA */}
+      <button 
+        type="button"
+        onClick={onClose}
+        className="fixed top-6 right-6 z-[110] px-4 py-2 font-mono-tech text-[10px] tracking-[0.2em] uppercase text-[#F5F5F7] bg-[#070708] border border-white/20 hover:bg-[#F5F5F7] hover:text-[#070708] transition-colors cursor-pointer"
+      >
+        CERRAR [ESC]
+      </button>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12 md:py-20">
+      {/* CONTENEDOR PRINCIPAL DEL CASO DE ESTUDIO */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-24">
+        
+        {/* CABECERA */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 hairline-b">
           <div className="lg:col-span-8">
             <div className="font-mono-tech text-[10px] tracking-[0.22em] text-[#8A8A93] uppercase mb-4">
@@ -533,42 +662,100 @@ function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
             </h2>
           </div>
           <div className="lg:col-span-4 flex flex-col justify-end">
-            <p className="text-sm md:text-base text-[#8A8A93] leading-relaxed font-light">{project.subtitle}</p>
+            <p className="text-sm md:text-base text-[#8A8A93] leading-relaxed font-light">
+              {project.subtitle}
+            </p>
           </div>
         </div>
 
-        <div className="plate-frame plate-cinematic my-12">
-          <img src={project.image} alt={project.title} className="grayscale contrast-125" />
+        {/* IMAGEN HERO PRINCIPAL */}
+        <div className="plate-frame plate-cinematic my-12 bg-[#0F0F11] border border-white/5 p-2">
+          <img 
+            alt={project.title} 
+            className="w-full h-auto object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700" 
+            src={project.image} 
+          />
         </div>
 
+        {/* MÉTRICAS (3 Columnas) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 hairline-y mb-16">
-          {project.metrics?.map((metric) => (
-            <div key={metric.label} className="py-6 px-4">
+          {project.metrics.map((metric, i) => (
+            <div key={i} className="py-6 px-4">
               <div className="font-mono-tech text-[10px] tracking-[0.2em] text-[#8A8A93] uppercase mb-2">{metric.label}</div>
               <div className="font-display text-3xl md:text-4xl font-bold text-[#F5F5F7]">{metric.value}</div>
             </div>
           ))}
         </div>
 
-        <div className="pt-8 hairline-t flex items-center justify-between">
-          <div>
-            <span className="font-mono-tech text-[10px] tracking-[0.2em] text-[#8A8A93] uppercase block mb-1">{t.nextStudy} // {nextProject.index}</span>
-            <span className="font-display text-xl font-bold text-[#F5F5F7] uppercase">{nextProject.title}</span>
+        {/* EL CONTEXTO (RETO Y SOLUCIÓN) - Solo se muestra si hemos definido texto */}
+        {(project.challenge || project.solution) && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <div>
+              <h3 className="font-mono-tech text-[12px] tracking-[0.2em] text-[#F5F5F7] uppercase mb-4 border-l-2 border-[#F5F5F7] pl-3">
+                {t?.challengeLabel || 'El Reto'}
+              </h3>
+              <p className="text-sm text-[#8A8A93] leading-relaxed font-light">
+                {project.challenge}
+              </p>
+            </div>
+            <div>
+              <h3 className="font-mono-tech text-[12px] tracking-[0.2em] text-[#F5F5F7] uppercase mb-4 border-l-2 border-[#52525B] pl-3">
+                {t?.solutionLabel || 'La Solución'}
+              </h3>
+              <p className="text-sm text-[#8A8A93] leading-relaxed font-light">
+                {project.solution}
+              </p>
+            </div>
           </div>
-          <button
-            type="button"
-            onClick={() => onSelectProject(nextProject)}
-            className="px-6 py-3 bg-[#F5F5F7] text-[#070708] font-mono-tech text-[10px] tracking-[0.2em] uppercase font-medium cursor-pointer border-0"
-          >
-            {t.inspectDossier}
-          </button>
-        </div>
+        )}
+
+        {/* GALERÍA BENTO (Solo se muestra si hay imágenes extra en la base de datos) */}
+        {project.gallery && project.gallery.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+            <div className="bg-[#0F0F11] border border-white/5 p-6 flex items-center justify-center">
+              <img src={project.gallery[0]} alt="Detalle 1" className="max-h-[60vh] object-contain drop-shadow-2xl" />
+            </div>
+            <div className="bg-[#0F0F11] border border-white/5 p-6 flex items-center justify-center">
+              <img src={project.gallery[1]} alt="Detalle 2" className="max-h-[60vh] object-contain drop-shadow-2xl" />
+            </div>
+            <div className="md:col-span-2 bg-[#0F0F11] border border-white/5 p-4 h-[70vh] overflow-y-auto hide-scrollbar cursor-ns-resize">
+              <img src={project.gallery[2]} alt="Página Completa" className="w-full h-auto object-cover" />
+            </div>
+          </div>
+        )}
+
+        {/* FOOTER DEL PROYECTO (Navegación inteligente) */}
+        {nextProject && (
+          <div className="pt-8 hairline-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div>
+              <span className="font-mono-tech text-[10px] tracking-[0.2em] text-[#8A8A93] uppercase block mb-1">
+                SIGUIENTE PROYECTO // {nextProject.index}
+              </span>
+              <span className="font-display text-xl font-bold text-[#F5F5F7] uppercase">
+                {nextProject.title}
+              </span>
+            </div>
+            <button 
+              type="button" 
+              onClick={() => {
+                // Primero subimos el scroll del modal hacia arriba del todo
+                document.querySelector('.fixed.inset-0.z-\\[100\\]')?.scrollTo({ top: 0, behavior: 'smooth' });
+                // Le damos 300ms de tiempo antes de cargar los datos del siguiente proyecto
+                setTimeout(() => onSelectProject(nextProject), 300);
+              }}
+              className="px-6 py-3 bg-[#F5F5F7] text-[#070708] font-mono-tech text-[10px] tracking-[0.2em] uppercase font-medium border-0 cursor-pointer hover:bg-white hover:scale-105 transition-all"
+            >
+              INSPECCIONAR PROYECTO →
+            </button>
+          </div>
+        )}
+        
       </div>
     </div>
   );
 }
 
-// --- MODAL PARA OBRAS DE ARTE (LIGHTBOX) ---
+// --- MODAL PARA OBRAS DE ARTE  ---
 function ArtModal({ art, onClose }) {
   useEffect(() => {
     const handleKeyDown = (e) => { if (e.key === "Escape") onClose(); };
@@ -585,24 +772,57 @@ function ArtModal({ art, onClose }) {
   if (!art) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] bg-[#070708]/98 flex flex-col animate-fadeIn cursor-zoom-out" onClick={onClose}>
-      <div className="flex-1 flex items-center justify-center p-6 md:p-12">
+    <div className="fixed inset-0 z-[100] bg-[#070708]/98 flex flex-col md:flex-row animate-fadeIn overflow-y-auto">
+      
+      {/* Columna Izquierda: Galería de imágenes (hace scroll independiente) */}
+      <div className="w-full md:w-2/3 h-full md:overflow-y-auto p-6 md:p-12 hide-scrollbar flex flex-col gap-12">
         <img 
           src={art.image} 
           alt={art.title} 
-          className="max-w-full max-h-full object-contain drop-shadow-2xl" 
+          className="w-full h-auto object-contain drop-shadow-2xl bg-[#0F0F11] p-4 border border-white/5" 
         />
+        
+        {/* Renderiza la galería extra si existe */}
+        {art.gallery && art.gallery.map((imgSrc, index) => (
+          <img 
+            key={index}
+            src={imgSrc} 
+            alt={`${art.title} detalle ${index + 1}`} 
+            className="w-full h-auto object-contain drop-shadow-2xl bg-[#0F0F11] p-4 border border-white/5" 
+          />
+        ))}
       </div>
       
-      {/* Pie de foto flotante */}
-      <div className="absolute bottom-8 left-0 w-full text-center pointer-events-none">
-        <h3 className="font-display text-xl font-bold uppercase tracking-[-0.02em] text-[#F5F5F7] mb-2">{art.title}</h3>
-        <p className="font-mono-tech text-[9px] uppercase tracking-[0.2em] text-[#8A8A93]">{art.medium} // {art.dimensions}</p>
+      {/* Columna Derecha: Información de la obra (Fija) */}
+      <div className="w-full md:w-1/3 p-8 md:p-12 md:h-full flex flex-col justify-center border-l border-white/10 bg-[#070708]">
+        <div className="mb-6 flex justify-between font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93]">
+          <span>{art.plateNumber}</span>
+          <span>{art.year}</span>
+        </div>
+        
+        <h3 className="font-display text-3xl font-bold uppercase tracking-[-0.02em] text-[#F5F5F7] mb-6">
+          {art.title}
+        </h3>
+        
+        <div className="flex flex-col gap-3 font-mono-tech text-[10px] uppercase tracking-[0.16em] text-[#B7B7BD] mb-10 pb-10 border-b border-white/10">
+          <p>TÉCNICA: <span className="text-[#F5F5F7] ml-2">{art.medium}</span></p>
+          <p>FORMATO: <span className="text-[#F5F5F7] ml-2">{art.dimensions}</span></p>
+          <p>EDICIÓN: <span className="text-[#F5F5F7] ml-2">{art.edition}</span></p>
+        </div>
+
+        {/* Descripción extra si existe */}
+        {art.description && (
+          <p className="text-sm font-light leading-relaxed text-[#8A8A93] mb-10">
+            {art.description}
+          </p>
+        )}
       </div>
 
+      {/* Botón de cerrar fijo arriba a la derecha */}
       <button 
         type="button" 
-        className="absolute top-6 right-6 px-4 py-2 font-mono-tech text-[10px] tracking-[0.2em] uppercase text-[#F5F5F7] hairline-box hover:bg-[#F5F5F7] hover:text-[#070708] transition-colors cursor-pointer bg-transparent z-50 pointer-events-auto"
+        onClick={onClose}
+        className="fixed top-6 right-6 px-4 py-2 font-mono-tech text-[10px] tracking-[0.2em] uppercase text-[#F5F5F7] bg-[#070708] border border-white/20 hover:bg-[#F5F5F7] hover:text-[#070708] transition-colors cursor-pointer z-[110]"
       >
         CERRAR [ESC]
       </button>
@@ -615,7 +835,7 @@ export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [activeLayer, setActiveLayer] = useState("BOTH");
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [selectedArt, setSelectedArt] = useState(null); // <-- NUEVO: Controla el autoplay
+  const [selectedArt, setSelectedArt] = useState(null); 
   const [selectedProject, setSelectedProject] = useState(null);
   const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
   const [isHoveringCard, setIsHoveringCard] = useState(false);
@@ -690,7 +910,7 @@ export default function Portfolio() {
         const nextIndex = (currentIndex + 1) % layers.length;
         return layers[nextIndex];
       });
-    }, 6000); // Cambia cada 4 segundos. Puedes subirlo a 5000 si lo quieres más lento.
+    }, 6000); // 
 
     return () => clearInterval(intervalId); // Limpia el temporizador al salir
   }, [isAutoPlaying]);
@@ -765,23 +985,46 @@ export default function Portfolio() {
       </div>
 
   {/* SECCIÓN 1: HERO */}
-      <section className="relative mx-auto flex min-h-[100svh] max-w-[1720px] flex-col justify-between px-mobile-safe pb-8 pt-[16vh] md:pb-10 md:pt-[22vh]">
-        <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-12 relative z-10">
-          <div className="lg:col-span-6">
-            <p className="font-mono-tech text-[10px] uppercase leading-5 tracking-[0.18em] text-[#8A8A93] whitespace-pre-line w-full md:max-w-[38rem]">
-              {t.roleLocation}
-            </p>
-          </div>
-          <div className="lg:col-span-5 lg:col-start-8 mt-4 md:mt-0">
-            <p className="text-sm md:text-base font-light leading-relaxed text-[#B7B7BD] md:text-lg w-full md:max-w-xl">
-              {t.heroBio}
-            </p>
-          </div>
-        </div>
+    <div className="relative w-full min-h-[100svh] overflow-hidden">
+        
+   <video 
+  autoPlay 
+  loop 
+  muted 
+  playsInline 
+  className="absolute inset-0 w-full h-full object-cover z-0 grayscale opacity-60 pointer-events-none"
+  style={{
+    transform: 'translateZ(0)',
+    backfaceVisibility: 'hidden',
+    willChange: 'transform'
+  }}
+  ref={(el) => {
+    if (el) el.playbackRate = 0.7; 
+  }}
+>
+  <source src="/banner.mp4" type="video/mp4" />
+</video>
 
-        {/* CONTENEDOR DEL CARRUSEL INFINITO (Sustituye al H1 antiguo) */}
-        <div className="my-auto py-12 sm:py-20 w-full overflow-hidden relative z-10 flex flex-col gap-2">
-          
+        {/* 2. EL FILTRO OSCURECEDOR */}
+        <div className="absolute inset-0 bg-[#070708]/70 z-[1] mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-[#070708]/40 z-[2]"></div>
+
+        <section className="relative mx-auto flex min-h-[100svh] max-w-[1720px] flex-col justify-between px-mobile-safe pb-8 pt-[16vh] md:pb-10 md:pt-[22vh] z-10">
+          <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-12 relative z-10">
+            <div className="lg:col-span-6">
+              <p className="font-mono-tech text-[10px] uppercase leading-5 tracking-[0.18em] text-[#8A8A93] whitespace-pre-line w-full md:max-w-[38rem]">
+                {t.roleLocation}
+              </p>
+            </div>
+            <div className="lg:col-span-5 lg:col-start-8 mt-4 md:mt-0">
+              <p className="text-sm md:text-base font-light leading-relaxed text-[#B7B7BD] md:text-lg w-full md:max-w-xl">
+                {t.heroBio}
+              </p>
+            </div>
+          </div>
+
+         {/* CONTENEDOR DEL CARRUSEL INFINITO A ANCHO DE PANTALLA COMPLETA */}
+        <div className="my-auto py-12 sm:py-20 w-screen relative left-1/2 -translate-x-1/2 overflow-hidden z-10 flex flex-col gap-20">
           {/* LÍNEA 1: Hacia la izquierda (Blanco) */}
           <div className={`transition-opacity duration-1000 ${heroLoaded ? "opacity-100" : "opacity-0"}`}>
             <div className="track-left">
@@ -799,22 +1042,22 @@ export default function Portfolio() {
               </h1>
             </div>
           </div>
-
         </div>
 
-        <div className="grid grid-cols-2 items-end gap-5 hairline-t pt-5 md:grid-cols-12 w-full relative z-10">
-          <p className="font-mono-tech text-[9px] uppercase leading-4 tracking-[0.16em] text-[#8A8A93] md:col-span-3 md:text-[10px] whitespace-pre-line">
-            {t.selectedPortfolio}
-          </p>
-          <p className="hidden font-mono-tech text-[10px] uppercase tracking-[0.16em] text-[#52525B] md:col-span-5 md:block">
-            <ScrambleText text={t.disciplineCross} />
-          </p>
-          <a href="#work" className="flex items-center justify-end gap-3 font-mono-tech text-[10px] uppercase tracking-[0.18em] md:col-span-4">
-            <span className="hidden sm:inline"><ScrambleText text={t.scrollInspect} /></span>
-            <span className="grid place-items-center hairline-box" style={{ width: "32px", height: "32px" }}>↓</span>
-          </a>
-        </div>
-      </section>
+          <div className="grid grid-cols-2 items-end gap-5 hairline-t pt-5 md:grid-cols-12 w-full relative z-10">
+            <p className="font-mono-tech text-[9px] uppercase leading-4 tracking-[0.16em] text-[#8A8A93] md:col-span-3 md:text-[10px] whitespace-pre-line">
+              {t.selectedPortfolio}
+            </p>
+            <p className="hidden font-mono-tech text-[10px] uppercase tracking-[0.16em] text-[#52525B] md:col-span-5 md:block">
+              <ScrambleText text={t.disciplineCross} />
+            </p>
+            <a href="#work" className="flex items-center justify-end gap-3 font-mono-tech text-[10px] uppercase tracking-[0.18em] md:col-span-4">
+              <span className="hidden sm:inline"><ScrambleText text={t.scrollInspect} /></span>
+              <span className="grid place-items-center hairline-box" style={{ width: "32px", height: "32px" }}>↓</span>
+            </a>
+          </div>
+        </section>
+      </div>
 
       {/* SECCIÓN 2: WORK INDEX */}
       <section id="work" className="scroll-mt-20 hairline-t relative z-10">
@@ -824,11 +1067,12 @@ export default function Portfolio() {
               <p className="mb-5 font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93]">
                 {t.sec01Tag}
               </p>
-              <h2 className="font-display text-5xl font-bold uppercase leading-[0.86] tracking-[-0.055em] sm:text-7xl lg:text-8xl">
-                <span style={{ overflow: "hidden", display: "block" }}>
-                  <span className="scroll-reveal">{t.sec01Title}<span className="text-[#52525B]">.</span></span>
-                </span>
-              </h2>
+     {/* TÍTULO 1: PROYECTOS */}
+<h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5vw] xl:text-[5vw] font-bold uppercase leading-[0.85] tracking-[-0.03em] text-[#F5F5F7]">
+  <span className="inline-block transition-all duration-1000 transform translate-y-0 opacity-100">
+    {t.sec01Title}
+  </span>
+</h2>
             </div>
             <div className="flex items-end md:col-span-5 md:justify-end">
               <div className="flex flex-wrap gap-x-6 gap-y-3">
@@ -877,11 +1121,12 @@ export default function Portfolio() {
               <p className="mb-6 font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93]">
                 {t.sec02Tag}
               </p>
-              <h2 className="font-display text-4xl font-bold uppercase leading-[0.9] tracking-[-0.05em] sm:text-6xl">
-                <span style={{ overflow: "hidden", display: "block" }}>
-                  <span className="scroll-reveal">{t.sec02Title}</span>
-                </span>
-              </h2>
+{/* TÍTULO 2: CÓDIGO Y DISEÑO */}
+<h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5vw] xl:text-[5vw] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-[#F5F5F7]">
+  <span className="inline-block transition-all duration-1000 transform translate-y-0 opacity-100">
+    {t.sec02Title}
+  </span>
+</h2>
               <p className="mt-8 max-w-md text-sm sm:text-base font-light leading-relaxed text-[#8A8A93]">
                 {t.sec02Desc}
               </p>
@@ -893,7 +1138,7 @@ export default function Portfolio() {
                     type="button"
                     onClick={() => {
                       setActiveLayer(layer.value);
-                      setIsAutoPlaying(false); // <-- NUEVO: Detiene la rotación automática para siempre al hacer clic
+                      setIsAutoPlaying(false); 
                     }}
                     className={`cursor-pointer px-4 py-2.5 font-mono-tech text-[9px] uppercase tracking-[0.16em] transition-colors ${
                       activeLayer === layer.value
@@ -930,14 +1175,15 @@ export default function Portfolio() {
               <p className="mb-5 font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93]">
                 {t.sec03Tag}
               </p>
-              <h2 className="font-display text-5xl font-bold uppercase leading-[0.88] tracking-[-0.05em] sm:text-7xl lg:text-8xl">
-                <span style={{ overflow: "hidden", display: "block" }}>
-                  <span className="scroll-reveal">{t.sec03Title1}</span>
-                </span>
-                <span style={{ overflow: "hidden", display: "block" }}>
-                  <span className="scroll-reveal" style={{ transitionDelay: "140ms" }}>{t.sec03Title2}</span>
-                </span>
-              </h2>
+{/* TÍTULOS 3: BELLAS ARTES */}
+<h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5vw] xl:text-[5vw] font-bold uppercase leading-[0.85] tracking-[-0.03em] text-[#F5F5F7]">
+  <span className="block transition-all duration-1000 transform translate-y-0 opacity-100">
+    {t.sec03Title1}
+  </span>
+  <span className="block transition-all duration-1000 transform translate-y-0 opacity-100">
+    {t.sec03Title2}
+  </span>
+</h2>
             </div>
             <p className="max-w-sm font-mono-tech text-[10px] uppercase leading-5 tracking-[0.16em] text-[#8A8A93]">
               {t.sec03Desc}
@@ -1011,7 +1257,7 @@ export default function Portfolio() {
         allProjects={currentProjects}
         t={t}
       />
-      {/* NUEVO: Llamada al modal de arte */}
+      {/* Llamada al modal de arte */}
       <ArtModal 
         art={selectedArt} 
         onClose={() => setSelectedArt(null)} 
