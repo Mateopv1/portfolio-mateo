@@ -176,10 +176,13 @@
       btn.classList.toggle('menu-open');
       menu.classList.toggle('is-active');
       
+      // BLOQUEA EL SCROLL DE LA PÁGINA CUANDO EL MENÚ ESTÁ ABIERTO
       if (menu.classList.contains('is-active')) {
+        document.body.style.overflow = 'hidden';
         header.style.backgroundColor = 'transparent';
         header.style.borderBottomColor = 'transparent';
       } else {
+        document.body.style.overflow = '';
         setTimeout(() => {
           header.style.backgroundColor = 'rgba(7, 7, 8, 0.9)';
           header.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
@@ -191,6 +194,7 @@
       link.addEventListener('click', () => {
         btn.classList.remove('menu-open');
         menu.classList.remove('is-active');
+        document.body.style.overflow = ''; // RESTABLECE EL SCROLL AL HACER CLICK EN UN ENLACE
         setTimeout(() => {
           header.style.backgroundColor = 'rgba(7, 7, 8, 0.9)';
           header.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
