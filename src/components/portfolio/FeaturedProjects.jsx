@@ -31,21 +31,17 @@ function ArrowIcon() {
 function ProjectCard({ project, onOpen, setHoveredColor }) {
   const arrowRef = useRef(null);
 
-  // Lógica del efecto magnético
   const handleMouseMove = (e) => {
     if (!arrowRef.current) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    // Calcula la distancia desde el centro de la imagen
     const x = (e.clientX - rect.left - rect.width / 2) * 0.08; 
     const y = (e.clientY - rect.top - rect.height / 2) * 0.08;
-    // Mueve la flecha suavemente
     arrowRef.current.style.transform = `translate(${x}px, ${y}px) scale(1.15)`;
   };
 
   const handleMouseLeave = () => {
     setHoveredColor(null);
     if (!arrowRef.current) return;
-    // Devuelve la flecha a su sitio
     arrowRef.current.style.transform = `translate(0px, 0px) scale(1)`;
   };
 
@@ -57,7 +53,6 @@ function ProjectCard({ project, onOpen, setHoveredColor }) {
     >
       <button type="button" onClick={() => onOpen(project)} className="block w-full cursor-pointer text-left bg-transparent border-0 p-0 text-inherit">
         
-        {/* Detectamos el movimiento del ratón en la foto */}
         <div 
           className={`plate-frame ${heightClasses[project.gridSpan]}`}
           onMouseMove={handleMouseMove}
@@ -71,7 +66,6 @@ function ProjectCard({ project, onOpen, setHoveredColor }) {
           <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
             <span className="font-mono-tech text-[9px] tracking-[0.15em] text-white/75">{project.dimensions}</span>
             
-            {/* Flecha magnética vinculada al useRef */}
             <span 
               ref={arrowRef}
               className="magnetic-arrow grid place-items-center bg-black/40 text-white backdrop-blur-sm group-hover:bg-[#F5F5F7] group-hover:text-[#070708] transition-colors duration-300 ease-out" 
@@ -97,10 +91,10 @@ function ProjectCard({ project, onOpen, setHoveredColor }) {
   );
 }
 
-// --- MODAL DE CASO DE ESTUDIO (CON PARALLAX Y FIX DE SCROLL) ---
+// --- MODAL DE CASO DE ESTUDIO ---
 function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
   const [mounted, setMounted] = useState(false);
-  const [scrollOffset, setScrollOffset] = useState(0); // Estado para el Parallax
+  const [scrollOffset, setScrollOffset] = useState(0);
 
   useEffect(() => {
     setMounted(true);
@@ -108,7 +102,7 @@ function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
     if (project) {
       document.addEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "hidden";
-      setScrollOffset(0); // Reiniciar parallax al abrir
+      setScrollOffset(0);
     }
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
@@ -124,7 +118,6 @@ function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
   return createPortal(
     <div className="fixed inset-0 z-[9999999] bg-[#070708] w-screen h-screen flex flex-col overflow-hidden">
       
-      {/* BOTÓN CERRAR */}
       <div className="absolute top-6 right-6 md:top-10 md:right-10 z-[10000000]">
         <button 
           type="button" 
@@ -135,10 +128,6 @@ function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
         </button>
       </div>
 
-      {/* 
-        ¡AQUÍ ESTÁ EL ARREGLO DE LENIS! (data-lenis-prevent="true") 
-        Y AQUÍ DETECTAMOS EL SCROLL PARA EL PARALLAX (onScroll)
-      */}
       <div 
         className="w-full h-full overflow-y-auto hide-scrollbar relative z-[99998]"
         data-lenis-prevent="true"
@@ -162,13 +151,12 @@ function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
             </div>
           </div>
 
-          {/* CONTENEDOR DE IMAGEN PRINCIPAL (Añadido overflow-hidden para tapar el parallax) */}
           <div className="plate-frame plate-cinematic my-12 bg-[#0F0F11] border border-white/5 p-2 shadow-2xl relative overflow-hidden">
             <img 
               alt={project.title} 
               className="w-full h-auto object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700" 
               src={project.image} 
-              style={{ transform: `translateY(${scrollOffset * 0.15}px) scale(1.05)` }} // <--- EFECTO PARALLAX 
+              style={{ transform: `translateY(${scrollOffset * 0.15}px) scale(1.05)` }} 
             />
           </div>
 
@@ -249,9 +237,20 @@ export default function FeaturedProjects({ lang = 'es', hoveredColor, setHovered
     { value: "ILLUSTRATION", label: t.filterArt },
   ];
 
+  // FILTRADO ROBUSTO: Compara tanto categoría como etiquetas o texto para evitar que falle
   const visibleProjects = activeFilter === "ALL" 
     ? currentProjects 
-    : currentProjects.filter((p) => p.category === activeFilter);
+    : currentProjects.filter((p) => {
+        const cat = (p.category || "").toUpperCase();
+        const tag = (p.disciplineTag || "").toUpperCase();
+        if (activeFilter === "UX_SYSTEMS") {
+          return cat.includes("UX") || cat.includes("SYSTEM") || tag.includes("UX") || tag.includes("FRONT");
+        }
+        if (activeFilter === "ILLUSTRATION") {
+          return cat.includes("ILLUST") || cat.includes("ART") || tag.includes("ARTE") || tag.includes("ILLUST");
+        }
+        return cat === activeFilter;
+      });
 
   return (
     <section id="work" className="scroll-mt-20 hairline-t relative z-10">
@@ -271,21 +270,34 @@ export default function FeaturedProjects({ lang = 'es', hoveredColor, setHovered
           </div>
           <div className="flex items-end md:col-span-5 md:justify-end">
             <div className="flex flex-wrap gap-x-6 gap-y-3">
-              {FILTERS.map((filter) => (
-                <button
-                  key={filter.value}
-                  type="button"
-                  onClick={() => setActiveFilter(filter.value)}
-                  className={`cursor-pointer bg-transparent border-0 border-b py-2 font-mono-tech text-[10px] uppercase tracking-[0.16em] transition-colors ${
-                    activeFilter === filter.value
-                      ? "border-[#F5F5F7] text-[#F5F5F7]"
-                      : "border-transparent text-[#52525B] hover:text-[#F5F5F7]"
-                  }`}
-                >
-                  <ScrambleText text={filter.label} />{" "}
-                  <sup>{filter.value === "ALL" ? currentProjects.length : currentProjects.filter((p) => p.category === filter.value).length}</sup>
-                </button>
-              ))}
+              {FILTERS.map((filter) => {
+                // Cálculo seguro del contador para cada filtro
+                const count = filter.value === "ALL" 
+                  ? currentProjects.length 
+                  : currentProjects.filter((p) => {
+                      const cat = (p.category || "").toUpperCase();
+                      const tag = (p.disciplineTag || "").toUpperCase();
+                      if (filter.value === "UX_SYSTEMS") return cat.includes("UX") || cat.includes("SYSTEM") || tag.includes("UX");
+                      if (filter.value === "ILLUSTRATION") return cat.includes("ILLUST") || cat.includes("ART") || tag.includes("ARTE");
+                      return cat === filter.value;
+                    }).length;
+
+                return (
+                  <button
+                    key={filter.value}
+                    type="button"
+                    onClick={() => setActiveFilter(filter.value)}
+                    className={`cursor-pointer bg-transparent border-0 border-b py-2 font-mono-tech text-[10px] uppercase tracking-[0.16em] transition-colors ${
+                      activeFilter === filter.value
+                        ? "border-[#F5F5F7] text-[#F5F5F7]"
+                        : "border-transparent text-[#52525B] hover:text-[#F5F5F7]"
+                    }`}
+                  >
+                    <ScrambleText text={filter.label} />{" "}
+                    <sup>{count}</sup>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

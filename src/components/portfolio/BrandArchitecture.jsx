@@ -303,7 +303,7 @@ function BrandLogoCard({ project, setHoveredColor }) {
 
 export default function BrandArchitecture({ setHoveredColor }) {
   return (
-    <section id="brand" className="scroll-mt-20 border-t border-white/10 bg-[#070708] relative z-10">
+    <section id="brand" className="scroll-mt-20 border-t border-white/10  relative z-10">
       <div className="mx-auto max-w-[1720px] px-5 py-16 md:px-10 md:py-32 lg:px-12 lg:py-40">
         
         <div className="mb-12 grid grid-cols-1 gap-8 border-b border-white/10 pb-8 md:grid-cols-12 md:items-end lg:mb-24 lg:pb-14 draw-border">
