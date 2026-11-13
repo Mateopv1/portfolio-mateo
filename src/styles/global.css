@@ -287,3 +287,39 @@ html, body {
   line-height: 0.9;
   white-space: nowrap;
 }
+/* Busca esta clase en tu archivo CSS */
+.svg-draw-live {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  
+  /* EL SECRETO ESTÁ AQUÍ: Aumenta los segundos (ej. 3.5s o 4s) */
+  animation: drawLine 3.5s ease-in-out forwards; 
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* --- LENIS SMOOTH SCROLL --- */
+html.lenis, html.lenis body {
+  height: auto;
+  width: 100vw;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
