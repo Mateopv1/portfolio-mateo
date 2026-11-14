@@ -176,13 +176,19 @@
       btn.classList.toggle('menu-open');
       menu.classList.toggle('is-active');
       
-      // BLOQUEA EL SCROLL DE LA PÁGINA CUANDO EL MENÚ ESTÁ ABIERTO
-      if (menu.classList.contains('is-active')) {
-        document.body.style.overflow = 'hidden';
+      const isOpen = menu.classList.contains('is-active');
+
+      // BLOQUEA EL SCROLL DE LENIS Y DEL NAVEGADOR
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (window.lenis) {
+        if (isOpen) window.lenis.stop();
+        else window.lenis.start();
+      }
+
+      if (isOpen) {
         header.style.backgroundColor = 'transparent';
         header.style.borderBottomColor = 'transparent';
       } else {
-        document.body.style.overflow = '';
         setTimeout(() => {
           header.style.backgroundColor = 'rgba(7, 7, 8, 0.9)';
           header.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
@@ -194,7 +200,11 @@
       link.addEventListener('click', () => {
         btn.classList.remove('menu-open');
         menu.classList.remove('is-active');
-        document.body.style.overflow = ''; // RESTABLECE EL SCROLL AL HACER CLICK EN UN ENLACE
+        
+        // RESTABLECE EL SCROLL
+        document.body.style.overflow = '';
+        if (window.lenis) window.lenis.start();
+
         setTimeout(() => {
           header.style.backgroundColor = 'rgba(7, 7, 8, 0.9)';
           header.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
@@ -208,12 +218,11 @@
   if(btnEsDesktop) btnEsDesktop.addEventListener('click', () => setLanguage('es'));
   if(btnEnDesktop) btnEnDesktop.addEventListener('click', () => setLanguage('en'));
 
-  // --- SMART HEADER SCROLL (Solo encoge, ya NO desaparece nunca) ---
+  // --- SMART HEADER SCROLL ---
   window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY;
     const logo = document.getElementById('header-logo');
     
-    // Filtro del logo (Blanco/Negro)
     if (logo) {
       if (currentScroll > 50) {
         logo.style.filter = 'brightness(0) invert(1)';
@@ -222,7 +231,6 @@
       }
     }
 
-    // Encoger la barra al hacer scroll (Efecto cristal dinámico)
     if (currentScroll > 100) {
       navContainer.classList.remove('py-4', 'md:py-5');
       navContainer.classList.add('py-2', 'md:py-3');
