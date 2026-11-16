@@ -48,22 +48,7 @@ export default function HeroSection({ lang = 'es' }) {
       className="relative w-full min-h-[100svh] overflow-hidden bg-[#070708]"
       onMouseMove={handleMouseMove}
     >
-      {/* 
-        3. OPTIMIZACIÓN DE VÍDEO (PERFORMANCE) 
-        Añadido poster (imagen de carga) y atributos de renderizado agresivo
-      */}
-      <video 
-        autoPlay 
-        loop 
-        muted 
-        playsInline
-        poster="/poster-hero.jpg" 
-        className="absolute inset-0 w-full h-full object-cover z-0 grayscale opacity-60 pointer-events-none will-change-transform"
-        style={{ transform: 'translateZ(0) scale(1.05)', backfaceVisibility: 'hidden' }}
-        ref={(el) => { if (el) el.playbackRate = 0.7; }}
-      > 
-        <source src="/banner.mp4" type="video/mp4" />
-      </video>
+      
       <div className="absolute inset-0 bg-[#070708]/70 z-[1] mix-blend-multiply"></div>
       
       {/* Viñeteado radial sutil para centrar la atención */}
