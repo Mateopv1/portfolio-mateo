@@ -5,7 +5,7 @@
   
   <nav class="mx-auto flex w-full max-w-[1720px] items-center justify-between px-6 py-4 md:px-10 md:py-5 lg:px-12 transition-all duration-500 ease-out" id="nav-container" aria-label="Primary navigation">
     
-    <!-- Logo Izquierda con efecto de escala 3D -->
+    <!-- Logo Izquierda -->
     <a href="#top" class="relative z-[60] flex items-center group" style="text-decoration: none;">
       <img 
         id="header-logo"
@@ -15,7 +15,7 @@
       />
     </a>
 
-    <!-- Enlaces Centro (Efecto Hover Premium) -->
+    <!-- Enlaces Centro -->
     <div class="hidden md:flex items-center gap-10 font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93]">
       <a href="#work" data-i18n="work" class="nav-link relative overflow-hidden group">
         <span class="block transition-transform duration-300 ease-out group-hover:-translate-y-[120%]">Proyectos</span>
@@ -38,7 +38,7 @@
       <span class="hamburger-line line-3 w-full h-[1px] bg-[#F5F5F7] block transition-all duration-300 ease-in-out"></span>
     </button>
 
-    <!-- Bloque Derecha: Indicador + Selector Idioma -->
+    <!-- Bloque Derecha -->
     <div class="hidden md:flex items-center gap-6">
       <a href="#contact" class="flex items-center gap-2 font-mono-tech text-[10px] uppercase tracking-[0.16em] text-[#8A8A93] transition-colors hover:text-[#F5F5F7] group" style="text-decoration: none;">
         <span class="relative flex h-[6px] w-[6px]">
@@ -65,8 +65,8 @@
   </nav>
 
   <!-- Cortina del Menú Móvil Premium -->
-  <!-- MODIFICADO: h-screen en lugar de h-[100svh], overflow-hidden y touch-none para bloquear rebotes móviles -->
-  <div id="mobile-menu" class="group fixed inset-0 bg-[#070708]/95 backdrop-blur-2xl flex flex-col items-center justify-center px-6 z-40 h-screen w-screen overflow-hidden touch-none opacity-0 pointer-events-none transition-all duration-500 [&.is-active]:opacity-100 [&.is-active]:pointer-events-auto overscroll-none">
+  <!-- ARREGLO: bg-[#070708] sólido sin 'backdrop-blur' para evitar que choque con el cristal del header -->
+  <div id="mobile-menu" class="group fixed inset-0 bg-[#070708] flex flex-col items-center justify-center px-6 z-40 h-screen w-screen overflow-hidden touch-none opacity-0 pointer-events-none transition-all duration-500 [&.is-active]:opacity-95 [&.is-active]:pointer-events-auto overscroll-none">
     
     <div class="flex flex-col items-center text-center gap-8 font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-[-0.03em] mt-10 w-full">
       <div class="overflow-hidden w-full">
@@ -106,7 +106,6 @@
 <script>
   const btn = document.getElementById('hamburger-btn');
   const menu = document.getElementById('mobile-menu');
-  const header = document.getElementById('main-header');
   const navContainer = document.getElementById('nav-container');
   const links = document.querySelectorAll('.mobile-link');
   
@@ -171,35 +170,28 @@
     window.dispatchEvent(new CustomEvent('changeLanguage', { detail: lang }));
   }
 
-  // Prevenir eventos de scroll táctil en dispositivos móviles cuando el menú está abierto
+  // Prevenir eventos de scroll táctil en móvil (rebotes)
   function preventTouchMove(e) {
     e.preventDefault();
   }
 
-  if (btn && menu && header) {
+  if (btn && menu) {
     btn.addEventListener('click', () => {
       btn.classList.toggle('menu-open');
       menu.classList.toggle('is-active');
       
       const isOpen = menu.classList.contains('is-active');
 
-      // Bloqueo de scroll agresivo para móvil
       if (isOpen) {
         document.body.style.overflow = 'hidden';
-        document.body.style.touchAction = 'none'; // Bloquea gestos táctiles
-        menu.addEventListener('touchmove', preventTouchMove, { passive: false }); // Previene rebote en iOS
-        header.style.backgroundColor = 'transparent';
-        header.style.borderBottomColor = 'transparent';
+        document.body.style.touchAction = 'none'; 
+        menu.addEventListener('touchmove', preventTouchMove, { passive: false }); 
         if (window.lenis) window.lenis.stop();
       } else {
         document.body.style.overflow = '';
         document.body.style.touchAction = '';
         menu.removeEventListener('touchmove', preventTouchMove);
         if (window.lenis) window.lenis.start();
-        setTimeout(() => {
-          header.style.backgroundColor = 'rgba(7, 7, 8, 0.9)';
-          header.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
-        }, 500);
       }
     });
 
@@ -207,17 +199,10 @@
       link.addEventListener('click', () => {
         btn.classList.remove('menu-open');
         menu.classList.remove('is-active');
-        
-        // Restaurar estado
         document.body.style.overflow = '';
         document.body.style.touchAction = '';
         menu.removeEventListener('touchmove', preventTouchMove);
         if (window.lenis) window.lenis.start();
-
-        setTimeout(() => {
-          header.style.backgroundColor = 'rgba(7, 7, 8, 0.9)';
-          header.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
-        }, 500);
       });
     });
   }
