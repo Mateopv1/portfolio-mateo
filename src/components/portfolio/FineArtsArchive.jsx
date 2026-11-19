@@ -3,13 +3,26 @@ import { createPortal } from 'react-dom';
 import ScrambleText from './ScrambleText';
 import { TRANSLATIONS, FINE_ART_PLATES, EXHIBITIONS_DATA } from '../../data/portfolioData';
 
-// --- MODAL PARA OBRAS DE ARTE (Diseño Split-Screen con Portal y Márgenes Ajustados) ---
+// --- MODAL PARA OBRAS DE ARTE (Diseño Split-Screen con Lightbox Integrado CORREGIDO) ---
 function ArtModal({ art, onClose }) {
   const [mounted, setMounted] = useState(false);
+  const [showProcess, setShowProcess] = useState(false);
+  const [lightboxImg, setLightboxImg] = useState(null);
 
   useEffect(() => {
     setMounted(true);
-    const handleKeyDown = (e) => { if (e.key === "Escape") onClose(); };
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => { 
+      if (e.key === "Escape") {
+        setLightboxImg((prev) => {
+          if (prev) return null;
+          onClose();
+          return null;
+        });
+      } 
+    };
     if (art) {
       document.addEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "hidden";
@@ -20,94 +33,155 @@ function ArtModal({ art, onClose }) {
     }
   }, [art, onClose]);
 
+  useEffect(() => {
+    if (art) {
+      setShowProcess(false);
+      setLightboxImg(null);
+    }
+  }, [art]);
+
   if (!art || !mounted) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[9999999] flex flex-col md:flex-row bg-[#070708] w-screen h-screen overflow-hidden">
-      
-      {/* LADO IZQUIERDO: GALERÍA DE LA OBRA (Con padding generoso y justify-start para que no se pegue arriba) */}
-      {/* ¡AQUÍ AÑADIMOS data-lenis-prevent="true" PARA ARREGLAR EL SCROLL! */}
-      <div 
-        className="w-full md:w-[65%] h-full overflow-y-auto hide-scrollbar px-6 py-20 md:px-16 md:py-32 flex flex-col items-center justify-start gap-16 relative z-[99998]"
-        data-lenis-prevent="true"
-      >
-        
-        {/* Imagen principal con el marco oscuro sutil */}
-        <div className="w-full max-w-5xl bg-black p-3 border border-white/5 shadow-2xl">
+    <>
+      {/* LIGHTBOX */}
+      {lightboxImg && (
+        <div 
+          className="fixed inset-0 z-[100000000] bg-[#070708]/95 backdrop-blur-2xl flex items-center justify-center cursor-zoom-out opacity-100 transition-opacity duration-300"
+          onClick={() => setLightboxImg(null)}
+        >
+          <div className="absolute top-6 right-6 md:top-8 md:right-8 z-50">
+            <button 
+              type="button" 
+              className="px-4 py-2 font-mono-tech text-[9px] tracking-[0.2em] uppercase text-[#F5F5F7] bg-transparent border border-white/20 hover:bg-[#F5F5F7] hover:text-[#070708] transition-colors cursor-pointer"
+            >
+              CERRAR [ESC]
+            </button>
+          </div>
           <img 
-            src={art.image} 
-            alt={art.title} 
-            className="w-full h-auto max-h-[85vh] object-contain mx-auto" 
+            src={lightboxImg} 
+            alt="Vista en detalle" 
+            className="max-w-[95vw] max-h-[95vh] object-contain shadow-2xl transform scale-100 transition-transform duration-300" 
           />
         </div>
+      )}
 
-        {/* Imágenes secundarias (si hay galería) */}
-        {art.gallery && art.gallery.map((imgSrc, index) => (
-          <div key={index} className="w-full max-w-5xl bg-black p-3 border border-white/5 shadow-2xl">
+      {/* MODAL PRINCIPAL */}
+      <div className="fixed inset-0 z-[9999999] flex flex-col md:flex-row bg-[#070708] w-screen h-screen overflow-hidden">
+        
+        {/* LADO IZQUIERDO: GALERÍA DE LA OBRA */}
+        <div 
+          className="w-full md:w-[65%] h-full overflow-y-auto hide-scrollbar px-6 py-20 md:px-16 md:py-32 flex flex-col items-center justify-start gap-16 relative z-[99998]"
+          data-lenis-prevent="true"
+        >
+          
+          {/* IMAGEN PRINCIPAL ARREGLADA */}
+          <div className="w-full max-w-5xl bg-black p-3 border border-white/5 shadow-2xl flex items-center justify-center">
             <img 
-              src={imgSrc} 
-              alt={`${art.title} detalle ${index + 1}`} 
-              className="w-full h-auto max-h-[85vh] object-contain mx-auto" 
+              src={art.image} 
+              alt={art.title} 
+              onClick={() => setLightboxImg(art.image)}
+              className="w-full object-contain mx-auto cursor-zoom-in hover:scale-[1.01] transition-transform duration-500"
+              style={{ maxHeight: '85vh' }}
             />
           </div>
-        ))}
-      </div>
-      
-      {/* LADO DERECHO: PANEL DE INFORMACIÓN (Fijo) */}
-      <div className="w-full md:w-[35%] h-full flex flex-col border-t md:border-t-0 md:border-l border-white/10 bg-[#070708] relative z-[99998]">
-        
-       {/* BOTÓN CERRAR: Integrado arriba a la derecha */}
-        <div className="absolute top-6 right-6 md:top-8 md:right-8 z-50">
-          <button 
-            type="button" 
-            onClick={onClose}
-            className="px-4 py-2 font-mono-tech text-[9px] tracking-[0.2em] uppercase text-[#F5F5F7] bg-[#070708]/80 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border border-white/20 hover:bg-[#F5F5F7] hover:text-[#070708] transition-colors cursor-pointer"
-          >
-            CERRAR [ESC]
-          </button>
-        </div>
 
-        {/* CONTENIDO TEXTUAL: Centrado verticalmente como en tu diseño */}
-        <div className="flex-1 flex flex-col justify-center p-8 md:p-16 mt-12 md:mt-0">
-          
-          <div className="mb-4 flex justify-between font-mono-tech text-[9px] uppercase tracking-[0.2em] text-[#52525B]">
-            <span>{art.plateNumber}</span>
-            <span>{art.year}</span>
-          </div>
-          
-          <h3 className="font-display text-2xl md:text-3xl font-bold uppercase tracking-[-0.02em] text-[#F5F5F7] mb-8 leading-tight">
-            {art.title}
-          </h3>
-          
-          <div className="flex flex-col gap-4 font-mono-tech text-[9px] uppercase tracking-[0.16em] text-[#8A8A93] mb-10 pb-10 border-b border-white/10">
-            <div className="flex">
-              <span className="w-24 text-[#52525B]">TÉCNICA:</span> 
-              <span className="text-[#F5F5F7] flex-1">{art.medium}</span>
+          {/* IMÁGENES SECUNDARIAS ARREGLADAS */}
+          {art.gallery && art.gallery.map((imgSrc, index) => (
+            <div key={index} className="w-full max-w-5xl bg-black p-3 border border-white/5 shadow-2xl flex items-center justify-center">
+              <img 
+                src={imgSrc} 
+                alt={`${art.title} detalle ${index + 1}`} 
+                onClick={() => setLightboxImg(imgSrc)}
+                className="w-full object-contain mx-auto cursor-zoom-in hover:scale-[1.01] transition-transform duration-500"
+                style={{ maxHeight: '85vh' }}
+              />
             </div>
-            <div className="flex">
-              <span className="w-24 text-[#52525B]">FORMATO:</span> 
-              <span className="text-[#F5F5F7] flex-1">{art.dimensions}</span>
-            </div>
-            <div className="flex">
-              <span className="w-24 text-[#52525B]">EDICIÓN:</span> 
-              <span className="text-[#F5F5F7] flex-1">{art.edition}</span>
-            </div>
-          </div>
+          ))}
 
-          {art.description && (
-            <p className="text-xs md:text-sm font-light leading-relaxed text-[#8A8A93]">
-              {art.description}
-            </p>
+          {/* INBOX / PROCESO */}
+          {art.processGallery && art.processGallery.length > 0 && (
+            <div className="w-full max-w-5xl mt-12 border-t border-white/10 pt-12">
+              {!showProcess ? (
+                <button
+                  type="button"
+                  onClick={() => setShowProcess(true)}
+                  className="w-full py-6 flex items-center justify-center gap-3 bg-[#0F0F11] border border-white/10 text-[#8A8A93] font-mono-tech text-[10px] tracking-[0.2em] uppercase hover:bg-white/5 transition-colors cursor-pointer"
+                >
+                  <span>Ver proceso completo ({art.processGallery.length} imágenes)</span>
+                  <span className="text-[#F5F5F7]">+</span>
+                </button>
+              ) : (
+                <div className="bg-[#0F0F11] border border-white/10 p-6">
+                  <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-4">
+                    <span className="font-mono-tech text-[10px] tracking-[0.2em] text-[#F5F5F7] uppercase">Proceso de desarrollo</span>
+                    <button onClick={() => setShowProcess(false)} className="text-[#8A8A93] font-mono hover:text-white cursor-pointer text-xs">Ocultar ×</button>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    {art.processGallery.map((imgSrc, index) => (
+                       <div key={index} className="aspect-square bg-black border border-white/5 overflow-hidden">
+                         <img 
+                          src={imgSrc} 
+                          alt={`Proceso ${index + 1}`} 
+                          onClick={() => setLightboxImg(imgSrc)}
+                          className="w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-500 cursor-zoom-in"
+                         />
+                       </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           )}
-          
+        </div>
+        
+        {/* LADO DERECHO: PANEL DE INFORMACIÓN */}
+        <div className="w-full md:w-[35%] h-full flex flex-col border-t md:border-t-0 md:border-l border-white/10 bg-[#070708] relative z-[99998]">
+          <div className="absolute top-6 right-6 md:top-8 md:right-8 z-50">
+            <button 
+              type="button" 
+              onClick={onClose}
+              className="px-4 py-2 font-mono-tech text-[9px] tracking-[0.2em] uppercase text-[#F5F5F7] bg-[#070708]/80 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border border-white/20 hover:bg-[#F5F5F7] hover:text-[#070708] transition-colors cursor-pointer"
+            >
+              CERRAR [ESC]
+            </button>
+          </div>
+
+          <div className="flex-1 flex flex-col justify-center p-8 md:p-16 mt-12 md:mt-0">
+            <div className="mb-4 flex justify-between font-mono-tech text-[9px] uppercase tracking-[0.2em] text-[#52525B]">
+              <span>{art.plateNumber}</span>
+              <span>{art.year}</span>
+            </div>
+            <h3 className="font-display text-2xl md:text-3xl font-bold uppercase tracking-[-0.02em] text-[#F5F5F7] mb-8 leading-tight">
+              {art.title}
+            </h3>
+            <div className="flex flex-col gap-4 font-mono-tech text-[9px] uppercase tracking-[0.16em] text-[#8A8A93] mb-10 pb-10 border-b border-white/10">
+              <div className="flex">
+                <span className="w-24 text-[#52525B]">TÉCNICA:</span> 
+                <span className="text-[#F5F5F7] flex-1">{art.medium}</span>
+              </div>
+              <div className="flex">
+                <span className="w-24 text-[#52525B]">FORMATO:</span> 
+                <span className="text-[#F5F5F7] flex-1">{art.dimensions}</span>
+              </div>
+              <div className="flex">
+                <span className="w-24 text-[#52525B]">EDICIÓN:</span> 
+                <span className="text-[#F5F5F7] flex-1">{art.edition}</span>
+              </div>
+            </div>
+            {art.description && (
+              <p className="text-xs md:text-sm font-light leading-relaxed text-[#8A8A93]">
+                {art.description}
+              </p>
+            )}
+          </div>
         </div>
       </div>
-
-    </div>,
+    </>,
     document.body
   );
 }
-
 // --- SECCIÓN PRINCIPAL EXPORTADA ---
 export default function FineArtsArchive({ lang = 'es' }) {
   const t = TRANSLATIONS[lang];

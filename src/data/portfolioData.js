@@ -71,276 +71,298 @@ export const TRANSLATIONS = {
 
 export const FEATURED_PROJECTS_DATA = {
   es: [
-    {
+   {
       id: 1,
-      title: "Agente Comercial IA // Panel de Control",
-      subtitle: "Diseño UX/UI en Figma y desarrollo Front-End en React del panel de control para un Agente Comercial, automatizando el outreach y la visualización de vacantes.",
+      title: "NexusAI // Agente Comercial IA",
+      subtitle: "Diseño UX/UI y desarrollo Front-End en React (Vite) para un agente comercial inteligente conectado a un backend en Python que captura vacantes, identifica decisores vía Apollo.io/LinkedIn y genera outreach personalizado.",
       category: "UX_SYSTEMS",
-      client: "Aratalent",
+      client: "Aratalent Group",
       location: "MADRID / REMOTO",
-      disciplineTag: "REACT / APIs REST / AUTOMATIZACIÓN",
+      disciplineTag: "REACT / PYTHON / IA & APOLLO.IO",
       index: "01",
       gridSpan: "full",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000",
-      dimensions: "CONVERSIÓN DE NEGOCIO // API",
+      image: "/portfolio/proyectos/aratech/portada.jpg",
+      dimensions: "AUTOMATIZACIÓN COMERCIAL // FULL-STACK",
       year: "2026",
-      brandColor: "rgba(139, 92, 246, 0.09)", 
+      brandColor: "rgba(139, 92, 246, 0.09)",
       metrics: [
-        { label: "FRONT-END", value: "REACT" },
-        { label: "INTEGRACIÓN", value: "APOLLO.IO" },
-        { label: "ENFOQUE", value: "CONVERSIÓN" }
+        { label: "STACK", value: "REACT + PYTHON" },
+        { label: "ENRIQUECIMIENTO", value: "APOLLO.IO / LINKEDIN" },
+        { label: "ARQUITECTURA", value: "API REST + IA" }
       ],
-      challenge: "El reto consistía en unificar la visualización de vacantes y automatizar el contacto comercial sin perder el toque humano, integrando grandes volúmenes de datos en un único panel intuitivo.",
-      solution: "Se desarrolló una interfaz modular en React conectada a la API de Apollo.io, estructurando la información mediante un diseño limpio en Figma que optimiza el flujo de trabajo diario del equipo comercial.",
+      challenge: "El equipo comercial necesitaba detectar automáticamente nuevas vacantes en portales como LinkedIn e InfoJobs por sector (Tech, Legal, Banca), normalizar los datos sin duplicados e identificar a los responsables de contratación (HR Managers, Hiring Managers) para acelerar el primer contacto.",
+      solution: "Se construyó una plataforma full-stack con backend en Python (captura programada, clasificación con IA y enriquecimiento vía API de Apollo.io) y un panel modular en React con servicios desacoplados para vacantes, empresas, candidatos, clientes, autenticación y chat IA. Desde la interfaz, el equipo revisa vacantes, edita notas de LinkedIn y borradores de email generados por IA y gestiona el estado de seguimiento.",
       gallery: [
-        "/rutas-reales/aratalent-ia-detalle1.jpg",
-        "/rutas-reales/aratalent-ia-detalle2.jpg",
-        "/rutas-reales/aratalent-ia-fullpage.jpg"
+        "/portfolio/proyectos/aratech/una.jpg",
+        "/portfolio/proyectos/aratech/dos.jpg",
+        "/portfolio/proyectos/aratech/tres.jpg",
+        "/portfolio/proyectos/aratech/cuatro.jpg",
+        "/portfolio/proyectos/aratech/seis.jpg",
+        "/portfolio/proyectos/aratech/cinco.jpg"
       ]
     },
     {
       id: 2,
       title: "Ecosistema Multi-Web Corporativo & SEO",
-      subtitle: "Desarrollo de tres webs corporativas bajo una estrategia común Mobile-First, optimizadas para posicionamiento orgánico (SEO) y rendimiento en campañas SEM.",
+      subtitle: "Diseño y desarrollo de webs corporativas a medida para distintos clientes sobre CMS (principalmente Joomla), bajo arquitectura Mobile-First y optimización SEO/SEM.",
       category: "FRONT_END",
       client: "Agencia Luarcacom",
       location: "ASTURIAS",
-      disciplineTag: "HTML5 / CSS3 / CMS",
+      disciplineTag: "JOOMLA / HTML5 & CSS3 / SEO",
       index: "02",
       gridSpan: "left-wide",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
-      dimensions: "MOBILE-FIRST // SEO & SEM",
+      image: "/portfolio/proyectos/luarcacom/portada.jpg",
+      dimensions: "CMS A MEDIDA // MOBILE-FIRST",
       year: "2023—ACTUALIDAD",
-      brandColor: "rgba(16, 185, 129, 0.09)", 
+      brandColor: "rgba(16, 185, 129, 0.09)",
       metrics: [
+        { label: "CMS PRINCIPAL", value: "JOOMLA" },
         { label: "ARQUITECTURA", value: "MOBILE-FIRST" },
-        { label: "PLATAFORMAS", value: "WP & JOOMLA" },
         { label: "ESTRATEGIA", value: "SEO / SEM" }
       ],
-      challenge: "El cliente necesitaba unificar varias plataformas en un ecosistema web corporativo ágil, moderno y completamente optimizado para dispositivos móviles y motores de búsqueda.",
-      solution: "Se implementó una arquitectura gestionada a través de WordPress y Joomla, rediseñando la jerarquía visual para mejorar la retención de usuarios y los tiempos de carga.",
+      challenge: "Cada cliente requería una identidad digital diferenciada y autogestionable sin sacrificar velocidad de carga, adaptabilidad móvil ni capacidad de posicionamiento en buscadores.",
+      solution: "Se desarrollaron sitios web a medida principalmente sobre Joomla (complementado con CSS3/HTML5 personalizado), estructurando cada proyecto desde cero para maximizar la conversión, el rendimiento en móvil y la indexación orgánica (SEO) junto a campañas SEM.",
       gallery: [
-        "/rutas-reales/luarcacom-mockup-mobile.jpg",
-        "/rutas-reales/luarcacom-seo-dashboard.jpg",
-        "/rutas-reales/luarcacom-fireshot.jpg"
+        "/portfolio/proyectos/luarcacom/cinco.png",
+        "/portfolio/proyectos/luarcacom/seis.png",
+        "/portfolio/proyectos/luarcacom/dos.png",
+        "/portfolio/proyectos/luarcacom/cuatro.png",
+        "/portfolio/proyectos/luarcacom/tres.png",
+        "/portfolio/proyectos/luarcacom/siete.png",
+        "/portfolio/proyectos/luarcacom/unojf.jpg",
+        "/portfolio/proyectos/luarcacom/dosch.jpg",
+        "/portfolio/proyectos/luarcacom/tresch.jpg"
       ]
     },
     {
       id: 3,
-      title: "TFM // App de Control de Tráfico Inteligente",
-      subtitle: "Investigación UX/UI avanzada y diseño de producto enfocado en la monitorización y control de tráfico en entornos urbanos mediante flujos de usuario complejos.",
+      title: "UNOW // App de Movilidad & Transporte Público",
+      subtitle: "Investigación UX, identidad de marca, sistema iconográfico y prototipo interactivo en Adobe XD para mejorar la experiencia en el transporte público de Quito mediante geolocalización GPS en tiempo real.",
       category: "UX_RESEARCH",
-      client: "Proyecto de Fin de Máster",
-      location: "ACADÉMICO",
-      disciplineTag: "UX AVANZADO / SISTEMAS DE DATOS",
+      client: "TFM — Máster Diseño Gráfico Digital",
+      location: "QUITO / ACADÉMICO",
+      disciplineTag: "UX RESEARCH / UI DESIGN / ADOBE XD",
       index: "03",
       gridSpan: "right-narrow",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1000",
-      dimensions: "ARQUITECTURA DE INFORMACIÓN // UI",
-      year: "2025",
-      brandColor: "rgba(139, 92, 246, 0.09)", 
+      image: "/portfolio/proyectos/tfm/portada.jpg",
+      dimensions: "DISEÑO CENTRADO EN EL USUARIO // APP",
+      year: "2022",
+      brandColor: "rgba(52, 39, 123, 0.14)",
       metrics: [
-        { label: "ENFOQUE", value: "DATOS DENSOS" },
-        { label: "SISTEMAS", value: "DISEÑO UI" },
-        { label: "USABILIDAD", value: "ALTO NIVEL" }
+        { label: "INVESTIGACIÓN", value: "75 ENCUESTAS" },
+        { label: "VALIDACIÓN", value: "94.7% GPS" },
+        { label: "PROTOTIPO", value: "ADOBE XD" }
       ],
-      challenge: "Diseñar una interfaz capaz de procesar y mostrar datos de tráfico en tiempo real de forma digerible, requiriendo una arquitectura de la información extremadamente precisa.",
-      solution: "Se diseñó un sistema de componentes escalables y paneles de visualización de datos que priorizan la usabilidad y permiten a los operadores tomar decisiones críticas sin carga cognitiva.",
+      challenge: "Con la saturación vehicular de Quito y un sistema 'Pico y Placa' cada vez menos efectivo, el 62,6% de los encuestados valoraba negativamente el transporte público por falta de horarios fiables, desorganización e inseguridad. El reto era unificar autobús, taxi y bicicleta pública en una app clara y sin fricción.",
+      solution: "Bajo metodología de Diseño Centrado en el Usuario (benchmarking de 6 apps, encuestas, personas, arquitectura jerárquica, wireframes y test con usuarios), se diseñó UNOW desde cero: identidad visual, set de iconos sobre retícula y prototipo en Adobe XD con seguimiento GPS en vivo, rutas multimodales y denuncias anónimas por código QR.",
       gallery: [
-        "/rutas-reales/tfm-trafico-wireframes.jpg",
-        "/rutas-reales/tfm-trafico-dashboard.jpg",
-        "/rutas-reales/tfm-trafico-mobile.jpg"
+        "/portfolio/proyectos/tfm/wireframes-flujo.jpg",
+        "/portfolio/proyectos/tfm/sistema-visual-iconos.jpg",
+        "/portfolio/proyectos/tfm/ui-rutas-gps.jpg",
+        "/portfolio/proyectos/tfm/ui-multimodal-qr.jpg"
       ]
     },
     {
       id: 4,
-      title: "TFG // Cubby",
-      subtitle: "Desarrollo completo e integral de ingeniería de software. Arquitectura Front-End y backend demostrando autonomía total y resolución de problemas algorítmicos complejos.",
+      title: "Qubby // Inventario Inteligente con QR",
+      subtitle: "Aplicación web Full-Stack desacoplada para organizar cajas y trasteros mediante códigos QR únicos. Frontend SPA en Angular 17+ y backend API REST en Python/Django con PostgreSQL en Docker.",
       category: "SOFTWARE_ENGINEERING",
-      client: "Proyecto de Fin de Grado",
-      location: "ACADÉMICO",
-      disciplineTag: "ARQUITECTURA DE SOFTWARE / FULL-STACK",
+      client: "Proyecto Intermodular",
+      location: "ACADÉMICO / EQUIPO",
+      disciplineTag: "ANGULAR 17+ / DJANGO REST / DOCKER",
       index: "04",
       gridSpan: "left-narrow",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1000",
-      dimensions: "RIGOR TÉCNICO // DESARROLLO ROBUSTO",
-      year: "2024",
-      brandColor: "rgba(245, 158, 11, 0.09)",
+      image: "/portfolio/proyectos/tfc/portada.jpg",
+      dimensions: "FULL-STACK SPA // ARQUITECTURA DESACOPLADA",
+      year: "2026",
+      brandColor: "rgba(243, 146, 0, 0.12)",
       metrics: [
-        { label: "DESARROLLO", value: "FULL-STACK" },
-        { label: "ENFOQUE", value: "INGENIERÍA" },
-        { label: "ESTADO", value: "AUTÓNOMO" }
+        { label: "FRONTEND", value: "ANGULAR 17+" },
+        { label: "BACKEND", value: "DJANGO + JWT" },
+        { label: "INFRA", value: "DOCKER + SQL" }
       ],
-      challenge: "Construir una aplicación robusta desde cero, gestionando tanto la lógica de servidor como la interfaz de usuario bajo estándares estrictos de ingeniería de software.",
-      solution: "Arquitectura escalable implementando patrones de diseño eficientes, logrando una base de código limpia, mantenible y con una integración fluida entre Front-End y Backend.",
+      challenge: "Transformar espacios desordenados (mudanzas, trasteros o talleres) en un inventario digital accesible para cualquier perfil —incluyendo usuarios no técnicos— que permita consultar el contenido de una caja escaneando un código QR gratuito sin abrirla físicamente.",
+      solution: "Se diseñó la identidad visual y el prototipo responsive en Figma y se desarrolló una arquitectura cliente-servidor desacoplada: SPA en Angular 17+ (Standalone Components, Signals, Route Guards e interceptores HTTP) conectada a una API REST en Django con autenticación JWT, verificación por email, hash PBKDF2-SHA256 y base de datos PostgreSQL normalizada en contenedores Docker.",
       gallery: [
-        "/rutas-reales/tfg-cubby-codigo.jpg",
-        "/rutas-reales/tfg-cubby-arquitectura.jpg",
-        "/rutas-reales/tfg-cubby-interfaz.jpg"
+        "/portfolio/proyectos/tfc/identidad-evolucion.jpg",
+        "/portfolio/proyectos/tfc/ui-desktop-inventario.jpg",
+        "/portfolio/proyectos/tfc/ui-mobile-qr.jpg",
+        "/portfolio/proyectos/tfc/arquitectura-stack.jpg"
       ]
     },
-    {
+  {
       id: 5,
-      title: "Sistemas de Identidad & Medios Interactivos",
-      subtitle: "Diseño gráfico, manuales de identidad visual y maquetación de piezas adaptadas a múltiples resoluciones digitales e interactivas.",
+      title: "Diseño Estratégico & Identidad // La Pila",
+      subtitle: "Diseño gráfico, identidad visual y piezas digitales e impresas bajo criterios de ecodiseño para el estudio La Pila, destacando el sistema visual y social media de Casa de Aldea 'Flora & Fauna'.",
       category: "BRANDING",
       client: "Estudio de Diseño 'La Pila'",
-      location: "ESPAÑA",
-      disciplineTag: "BRANDING MODULAR / ADOBE CC",
+      location: "LUARCA / ASTURIAS",
+      disciplineTag: "BRANDING / ICONOGRAFÍA / ADOBE CC",
       index: "05",
       gridSpan: "right-wide",
-      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200",
-      dimensions: "DISEÑO INTERACTIVO // MULTIDISPOSITIVO",
-      year: "2021—2022",
-      brandColor: "rgba(16, 185, 129, 0.09)", 
+      image: "/portfolio/proyectos/lapila/portada.jpg",
+      dimensions: "DISEÑO SOSTENIBLE // PRINT & DIGITAL",
+      year: "2022",
+      brandColor: "rgba(16, 185, 129, 0.09)",
       metrics: [
-        { label: "ENTORNOS", value: "WEB & DIGITAL" },
-        { label: "ENTREGABLES", value: "BRAND MANUALS" },
-        { label: "HERRAMIENTAS", value: "ADOBE CC" }
+        { label: "ENFOQUE", value: "ECODISEÑO" },
+        { label: "ENTREGABLES", value: "PRINT & SOCIAL" },
+        { label: "HERRAMIENTAS", value: "ILLUSTRATOR / ID" }
       ],
-      challenge: "Crear sistemas de identidad visual versátiles que pudieran adaptarse dinámicamente a múltiples resoluciones de pantalla y formatos interactivos.",
-      solution: "Producción de manuales de marca rigurosos y maquetación de piezas gráficas modulares que garantizan la consistencia de la identidad visual en cualquier dispositivo.",
+      challenge: "Traducir la filosofía de diseño estratégico y sostenible del estudio a proyectos locales con necesidades muy diversas —turismo rural, transporte y servicios— manteniendo coherencia gráfica entre soportes impresos, señalética y canales digitales.",
+      solution: "Para 'Flora & Fauna — Casa de Aldea' se diseñó un calendario perpetuo promocional, un sistema modular de miniaturas e iconos para el feed de Instagram, retoque fotográfico web, un contrato interactivo y la vectorización técnica de la placa oficial de Casa de Aldea. Además, se colaboró en la iconografía y panelado de una estación de servicio y en papelería corporativa.",
       gallery: [
-        "/rutas-reales/lapila-grid.jpg",
-        "/rutas-reales/lapila-mockups.jpg",
-        "/rutas-reales/lapila-manual.jpg"
+        "/portfolio/proyectos/lapila/calendario-flora-fauna.jpg",
+        "/portfolio/proyectos/lapila/sistema-iconos-feed.jpg",
+        "/portfolio/proyectos/lapila/vectorizacion-placa-ca.jpg"
       ]
     }
   ],
   en: [
     {
       id: 1,
-      title: "AI Commercial Agent // Control Dashboard",
-      subtitle: "UX/UI design in Figma and React Front-End development for an AI-powered Commercial Agent, automating outreach and vacancy visualization.",
+      title: "NexusAI // AI Commercial Agent",
+      subtitle: "UX/UI design and React (Vite) Front-End development for an AI commercial agent powered by a Python backend that tracks job openings, enriches decision-maker data via Apollo.io/LinkedIn, and drafts tailored outreach.",
       category: "UX_SYSTEMS",
-      client: "Aratalent",
+      client: "Aratalent Group",
       location: "MADRID / REMOTE",
-      disciplineTag: "REACT / REST APIs / AUTOMATION",
+      disciplineTag: "REACT / PYTHON / AI & APOLLO.IO",
       index: "01",
       gridSpan: "full",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000",
-      dimensions: "BUSINESS CONVERSION // API",
+      image: "/portfolio/proyectos/aratech/portada.jpg",
+      dimensions: "SALES AUTOMATION // FULL-STACK",
       year: "2026",
-      brandColor: "rgba(139, 92, 246, 0.09)", 
+      brandColor: "rgba(139, 92, 246, 0.09)",
       metrics: [
-        { label: "FRONT-END", value: "REACT" },
-        { label: "INTEGRATION", value: "APOLLO.IO" },
-        { label: "FOCUS", value: "CONVERSION" }
+        { label: "STACK", value: "REACT + PYTHON" },
+        { label: "ENRICHMENT", value: "APOLLO.IO / LINKEDIN" },
+        { label: "ARCHITECTURE", value: "REST API + AI" }
       ],
-      challenge: "The challenge was to unify vacancy visualization and automate commercial outreach without losing the human touch, integrating large data volumes.",
-      solution: "Developed a modular React interface connected to the Apollo.io API, structuring information through a clean Figma design that optimizes workflow.",
+      challenge: "The sales team needed to automatically detect new job postings across LinkedIn and InfoJobs by vertical (Tech, Legal, Banking), normalize records without duplicates, and pinpoint key hiring decision-makers to speed up outbound prospecting.",
+      solution: "Built a full-stack platform pairing a Python backend (scheduled vacancy capture, AI classification, and Apollo.io API enrichment) with a modular React dashboard featuring dedicated services for vacancies, companies, candidates, clients, authentication, and AI chat. Sales reps can review leads, edit AI-generated LinkedIn notes and cold email drafts, and track pipeline status in one place.",
       gallery: [
-        "/rutas-reales/aratalent-ia-detalle1.jpg",
-        "/rutas-reales/aratalent-ia-detalle2.jpg",
-        "/rutas-reales/aratalent-ia-fullpage.jpg"
+        "/portfolio/proyectos/aratech/una.jpg",
+        "/portfolio/proyectos/aratech/dos.jpg",
+        "/portfolio/proyectos/aratech/tres.jpg",
+        "/portfolio/proyectos/aratech/cuatro.jpg",
+        "/portfolio/proyectos/aratech/seis.jpg",
+        "/portfolio/proyectos/aratech/cinco.jpg"
       ]
     },
     {
       id: 2,
-      title: "Corporate Web Ecosystem & SEO",
-      subtitle: "Development of three corporate websites under a shared Mobile-First strategy, optimized for organic positioning (SEO) and SEM campaign performance.",
+      title: "Custom Corporate Web Ecosystem & SEO",
+      subtitle: "Design and custom development of client websites built primarily on Joomla CMS, engineered with a Mobile-First architecture and SEO/SEM optimization.",
       category: "FRONT_END",
       client: "Agencia Luarcacom",
       location: "ASTURIAS",
-      disciplineTag: "HTML5 / CSS3 / CMS",
+      disciplineTag: "JOOMLA / HTML5 & CSS3 / SEO",
       index: "02",
       gridSpan: "left-wide",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
-      dimensions: "MOBILE-FIRST // SEO & SEM",
+      image: "/portfolio/proyectos/luarcacom/portada.jpg",
+      dimensions: "CUSTOM CMS // MOBILE-FIRST",
       year: "2023—PRESENT",
-      brandColor: "rgba(16, 185, 129, 0.09)", 
+      brandColor: "rgba(16, 185, 129, 0.09)",
       metrics: [
+        { label: "PRIMARY CMS", value: "JOOMLA" },
         { label: "ARCHITECTURE", value: "MOBILE-FIRST" },
-        { label: "PLATFORMS", value: "WP & JOOMLA" },
         { label: "STRATEGY", value: "SEO / SEM" }
       ],
-      challenge: "The client needed to unify several platforms into an agile, modern corporate web ecosystem fully optimized for mobile devices and search engines.",
-      solution: "Implemented a Mobile-First architecture managed through WordPress and Joomla, redesigning the visual hierarchy to improve user retention.",
+      challenge: "Each client needed a tailored, easy-to-manage corporate website without compromising loading speed, mobile responsiveness, or search engine visibility.",
+      solution: "Built custom websites primarily on Joomla with tailored HTML5/CSS3 styling, crafting bespoke visual hierarchies engineered for user retention, Mobile-First performance, organic SEO, and SEM campaigns.",
       gallery: [
-        "/rutas-reales/luarcacom-mockup-mobile.jpg",
-        "/rutas-reales/luarcacom-seo-dashboard.jpg",
-        "/rutas-reales/luarcacom-fireshot.jpg"
+        "/portfolio/proyectos/luarcacom/cinco.png",
+        "/portfolio/proyectos/luarcacom/seis.png",
+        "/portfolio/proyectos/luarcacom/dos.png",
+        "/portfolio/proyectos/luarcacom/cuatro.png",
+        "/portfolio/proyectos/luarcacom/tres.png",
+        "/portfolio/proyectos/luarcacom/siete.png",
+        "/portfolio/proyectos/luarcacom/unojf.jpg",
+        "/portfolio/proyectos/luarcacom/dosch.jpg",
+        "/portfolio/proyectos/luarcacom/tresch.jpg"
       ]
     },
     {
       id: 3,
-      title: "Master's Thesis // Smart Traffic App",
-      subtitle: "Advanced UX/UI research and product design focused on urban traffic monitoring and control through complex user flows.",
+      title: "UNOW // Public Transit & Mobility App",
+      subtitle: "End-to-end UX research, brand identity, custom iconography, and interactive Adobe XD prototype designed to improve Quito's public transport experience through real-time GPS tracking.",
       category: "UX_RESEARCH",
-      client: "Master's Final Project",
-      location: "ACADEMIC",
-      disciplineTag: "ADVANCED UX / DATA SYSTEMS",
+      client: "Master's Thesis — Digital Graphic Design",
+      location: "QUITO / ACADEMIC",
+      disciplineTag: "UX RESEARCH / UI DESIGN / ADOBE XD",
       index: "03",
       gridSpan: "right-narrow",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1000",
-      dimensions: "INFORMATION ARCHITECTURE // UI",
-      year: "2025",
-      brandColor: "rgba(139, 92, 246, 0.09)",
+      image: "/portfolio/proyectos/tfm/portada.jpg",
+      dimensions: "USER-CENTERED DESIGN // MOBILE APP",
+      year: "2022",
+      brandColor: "rgba(52, 39, 123, 0.14)",
       metrics: [
-        { label: "FOCUS", value: "DENSE DATA" },
-        { label: "SYSTEMS", value: "UI DESIGN" },
-        { label: "USABILITY", value: "HIGH-LEVEL" }
+        { label: "RESEARCH", value: "75 SURVEYS" },
+        { label: "VALIDATION", value: "94.7% GPS" },
+        { label: "PROTOTYPE", value: "ADOBE XD" }
       ],
-      challenge: "Designing an interface capable of processing and displaying real-time traffic data in a digestible way, requiring precise information architecture.",
-      solution: "Designed a system of scalable components and data visualization dashboards that prioritize usability and reduce cognitive load for operators.",
+      challenge: "Amid severe traffic congestion in Quito and an increasingly ineffective 'Pico y Placa' restriction, 62.6% of surveyed commuters rated public transit poorly due to unreliable schedules, disorganization, and safety concerns. The goal was to unify bus, taxi, and public bike services into one clear, frictionless interface.",
+      solution: "Following a User-Centered Design process (6-app benchmarking, user surveys, personas, hierarchical IA, low-fi wireframes, and usability testing), UNOW was built from scratch: brand identity, grid-based custom iconography, and an Adobe XD prototype featuring live GPS tracking, multimodal routing, and anonymous QR incident reporting.",
       gallery: [
-        "/rutas-reales/tfm-trafico-wireframes.jpg",
-        "/rutas-reales/tfm-trafico-dashboard.jpg",
-        "/rutas-reales/tfm-trafico-mobile.jpg"
+        "/portfolio/proyectos/tfm/wireframes-flujo.jpg",
+        "/portfolio/proyectos/tfm/sistema-visual-iconos.jpg",
+        "/portfolio/proyectos/tfm/ui-rutas-gps.jpg",
+        "/portfolio/proyectos/tfm/ui-multimodal-qr.jpg"
       ]
     },
     {
       id: 4,
-      title: "Degree Thesis // Cubby",
-      subtitle: "Comprehensive software engineering development. Front-End and backend architecture demonstrating full autonomy and complex problem solving.",
+      title: "Qubby // Smart QR Inventory App",
+      subtitle: "Decoupled Full-Stack web app for organizing boxes and storage spaces using unique QR codes. Built with an Angular 17+ SPA frontend and a Python/Django REST API backed by PostgreSQL in Docker.",
       category: "SOFTWARE_ENGINEERING",
-      client: "Bachelor's Final Project",
-      location: "ACADEMIC",
-      disciplineTag: "SOFTWARE ARCHITECTURE / FULL-STACK",
+      client: "DAW Intermodular Project",
+      location: "ACADEMIC / TEAM",
+      disciplineTag: "ANGULAR 17+ / DJANGO REST / DOCKER",
       index: "04",
       gridSpan: "left-narrow",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1000",
-      dimensions: "TECHNICAL RIGOR // ROBUST DEV",
-      year: "2024",
-      brandColor: "rgba(245, 158, 11, 0.09)", 
+      image: "/portfolio/proyectos/tfc/portada.jpg",
+      dimensions: "FULL-STACK SPA // DECOUPLED ARCHITECTURE",
+      year: "2026",
+      brandColor: "rgba(243, 146, 0, 0.12)",
       metrics: [
-        { label: "DEVELOPMENT", value: "FULL-STACK" },
-        { label: "APPROACH", value: "ENGINEERING" },
-        { label: "STATUS", value: "AUTONOMOUS" }
+        { label: "FRONTEND", value: "ANGULAR 17+" },
+        { label: "BACKEND", value: "DJANGO + JWT" },
+        { label: "INFRA", value: "DOCKER + SQL" }
       ],
-      challenge: "Building a robust application from scratch, managing both server logic and user interface under strict software engineering standards.",
-      solution: "Scalable architecture implementing efficient design patterns, achieving a clean, maintainable codebase with seamless Front-End/Backend integration.",
+      challenge: "Turning cluttered spaces (moves, storage rooms, or workshops) into an intuitive digital inventory accessible to any user profile—enabling instant box lookup via free printable QR codes without opening containers.",
+      solution: "Designed the visual identity and responsive UI in Figma, then engineered a decoupled client-server architecture: an Angular 17+ SPA (Standalone Components, Signals, Route Guards, and HTTP interceptors) consuming a Django REST API with JWT authentication, email verification, PBKDF2-SHA256 hashing, and a normalized PostgreSQL database running in Docker.",
       gallery: [
-        "/rutas-reales/tfg-cubby-codigo.jpg",
-        "/rutas-reales/tfg-cubby-arquitectura.jpg",
-        "/rutas-reales/tfg-cubby-interfaz.jpg"
+        "/portfolio/proyectos/tfc/identidad-evolucion.jpg",
+        "/portfolio/proyectos/tfc/ui-desktop-inventario.jpg",
+        "/portfolio/proyectos/tfc/ui-mobile-qr.jpg",
+        "/portfolio/proyectos/tfc/arquitectura-stack.jpg"
       ]
     },
-    {
+   {
       id: 5,
-      title: "Identity Systems & Interactive Media",
-      subtitle: "Graphic design, brand identity manuals, and layout of digital assets adapted to multiple interactive resolutions.",
+      title: "Strategic Design & Identity // La Pila",
+      subtitle: "Graphic design, visual identity, and print/digital assets crafted under ecodesign principles at La Pila studio, spotlighting the branding and social media system for 'Flora & Fauna — Casa de Aldea'.",
       category: "BRANDING",
       client: "Design Studio 'La Pila'",
-      location: "SPAIN",
-      disciplineTag: "MODULAR BRANDING / ADOBE CC",
+      location: "LUARCA / ASTURIAS",
+      disciplineTag: "BRANDING / ICONOGRAPHY / ADOBE CC",
       index: "05",
       gridSpan: "right-wide",
-      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200",
-      dimensions: "INTERACTIVE DESIGN // MULTI-DEVICE",
-      year: "2021—2022",
-      brandColor: "rgba(16, 185, 129, 0.09)", 
+      image: "/portfolio/proyectos/lapila/portada.jpg",
+      dimensions: "SUSTAINABLE DESIGN // PRINT & DIGITAL",
+      year: "2022",
+      brandColor: "rgba(16, 185, 129, 0.09)",
       metrics: [
-        { label: "ENVIRONMENTS", value: "WEB & DIGITAL" },
-        { label: "DELIVERABLES", value: "BRAND MANUALS" },
-        { label: "TOOLS", value: "ADOBE CC" }
+        { label: "APPROACH", value: "ECODESIGN" },
+        { label: "DELIVERABLES", value: "PRINT & SOCIAL" },
+        { label: "TOOLS", value: "ILLUSTRATOR / ID" }
       ],
-      challenge: "Creating versatile visual identity systems capable of dynamically adapting to multiple screen resolutions and interactive formats.",
-      solution: "Produced rigorous brand manuals and modular graphic layouts ensuring visual identity consistency across any device.",
+      challenge: "Translating the studio's strategic and sustainable design ethos into diverse local client projects—rural hospitality, transport, and retail—while maintaining visual consistency across print, signage, and digital touchpoints.",
+      solution: "Created a promotional perpetual calendar, a modular icon grid for Instagram, web photo retouching, an interactive contract, and a precision vectorization of the official 'Casa de Aldea' plaque for Flora & Fauna. Also contributed custom iconography and signage concepts for a service station alongside corporate stationery.",
       gallery: [
-        "/rutas-reales/lapila-grid.jpg",
-        "/rutas-reales/lapila-mockups.jpg",
-        "/rutas-reales/lapila-manual.jpg"
+        "/portfolio/proyectos/lapila/calendario-flora-fauna.jpg",
+        "/portfolio/proyectos/lapila/sistema-iconos-feed.jpg",
+        "/portfolio/proyectos/lapila/vectorizacion-placa-ca.jpg"
       ]
     }
   ]
@@ -400,41 +422,77 @@ export const BRAND_LOGOS_DATA = [
 ];
 
 export const FINE_ART_PLATES = [
-  { 
-    id: 1, 
-    plateNumber: "SERIE I // USAL", 
-    year: "2021", 
-    title: "Estudio Anatómico y Claroscuro", 
-    medium: "Grafito, carbón prensado y técnica mixta sobre papel", 
-    dimensions: "100 × 70 CM", 
+{ 
+    id: 1, // Cambia el ID o posición según donde quieras que aparezca
+    plateNumber: "SERIE V // TFG", 
+    year: "2024", 
+    title: "Maternidad - Proyecto TFG", 
+    medium: "Pintura", // Cambia esto por la técnica real
+    dimensions: "100 × 100 CM", // Cambia esto por las dimensiones reales
     edition: "OBRA ORIGINAL", 
-    image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&q=80&w=800",
-    gallery: ["/rutas-reales/anatomia-detalle-1.jpg", "/rutas-reales/anatomia-detalle-2.jpg"],
-    description: "Estudio anatómico enfocado en la tensión muscular y el volumen corporal mediante la técnica de claroscuro clásico, desarrollado durante mi etapa en la USAL."
+    image: "/portfolio/ilustraciones/tfg/8.jpg", // La portada en el grid y primera en el modal
+    gallery: [
+      "/portfolio/ilustraciones/tfg/3.jpg", // Segunda imagen grande
+      "/portfolio/ilustraciones/tfg/1.jpg" // Tercera imagen grande
+    ],
+    processGallery: [
+      "/portfolio/ilustraciones/tfg/10.jpg",
+      "/portfolio/ilustraciones/tfg/2.jpg",
+      "/portfolio/ilustraciones/tfg/9.jpg",
+      "/portfolio/ilustraciones/tfg/4.jpg",
+      "/portfolio/ilustraciones/tfg/5.jpg",
+      "/portfolio/ilustraciones/tfg/6.jpg",
+      "/portfolio/ilustraciones/tfg/7.jpg",
+      "/portfolio/ilustraciones/tfg/11.jpg",
+      "/portfolio/ilustraciones/tfg/12.jpg",
+      "/portfolio/ilustraciones/tfg/13.jpg",
+      "/portfolio/ilustraciones/tfg/14.jpg",
+      "/portfolio/ilustraciones/tfg/15.png"
+    ],
+    description: "Proceso de desarrollo y resultado final de la serie pictórica para el Trabajo de Fin de Grado, centrada en la representación de la maternidad."
   },
-  { 
-    id: 2, 
+ { 
+    id: 2, // Cambia el ID o posición según corresponda
     plateNumber: "SERIE II // VECTOR", 
     year: "2022", 
     title: "Ilustración Vectorial Avanzada", 
     medium: "Adobe Illustrator & Composición Geométrica Digital", 
     dimensions: "4000 × 5000 PX", 
     edition: "SERIE DIGITAL", 
-    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=800",
-    gallery: ["/rutas-reales/vector-proceso.jpg", "/rutas-reales/vector-zoom.jpg"],
+    image: "/portfolio/ilustraciones/ilustracion-dibu/ocho.jpg", // La portada (8)
+    gallery: [
+      "/portfolio/ilustraciones/ilustracion-dibu/uno.jpg",
+      "/portfolio/ilustraciones/ilustracion-dibu/dos.jpg",
+      "/portfolio/ilustraciones/ilustracion-dibu/tres.jpg"
+    ],
+    processGallery: [
+      "/portfolio/ilustraciones/ilustracion-dibu/cuatro.jpg",
+      "/portfolio/ilustraciones/ilustracion-dibu/cinco.jpg",
+      "/portfolio/ilustraciones/ilustracion-dibu/seis.jpg",
+      "/portfolio/ilustraciones/ilustracion-dibu/siete.jpg"
+    ],
     description: "Exploración de la geometría pura y el color mediante herramientas digitales. La obra se basa en una retícula matemática estricta para lograr un equilibrio visual perfecto."
   },
-  { 
-    id: 3, 
-    plateNumber: "SERIE III // MURAL", 
+{ 
+    id: 3, // Cambia el ID según el orden que quieras en el grid
+    plateNumber: "SERIE I // RETRATOS", 
     year: "2021", 
-    title: "Boceto Estructural 'Los Muros'", 
-    medium: "Previsualización digital y pintura acrílica exterior", 
-    dimensions: "ESCALA MURAL", 
-    edition: "PROYECTO APS", 
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
-    gallery: ["/rutas-reales/mural-boceto.jpg", "/rutas-reales/mural-resultado.jpg"],
-    description: "Fase de ideación y desarrollo estructural para el proyecto mural 'Los Muros'. Combina la planificación arquitectónica digital con la ejecución pictórica tradicional."
+    title: "Estudio Anatómico y Claroscuro", 
+    medium: "Grafito, carbón prensado y técnica mixta", 
+    dimensions: "100 × 70 CM", 
+    edition: "OBRA ORIGINAL", 
+    image: "/portfolio/ilustraciones/retratos/cuatro.jpg", // La portada (4)
+    gallery: [
+      "/portfolio/ilustraciones/retratos/uno.jpg",
+      "/portfolio/ilustraciones/retratos/dos.jpg",
+      "/portfolio/ilustraciones/retratos/tres.jpg"
+    ],
+    processGallery: [
+      "/portfolio/ilustraciones/retratos/cinco.jpg",
+      "/portfolio/ilustraciones/retratos/seis.jpg",
+      "/portfolio/ilustraciones/retratos/siete.jpg"
+    ],
+    description: "Estudio anatómico enfocado en la tensión muscular y el volumen corporal mediante la técnica de claroscuro clásico, desarrollado durante mi etapa en la USAL."
   },
   { 
     id: 4, 
