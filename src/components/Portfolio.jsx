@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import HeroSection from './portfolio/HeroSection';
 import FeaturedProjects from './portfolio/FeaturedProjects';
 import HybridProfile from './portfolio/HybridProfile';
-import BrandArchitecture from './portfolio/BrandArchitecture'; // Asegúrate de haber creado este archivo con el código de los logotipos
+import TechMarquee from './TechMarquee';
+import BrandArchitecture from './portfolio/BrandArchitecture';
 import FineArtsArchive from './portfolio/FineArtsArchive';
 
 export default function Portfolio() {
@@ -105,6 +106,9 @@ export default function Portfolio() {
         
         {/* Sección 2: Diagrama 360º Híbrido */}
         <HybridProfile lang={lang} />
+
+        {/* Cinta de Stack y Tecnologías */}
+        <TechMarquee lang={lang} />
 
         {/* Sección 3: Arquitectura de Marca (Luarcacom) */}
         <BrandArchitecture />

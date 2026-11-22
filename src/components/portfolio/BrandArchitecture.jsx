@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import StudioIdentityDrawer from './StudioIdentityDrawer';
 
 const BRAND_COPY = {
   es: {
@@ -241,6 +242,9 @@ export default function BrandArchitecture({ lang: propLang = 'es', setHoveredCol
             />
           ))}
         </div>
+
+        {/* Desplegable de Identidad Propia (MATEO | STUDIO) */}
+        <StudioIdentityDrawer lang={lang} />
       </div>
     </section>
   );

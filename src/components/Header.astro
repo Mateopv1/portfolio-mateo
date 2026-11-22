@@ -1,7 +1,7 @@
 ---
 // src/components/Header.astro
 ---
-<header id="main-header" class="fixed z-50 bg-[#070708]/90 backdrop-blur-xl transition-all duration-700 ease-out border-b border-white/10" style="top: 0; left: 0; width: 100%; box-sizing: border-box;">
+<header id="main-header" class="fixed z-50 bg-transparent border-b border-transparent transition-all duration-500 ease-out" style="top: 0; left: 0; width: 100%; box-sizing: border-box;">
   
   <nav class="mx-auto flex w-full max-w-[1720px] items-center justify-between px-6 py-4 md:px-10 md:py-5 lg:px-12 transition-all duration-500 ease-out" id="nav-container" aria-label="Primary navigation">
     
@@ -65,7 +65,6 @@
   </nav>
 
   <!-- Cortina del Menú Móvil Premium -->
-  <!-- ARREGLO: bg-[#070708] sólido sin 'backdrop-blur' para evitar que choque con el cristal del header -->
   <div id="mobile-menu" class="group fixed inset-0 bg-[#070708] flex flex-col items-center justify-center px-6 z-40 h-screen w-screen overflow-hidden touch-none opacity-0 pointer-events-none transition-all duration-500 [&.is-active]:opacity-95 [&.is-active]:pointer-events-auto overscroll-none">
     
     <div class="flex flex-col items-center text-center gap-8 font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-[-0.03em] mt-10 w-full">
@@ -104,6 +103,7 @@
 </style>
 
 <script>
+  const mainHeader = document.getElementById('main-header');
   const btn = document.getElementById('hamburger-btn');
   const menu = document.getElementById('mobile-menu');
   const navContainer = document.getElementById('nav-container');
@@ -222,6 +222,16 @@
         logo.style.filter = 'brightness(0) invert(1)';
       } else {
         logo.style.filter = 'none';
+      }
+    }
+
+    if (mainHeader) {
+      if (currentScroll > 50) {
+        mainHeader.classList.remove('bg-transparent', 'border-transparent');
+        mainHeader.classList.add('bg-[#070708]/85', 'backdrop-blur-xl', 'border-white/10');
+      } else {
+        mainHeader.classList.add('bg-transparent', 'border-transparent');
+        mainHeader.classList.remove('bg-[#070708]/85', 'backdrop-blur-xl', 'border-white/10');
       }
     }
 

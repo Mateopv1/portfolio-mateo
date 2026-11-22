@@ -1,3 +1,4 @@
+import Lenis from 'lenis';
 import React, { useState, useEffect, useRef, Component } from 'react';
 import { createPortal } from 'react-dom';
 import ScrambleText from './ScrambleText';
@@ -25,6 +26,19 @@ function ArrowIcon() {
       <path d="M5 19 19 5M8 5h11v11" stroke="currentColor" strokeWidth="1.5" />
     </svg>
   );
+}
+
+// Función auxiliar para subir la intensidad del brandColor en el modal
+function getModalGlowColor(color) {
+  if (!color) return "rgba(253, 123, 52, 0.28)";
+  if (color.startsWith("rgba")) {
+    return color.replace(/[\d.]+\)$/, "0.30)");
+  }
+  if (color.startsWith("#")) {
+    const baseHex = color.slice(0, 7);
+    return `${baseHex}4D`;
+  }
+  return color;
 }
 
 // --- ESCUDO DE ERRORES REACT ---
@@ -116,74 +130,147 @@ function ProjectCard({ project, onOpen, setHoveredColor }) {
 // --- MODAL DE CASO DE ESTUDIO ---
 function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
   const [mounted, setMounted] = useState(false);
-  const [scrollOffset, setScrollOffset] = useState(0);
+  const scrollContainerRef = useRef(null);
+  const scrollContentRef = useRef(null);
+  const bannerImgRef = useRef(null);
+  const modalLenisRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   useEffect(() => {
     setMounted(true);
-    const handleKeyDown = (e) => { if (e.key === "Escape") onClose(); };
-    if (project) {
-      document.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-      setScrollOffset(0);
+  }, []);
+
+  useEffect(() => {
+    if (!project || !mounted) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") onCloseRef.current();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    // Reseteamos la posición al cambiar de proyecto
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
     }
+    if (bannerImgRef.current) {
+      bannerImgRef.current.style.transform = "translate3d(0, 0px, 0) scale(1.05)";
+    }
+
+    // Instancia propia de Lenis para el scroll suave dentro del modal
+    let rafId;
+    if (scrollContainerRef.current && scrollContentRef.current) {
+      const modalLenis = new Lenis({
+        wrapper: scrollContainerRef.current,
+        content: scrollContentRef.current,
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        touchMultiplier: 2,
+      });
+
+      modalLenisRef.current = modalLenis;
+
+      // Parallax fluido del banner sin re-renderizar React
+      modalLenis.on("scroll", ({ scroll }) => {
+        if (bannerImgRef.current) {
+          bannerImgRef.current.style.transform = `translate3d(0, ${scroll * 0.15}px, 0) scale(1.05)`;
+        }
+      });
+
+      const raf = (time) => {
+        modalLenis.raf(time);
+        rafId = requestAnimationFrame(raf);
+      };
+      rafId = requestAnimationFrame(raf);
+    }
+
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
-    }
-  }, [project, onClose]);
+      if (rafId) cancelAnimationFrame(rafId);
+      if (modalLenisRef.current) {
+        modalLenisRef.current.destroy();
+        modalLenisRef.current = null;
+      }
+    };
+  }, [project?.id, mounted]);
 
-  if (!project || !mounted || typeof document === 'undefined') return null;
+  if (!project || !mounted || typeof document === "undefined") return null;
 
-  const currentIndex = allProjects.findIndex(p => p.id === project.id);
+  const currentIndex = allProjects.findIndex((p) => p.id === project.id);
   const nextProject = allProjects[currentIndex + 1] || allProjects[0];
+  const ambientColor = getModalGlowColor(project.brandColor);
 
   return createPortal(
     <div className="fixed inset-0 z-[9999999] bg-[#070708] w-screen h-screen flex flex-col overflow-hidden">
       
+      {/* DEGRADADO AMBIENTAL FIJO SEGÚN EL PROYECTO */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background: `
+            radial-gradient(circle at 0% 30%, ${ambientColor} 0%, transparent 55%),
+            radial-gradient(circle at 100% 80%, ${ambientColor} 0%, transparent 45%)
+          `,
+        }}
+      />
+
+      {/* Botón Cerrar */}
       <div className="absolute top-6 right-6 md:top-10 md:right-10 z-[10000000]">
-        <button 
-          type="button" 
+        <button
+          type="button"
           onClick={onClose}
-          className="px-4 py-2 font-mono-tech text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-[#F5F5F7] bg-[#070708]/80 backdrop-blur-md border border-white/20 hover:bg-[#F5F5F7] hover:text-[#070708] transition-colors cursor-pointer"
+          className="px-4 py-2 font-mono-tech text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-[#F5F5F7] bg-[#070708]/85 border border-white/20 hover:bg-[#F5F5F7] hover:text-[#070708] transition-colors cursor-pointer"
         >
           {t?.closeEsc || "CERRAR [ESC]"}
         </button>
       </div>
 
-      <div 
-        className="w-full h-full overflow-y-auto hide-scrollbar relative z-[99998]"
+      {/* Wrapper de Lenis del modal (data-lenis-prevent evita que se mueva la web de atrás) */}
+      <div
+        ref={scrollContainerRef}
+        className="w-full h-full overflow-y-auto overscroll-contain hide-scrollbar relative z-[10]"
         data-lenis-prevent="true"
-        onScroll={(e) => setScrollOffset(e.currentTarget.scrollTop)}
       >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-24 md:py-32">
+        <div ref={scrollContentRef} className="max-w-[1400px] mx-auto px-6 md:px-12 py-24 md:py-32">
           
+          {/* Cabecera */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 hairline-b">
             <div className="lg:col-span-8">
               <div className="font-mono-tech text-[10px] tracking-[0.2em] text-[#8A8A93] uppercase mb-4">
                 {project.client} — {project.year} — {project.location}
               </div>
-              <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-[-0.035em] text-[#F5F5F7] uppercase leading-[0.96]">
-                {project.title}
-              </h2>
+            <h2 className="font-display text-[clamp(1.35rem,6.2vw,3.25rem)] font-extrabold tracking-[-0.03em] text-[#F5F5F7] uppercase leading-[1.02] break-words">
+  {project.title}
+</h2>
             </div>
             <div className="lg:col-span-4 flex flex-col justify-end">
-              <p className="text-sm md:text-base text-[#8A8A93] leading-relaxed font-light">
+              <p className="text-sm md:text-base text-[#A1A1AA] leading-relaxed font-light">
                 {project.subtitle}
               </p>
             </div>
           </div>
 
-          <div className="plate-frame plate-cinematic my-12 bg-[#0F0F11] border border-white/5 p-2 shadow-2xl relative overflow-hidden">
-            <img 
-              alt={project.title} 
-              className="w-full h-auto object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700" 
-              src={project.image} 
-              style={{ transform: `translateY(${scrollOffset * 0.15}px) scale(1.05)` }} 
+          {/* Portada con parallax suave por GPU */}
+          <div className="plate-frame plate-cinematic my-12 bg-[#0F0F11]/70 border border-white/10 p-2 shadow-2xl relative overflow-hidden">
+            <img
+              ref={bannerImgRef}
+              alt={project.title}
+              className="w-full h-auto object-cover grayscale contrast-125 hover:grayscale-0 transition-[filter] duration-700 will-change-transform"
+              src={project.image}
+              style={{ transform: "translate3d(0, 0px, 0) scale(1.05)" }}
             />
           </div>
 
+          {/* Métricas */}
           {project.metrics && project.metrics.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 hairline-y mb-16 bg-[#0B0B0D]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 hairline-y mb-16 bg-[#0B0B0D]/70">
               {project.metrics.map((metric, i) => (
                 <div key={i} className="py-8 px-6 border-r border-white/5 last:border-r-0">
                   <div className="font-mono-tech text-[9px] tracking-[0.2em] text-[#8A8A93] uppercase mb-3">{metric.label}</div>
@@ -193,37 +280,56 @@ function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
             </div>
           )}
 
+          {/* El Reto / La Solución */}
           {(project.challenge || project.solution) && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 mb-20">
               {project.challenge && (
                 <div>
-                  <h3 className="font-mono-tech text-[10px] md:text-[11px] tracking-[0.2em] text-[#F5F5F7] uppercase mb-6 border-l-2 border-[#F5F5F7] pl-4">EL RETO</h3>
-                  <p className="text-sm md:text-base text-[#8A8A93] leading-relaxed font-light">{project.challenge}</p>
+                  <h3 className="font-mono-tech text-[10px] md:text-[11px] tracking-[0.2em] text-[#F5F5F7] uppercase mb-6 border-l-2 border-[#F5F5F7] pl-4">
+                    {t?.challengeTitle || "EL RETO"}
+                  </h3>
+                  <p className="text-sm md:text-base text-[#A1A1AA] leading-relaxed font-light">{project.challenge}</p>
                 </div>
               )}
               {project.solution && (
                 <div>
-                  <h3 className="font-mono-tech text-[10px] md:text-[11px] tracking-[0.2em] text-[#F5F5F7] uppercase mb-6 border-l-2 border-[#52525B] pl-4">LA SOLUCIÓN</h3>
-                  <p className="text-sm md:text-base text-[#8A8A93] leading-relaxed font-light">{project.solution}</p>
+                  <h3 className="font-mono-tech text-[10px] md:text-[11px] tracking-[0.2em] text-[#F5F5F7] uppercase mb-6 border-l-2 border-[#52525B] pl-4">
+                    {t?.solutionTitle || "LA SOLUCIÓN"}
+                  </h3>
+                  <p className="text-sm md:text-base text-[#A1A1AA] leading-relaxed font-light">{project.solution}</p>
                 </div>
               )}
             </div>
           )}
 
-          {project.gallery && project.gallery.length >= 3 && (
+          {/* GALERÍA DINÁMICA */}
+          {project.gallery && project.gallery.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
-              <div className="bg-[#0F0F11] border border-white/5 p-6 flex items-center justify-center shadow-lg">
-                <img src={project.gallery[0]} alt="Detalle 1" className="max-h-[60vh] object-contain drop-shadow-2xl" />
-              </div>
-              <div className="bg-[#0F0F11] border border-white/5 p-6 flex items-center justify-center shadow-lg">
-                <img src={project.gallery[1]} alt="Detalle 2" className="max-h-[60vh] object-contain drop-shadow-2xl" />
-              </div>
-              <div className="md:col-span-2 bg-[#0F0F11] border border-white/5 p-4 h-[70vh] overflow-y-auto hide-scrollbar cursor-ns-resize shadow-xl">
-                <img src={project.gallery[2]} alt="Página Completa" className="w-full h-auto object-cover" />
-              </div>
+              {project.gallery.map((imgSrc, idx) => {
+                const isFullWidth =
+                  idx === project.gallery.length - 1 && project.gallery.length % 2 !== 0;
+
+                return (
+                  <div
+                    key={`${project.id}-img-${idx}`}
+                    className={`bg-[#0F0F11]/65 border border-white/10 p-4 sm:p-6 flex items-center justify-center shadow-xl ${
+                      isFullWidth ? "md:col-span-2" : ""
+                    }`}
+                  >
+                    <img
+                      src={imgSrc}
+                      alt={`${project.title} — Vista ${idx + 1}`}
+                      className={`w-full object-contain drop-shadow-2xl ${
+                        isFullWidth ? "max-h-[75vh]" : "max-h-[60vh]"
+                      }`}
+                    />
+                  </div>
+                );
+              })}
             </div>
           )}
 
+          {/* Siguiente Proyecto */}
           {nextProject && (
             <div className="pt-10 hairline-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-20">
               <div>
@@ -232,11 +338,11 @@ function CaseStudyModal({ project, onClose, onSelectProject, allProjects, t }) {
                 </span>
                 <span className="font-display text-2xl md:text-3xl font-bold text-[#F5F5F7] uppercase">{nextProject.title}</span>
               </div>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 onClick={() => {
-                  document.querySelector('.overflow-y-auto')?.scrollTo({ top: 0, behavior: 'smooth' });
-                  setTimeout(() => onSelectProject(nextProject), 400);
+                  modalLenisRef.current?.scrollTo(0, { immediate: false });
+                  setTimeout(() => onSelectProject(nextProject), 300);
                 }}
                 className="px-6 py-4 bg-[#F5F5F7] text-[#070708] font-mono-tech text-[10px] tracking-[0.2em] uppercase font-bold border-0 cursor-pointer hover:bg-white hover:scale-105 transition-all"
               >
@@ -279,9 +385,8 @@ function FeaturedProjectsLogic({ lang = 'es', hoveredColor, setHoveredColor }) {
         return false;
       });
 
-  // 🔴 ¡NUEVO VIGILANTE DE SCROLL ESPECÍFICO PARA LAS TARJETAS DE REACT! 🔴
+  // Vigilante de scroll específico para las tarjetas de React
   useEffect(() => {
-    // Creamos el detector de visibilidad
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -290,11 +395,10 @@ function FeaturedProjectsLogic({ lang = 'es', hoveredColor, setHoveredColor }) {
       });
     }, { threshold: 0.15 });
 
-    // Le damos un respiro pequeñito a React para que pinte las tarjetas nuevas
     const timer = setTimeout(() => {
       const elements = document.querySelectorAll('.bento-grid .scroll-card, .bento-grid .draw-border');
       elements.forEach(el => {
-        el.classList.remove('in-view'); // Las reiniciamos para que siempre animen al cambiar de filtro
+        el.classList.remove('in-view');
         observer.observe(el);
       });
     }, 50);
@@ -341,7 +445,7 @@ function FeaturedProjectsLogic({ lang = 'es', hoveredColor, setHoveredColor }) {
                     className={`cursor-pointer bg-transparent border-0 border-b py-2 font-mono-tech text-[10px] uppercase tracking-[0.16em] transition-colors ${
                       activeFilter === filter.value
                         ? "border-[#F5F5F7] text-[#F5F5F7]"
-                        : "border-transparent text-[#52525B] hover:text-[#F5F5F7]"
+                        : "border-transparent text-[#8f8f9e] hover:text-[#F5F5F7]"
                     }`}
                   >
                     <ScrambleText text={filter.label} /> <sup>{count}</sup>
