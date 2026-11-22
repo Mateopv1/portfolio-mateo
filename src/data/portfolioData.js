@@ -33,6 +33,12 @@ export const TRANSLATIONS = {
     closeEsc: "CERRAR [ESC]",
     nextStudy: "SIGUIENTE PROYECTO",
     inspectDossier: "INSPECCIONAR PROYECTO →",
+    aboutTag: "02.1 / Sobre mí",
+    aboutTitle: "Mateo Paredes",
+    aboutP1: "Soy desarrollador Front-End y diseñador UX/UI con formación en Bellas Artes (USAL), Diseño Gráfico Digital, Marketing Digital y Desarrollo de Aplicaciones Web (DAW).",
+    aboutP2: "Esa mezcla poco habitual me permite moverme con soltura desde el boceto y la dirección de arte hasta el código en producción. Me enfoco en construir productos digitales con criterio visual, arquitectura limpia y foco real en el usuario.",
+    aboutMetaLeft: "FIG 02. AUTORRETRATO // CARBONCILLO DIGITAL",
+    aboutMetaRight: "LUARCA / MADRID / REMOTO",
   },
   en: {
     heroMarquee1: "CODE  FRONT-END  REACT JAVASCRIPT ✦ ",
@@ -66,6 +72,12 @@ export const TRANSLATIONS = {
     closeEsc: "CLOSE [ESC]",
     nextStudy: "NEXT CASE STUDY",
     inspectDossier: "INSPECT DOSSIER →",
+    aboutTag: "02.1 / About me",
+    aboutTitle: "Mateo Paredes",
+    aboutP1: "I'm a Front-End Developer and UX/UI Designer with a background in Fine Arts (USAL), Digital Graphic Design, Digital Marketing, and Web Application Development (DAW).",
+    aboutP2: "This hybrid foundation lets me move seamlessly from art direction and visual systems to production-ready code—building digital products with strong craft, clean architecture, and real user focus.",
+    aboutMetaLeft: "FIG 02. SELF-PORTRAIT // DIGITAL CHARCOAL",
+    aboutMetaRight: "LUARCA / MADRID / REMOTE",
   }
 };
 
@@ -423,17 +435,17 @@ export const BRAND_LOGOS_DATA = [
 
 export const FINE_ART_PLATES = [
 { 
-    id: 1, // Cambia el ID o posición según donde quieras que aparezca
-    plateNumber: "SERIE V // TFG", 
-    year: "2024", 
-    title: "Maternidad - Proyecto TFG", 
-    medium: "Pintura", // Cambia esto por la técnica real
-    dimensions: "100 × 100 CM", // Cambia esto por las dimensiones reales
-    edition: "OBRA ORIGINAL", 
-    image: "/portfolio/ilustraciones/tfg/8.jpg", // La portada en el grid y primera en el modal
+    id: 1,
+    plateNumber: "SERIE I // TFG USAL",
+    year: "2021",
+    title: "Memoria — Vínculo Afectivo & Retrato",
+    medium: "Óleo sobre tabla (DM) y bocetos a lápiz",
+    dimensions: "100 × 80 CM / 100 × 70 CM",
+    edition: "SERIE EXPOSITIVA (OBRAS EN PROCESO)",
+    image: "/portfolio/ilustraciones/tfg/8.jpg",
     gallery: [
-      "/portfolio/ilustraciones/tfg/3.jpg", // Segunda imagen grande
-      "/portfolio/ilustraciones/tfg/1.jpg" // Tercera imagen grande
+      "/portfolio/ilustraciones/tfg/3.jpg",
+      "/portfolio/ilustraciones/tfg/1.jpg"
     ],
     processGallery: [
       "/portfolio/ilustraciones/tfg/10.jpg",
@@ -449,7 +461,7 @@ export const FINE_ART_PLATES = [
       "/portfolio/ilustraciones/tfg/14.jpg",
       "/portfolio/ilustraciones/tfg/15.png"
     ],
-    description: "Proceso de desarrollo y resultado final de la serie pictórica para el Trabajo de Fin de Grado, centrada en la representación de la maternidad."
+    description: "Proyecto expositivo de Trabajo de Fin de Grado en Bellas Artes (USAL) concebido como homenaje a las madres e hijos/as del centro de acogida 'Ave María' de Salamanca (las obras mostradas corresponden a piezas en proceso no terminadas en su totalidad debido a las limitaciones del contexto de pandemia). Lejos de idealizar la maternidad, la serie busca inmortalizar la trascendencia del vínculo afectivo mediante el retrato psicológico. Construidas a base de pincelada gestual, manchas y una paleta cálida inspirada en la luz del atardecer, las piezas concentran el detalle expresivo en los rostros y las miradas —siguiendo referentes como Domenico Ghirlandaio y Amanda Greavette— a partir de sesiones fotográficas, composición digital y bocetos previos al grafito."
   },
  { 
     id: 2, // Cambia el ID o posición según corresponda

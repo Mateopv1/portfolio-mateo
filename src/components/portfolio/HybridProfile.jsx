@@ -1,6 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TRANSLATIONS } from '../../data/portfolioData';
 
+// 60 partículas deterministas (25 por toda la sección + 35 concentradas en el retrato/cara)
+const ABOUT_PARTICLES = Array.from({ length: 60 }, (_, i) => {
+  const isPortraitZone = i >= 25;
+  const seed1 = Math.abs(Math.sin(i * 12.9898) * 43758.5453) % 1;
+  const seed2 = Math.abs(Math.sin(i * 78.233) * 24634.6345) % 1;
+  const seed3 = Math.abs(Math.sin(i * 45.164) * 19384.2341) % 1;
+
+  return {
+    top: `${(seed1 * 92 + 4).toFixed(1)}%`,
+    left: isPortraitZone
+      ? `${(55 + seed2 * 43).toFixed(1)}%` // Concentrados sobre la cara y el retrato
+      : `${(seed2 * 96 + 2).toFixed(1)}%`, // Repartidos por toda la sección
+    size: Number((1.5 + seed3 * 2.5).toFixed(1)), // Entre 1.5px y 4px
+    dur: `${(8 + seed1 * 9).toFixed(1)}s`,
+    delay: `-${(seed2 * 14).toFixed(1)}s`,
+    op: Number((isPortraitZone ? 0.45 + seed3 * 0.45 : 0.25 + seed3 * 0.35).toFixed(2)),
+    dx: `${Math.round((seed3 - 0.5) * 45)}px`,
+    dy: `-${Math.round(35 + seed1 * 55)}px`,
+  };
+});
+
 // --- DIAGRAMA CON TRAZADO VIVO DE VECTORES SVG Y EFECTO PARALLAX 3D ---
 function HybridDisciplineDiagram({ activeLayer }) {
   const showSystem = activeLayer === "BOTH" || activeLayer === "SYSTEM";
@@ -13,31 +34,26 @@ function HybridDisciplineDiagram({ activeLayer }) {
   const handleMouseMove = (e) => {
     if (!svgRef.current || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
-    
-    // Calcula la distancia desde el centro del contenedor
-    const x = (e.clientX - rect.left - rect.width / 2) * 0.03; 
+    const x = (e.clientX - rect.left - rect.width / 2) * 0.03;
     const y = (e.clientY - rect.top - rect.height / 2) * 0.03;
-    
-    // Mueve el SVG (la capa superior) ligeramente en la dirección del ratón
     svgRef.current.style.transform = `translate(${x}px, ${y}px) scale(1.02)`;
   };
 
   const handleMouseLeave = () => {
     if (svgRef.current) {
-      // Devuelve el SVG suavemente a su posición original
       svgRef.current.style.transform = `translate(0px, 0px) scale(1)`;
     }
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
-      className="plate-frame relative overflow-hidden" 
+      className="plate-frame relative overflow-hidden"
       style={{ height: "400px", backgroundColor: "#0B0B0D" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Capa de fondo estática (Grid y Brillo) - Se queda quieta */}
+      {/* Capa de fondo estática (Grid y Brillo) */}
       <svg className="absolute inset-0 pointer-events-none" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
         <defs>
           <radialGradient id="obsidianGlow" cx="50%" cy="50%" r="55%">
@@ -61,12 +77,12 @@ function HybridDisciplineDiagram({ activeLayer }) {
       </div>
 
       {/* Capa superior animada magnéticamente (Vectores) */}
-      <svg 
+      <svg
         ref={svgRef}
-        className="absolute inset-0 pointer-events-none z-10" 
-        viewBox="0 0 800 500" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg" 
+        className="absolute inset-0 pointer-events-none z-10"
+        viewBox="0 0 800 500"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
         style={{ width: "100%", height: "100%", transition: "transform 0.3s ease-out" }}
       >
         {/* CAPA LÓGICA / SISTEMA */}
@@ -129,23 +145,24 @@ export default function HybridProfile({ lang = 'es' }) {
   useEffect(() => {
     if (!isAutoPlaying) return;
     const layers = ["BOTH", "SYSTEM", "INK"];
-    
+
     const intervalId = setInterval(() => {
       setActiveLayer((currentLayer) => {
         const currentIndex = layers.indexOf(currentLayer);
         const nextIndex = (currentIndex + 1) % layers.length;
         return layers[nextIndex];
       });
-    }, 6000); 
+    }, 6000);
 
     return () => clearInterval(intervalId);
   }, [isAutoPlaying]);
 
   return (
-    <section id="method" className="scroll-mt-20 hairline-y bg-[#0A0A0C] relative z-10">
+    <section id="method" className="scroll-mt-20 hairline-y bg-[#0A0A0C] relative z-10 overflow-hidden">
+      
+      {/* BLOQUE SUPERIOR: DIAGRAMA Y PILARES */}
       <div className="mx-auto max-w-[1720px] px-5 py-24 md:px-10 md:py-32 lg:px-12">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-10 items-center">
-          
           {/* TEXTOS Y BOTONES */}
           <div className="lg:col-span-4">
             <p className="mb-6 font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93]">
@@ -167,7 +184,7 @@ export default function HybridProfile({ lang = 'es' }) {
                   type="button"
                   onClick={() => {
                     setActiveLayer(layer.value);
-                    setIsAutoPlaying(false); 
+                    setIsAutoPlaying(false);
                   }}
                   className={`cursor-pointer px-4 py-2.5 font-mono-tech text-[9px] uppercase tracking-[0.16em] transition-colors ${
                     activeLayer === layer.value
@@ -193,8 +210,124 @@ export default function HybridProfile({ lang = 'es' }) {
               ))}
             </div>
           </div>
-          
         </div>
+      </div>
+
+      {/* ESTILOS DE PARTÍCULAS SUAVES Y RESPIRACIÓN DEL RETRATO */}
+      <style>{`
+        @keyframes aboutFloatDot {
+          0% {
+            transform: translate3d(0, 0, 0) scale(1);
+            opacity: 0;
+          }
+          20% {
+            opacity: var(--dot-opacity, 0.45);
+          }
+          80% {
+            opacity: var(--dot-opacity, 0.45);
+          }
+          100% {
+            transform: translate3d(var(--drift-x, 18px), var(--drift-y, -48px), 0) scale(0.7);
+            opacity: 0;
+          }
+        }
+        @keyframes portraitBreathe {
+          0%, 100% {
+            transform: scale(1) translate3d(0, 0, 0);
+          }
+          50% {
+            transform: scale(1.025) translate3d(0, -6px, 0);
+          }
+        }
+        .about-dot {
+          animation: aboutFloatDot var(--duration, 10s) ease-in-out var(--delay, 0s) infinite;
+          will-change: transform, opacity;
+        }
+        .portrait-breathe {
+          animation: portraitBreathe 14s ease-in-out infinite;
+          will-change: transform;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .about-dot,
+          .portrait-breathe {
+            animation: none;
+          }
+        }
+      `}</style>
+
+      {/* BLOQUE INFERIOR: SOBRE MÍ FULL-BLEED (TEXTO IZQUIERDA + ILUSTRACIÓN A SANGRE DERECHA) */}
+      <div className="relative w-full hairline-t grid grid-cols-1 lg:grid-cols-12 items-stretch overflow-hidden">
+        
+        {/* PARTÍCULAS BLANCAS SUAVES FLOTANDO POR TODA LA SECCIÓN Y EL RETRATO */}
+        <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden" aria-hidden="true">
+          {ABOUT_PARTICLES.map((dot, i) => (
+            <span
+              key={i}
+              className="about-dot absolute rounded-full bg-white"
+              style={{
+                top: dot.top,
+                left: dot.left,
+                width: `${dot.size}px`,
+                height: `${dot.size}px`,
+                boxShadow: '0 0 10px rgba(255, 255, 255, 0.75)',
+                '--duration': dot.dur,
+                '--delay': dot.delay,
+                '--dot-opacity': dot.op,
+                '--drift-x': dot.dx,
+                '--drift-y': dot.dy,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* COLUMNA IZQUIERDA: TEXTO SOBRE MÍ */}
+        <div className="relative z-10 lg:col-span-7 flex flex-col justify-center px-5 py-16 md:px-10 md:py-24 lg:py-28 lg:pr-16 lg:pl-[max(3rem,calc((100vw-1720px)/2+3rem))]">
+          <p className="mb-4 font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8A8A93]">
+            {t.aboutTag}
+          </p>
+          <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-[-0.03em] text-[#F5F5F7] leading-[0.95]">
+            {t.aboutTitle}
+          </h3>
+
+          <div className="mt-8 space-y-5 max-w-xl text-sm sm:text-base font-light leading-relaxed text-[#B7B7BD]">
+            <p>{t.aboutP1}</p>
+            <p className="text-[#8A8A93]">{t.aboutP2}</p>
+          </div>
+
+          <div className="mt-10 pt-6 border-t border-white/10 max-w-xl flex flex-wrap items-center gap-x-6 gap-y-2 font-mono-tech text-[9px] uppercase tracking-[0.18em] text-[#52525B]">
+            <span>BELLAS ARTES (USAL)</span>
+            <span>/</span>
+            <span>DISEÑO GRÁFICO &amp; UX</span>
+            <span>/</span>
+            <span>DAW &amp; MARKETING</span>
+          </div>
+        </div>
+
+        {/* COLUMNA DERECHA: ILUSTRACIÓN SIN BORDES CON RESPIRACIÓN SUTIL */}
+        <div className="lg:col-span-5 relative w-full min-h-[480px] sm:min-h-[560px] lg:min-h-[640px] overflow-hidden bg-[#070708]">
+          <img
+            src="/mateo.png"
+            alt="Mateo Paredes — Ilustración autorretrato"
+            loading="lazy"
+            className="portrait-breathe absolute inset-0 w-full h-full object-cover object-center grayscale contrast-110"
+          />
+          {/* Fundido suave en el borde izquierdo (escritorio) y superior (móvil) */}
+          <div
+            className="pointer-events-none absolute inset-0 hidden lg:block"
+            style={{
+              background:
+                'linear-gradient(to right, #0A0A0C 0%, rgba(10, 10, 12, 0.35) 18%, transparent 45%)',
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0 lg:hidden"
+            style={{
+              background:
+                'linear-gradient(to bottom, #0A0A0C 0%, transparent 25%)',
+            }}
+          />
+        </div>
+
       </div>
     </section>
   );
