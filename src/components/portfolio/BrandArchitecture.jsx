@@ -84,7 +84,53 @@ const BRAND_PROJECTS = [
 
 function BrandLogoCard({ project, index, lang, setHoveredColor }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isInViewMobile, setIsInViewMobile] = useState(false);
+  const cardRef = useRef(null);
   const logoWrapRef = useRef(null);
+
+  // En móvil/tablet (<1024px), activa la versión en color automáticamente al hacer scroll
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el || typeof window === 'undefined') return;
+
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
+    let observer = null;
+
+    const setupObserver = () => {
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
+
+      if (!mediaQuery.matches) {
+        setIsInViewMobile(false);
+        return;
+      }
+
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsInViewMobile(entry.isIntersecting);
+        },
+        {
+          // Se activa cuando la tarjeta entra en la franja central de la pantalla
+          rootMargin: '-22% 0px -22% 0px',
+          threshold: 0.35,
+        }
+      );
+
+      observer.observe(el);
+    };
+
+    setupObserver();
+    mediaQuery.addEventListener('change', setupObserver);
+
+    return () => {
+      mediaQuery.removeEventListener('change', setupObserver);
+      if (observer) observer.disconnect();
+    };
+  }, []);
+
+  const isActive = isHovered || isInViewMobile;
 
   const handleCardMouseMove = (e) => {
     if (!logoWrapRef.current || window.innerWidth < 1024) return;
@@ -104,43 +150,45 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
 
   return (
     <article
+      ref={cardRef}
       className={`scroll-card w-full min-w-0 ${project.span} ${project.aspect} relative flex flex-col border border-white/[0.06] bg-[#0F0F11] transition-all duration-700 overflow-hidden group cursor-pointer`}
       onMouseEnter={() => {
-        setIsHovered(true);
-        setHoveredColor(`${project.colorLeft}15`);
+        if (window.innerWidth >= 1024) {
+          setIsHovered(true);
+          setHoveredColor(`${project.colorLeft}15`);
+        }
       }}
       onMouseLeave={handleCardMouseLeave}
       onMouseMove={handleCardMouseMove}
-      onClick={() => setIsHovered((prev) => !prev)}
     >
-      {/* CAPA 1 HOVER: Base blanca */}
+      {/* CAPA 1: Base blanca */}
       <div
         className="absolute inset-0 bg-white transition-opacity duration-500 ease-out pointer-events-none z-0"
-        style={{ opacity: isHovered ? 1 : 0 }}
+        style={{ opacity: isActive ? 1 : 0 }}
       />
 
-      {/* CAPA 2 HOVER: Degradado al 17% de opacidad */}
+      {/* CAPA 2: Degradado al 17% de opacidad */}
       <div
         className="absolute inset-0 transition-opacity duration-500 ease-out pointer-events-none z-[1]"
         style={{
           background: `linear-gradient(90deg, ${project.colorLeft} 0%, ${project.colorRight} 100%)`,
-          opacity: isHovered ? 0.17 : 0,
+          opacity: isActive ? 0.17 : 0,
         }}
       />
 
       {/* Etiqueta ID superior izquierda */}
       <div
         className={`absolute left-4 top-4 z-20 font-mono-tech text-[8px] sm:text-[9px] tracking-[0.18em] transition-colors duration-500 ${
-          isHovered ? "text-[#070708]/60" : "text-[#52525B]"
+          isActive ? "text-[#070708]/60" : "text-[#52525B]"
         }`}
       >
         ID / {String(index + 1).padStart(2, "0")}
       </div>
 
-      {/* Muestras de color corporativo (esquina superior derecha, solo en hover) */}
+      {/* Muestras de color corporativo (esquina superior derecha) */}
       <div
         className={`absolute right-4 top-4 z-20 flex items-center gap-2 sm:gap-3 transition-all duration-500 ease-out pointer-events-none ${
-          isHovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
+          isActive ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
         }`}
       >
         {project.palette.map((hex) => (
@@ -167,7 +215,7 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
             src={project.negativoImg}
             alt={`${project.name} negativo`}
             className={`max-h-[80px] sm:max-h-[115px] lg:max-h-[140px] max-w-full w-auto h-auto object-contain transition-opacity duration-500 ease-out select-none ${
-              isHovered ? "opacity-0" : "opacity-100"
+              isActive ? "opacity-0" : "opacity-100"
             }`}
           />
 
@@ -175,7 +223,7 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
             src={project.colorImg}
             alt={project.name}
             className={`absolute max-h-[80px] sm:max-h-[115px] lg:max-h-[140px] max-w-full w-auto h-auto object-contain transition-opacity duration-500 ease-out select-none ${
-              isHovered ? "opacity-100" : "opacity-0"
+              isActive ? "opacity-100" : "opacity-0"
             }`}
           />
         </div>
