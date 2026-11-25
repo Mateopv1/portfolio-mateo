@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FloatingContact from '../components/FloatingContact.astro';
 import Portfolio from '../components/Portfolio.jsx';
 import TechMarquee from '../components/TechMarquee.jsx';
 ---
@@ -9,12 +10,12 @@ import TechMarquee from '../components/TechMarquee.jsx';
 <!DOCTYPE html>
 <html lang="es">
   <head>
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KWLJCCZT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KWLJCCZT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mateo Paredes | Front-End & UX/UI</title>
@@ -24,8 +25,8 @@ import TechMarquee from '../components/TechMarquee.jsx';
   </head>
   <body class="bg-[#070708] text-[#F5F5F7] selection:bg-white min-h-screen">
     
-    <!-- PANTALLA DE CARGA (PRELOADER) -->
-   <div id="loader-screen" class="fixed inset-0 z-[999] bg-[#070708] flex items-center justify-center transition-opacity duration-1000">
+
+    <div id="loader-screen" class="fixed inset-0 z-[999] bg-[#070708] flex items-center justify-center transition-opacity duration-1000">
       <img 
         src="/favicon.svg" 
         alt="Isotipo Mateo Studio" 
@@ -34,15 +35,15 @@ import TechMarquee from '../components/TechMarquee.jsx';
       />
     </div>
 
-    <!-- Filtro de ruido fotográfico de fondo -->
-    <div class="studio-grain pointer-events-none fixed inset-0 z-[60] opacity-50 mix-blend-soft-light"></div>
+    <div class="studio-grain pointer-events-none fixed inset-0 z-[60] opacity-50"></div>
     
     <!-- Componentes -->
     <Header />
     <Portfolio client:load />
     <Footer />
+    <FloatingContact />
 
-    <!-- 1. MOTOR GLOBAL DE ESTILOS DE ANIMACIÓN -->
+
     <style is:global>
       .hero-slide-up { display: inline-block; transform: translateY(115%); opacity: 0; transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease; }
       .hero-slide-up.ready { transform: translateY(0%); opacity: 1; }
@@ -72,34 +73,27 @@ import TechMarquee from '../components/TechMarquee.jsx';
       }
     </style>
 
-    <!-- 2. MOTOR GLOBAL DETECTOR DE SCROLL Y PRELOADER -->
     <script>
-      // A. LÓGICA DE LA PANTALLA DE CARGA
       window.addEventListener('load', () => {
         const loaderScreen = document.getElementById('loader-screen');
         const loaderLogo = document.getElementById('loader-logo');
         
-        // Bloqueamos el scroll para que el usuario no baje mientras carga
         document.body.style.overflow = 'hidden';
 
-        // 1. El logo aparece suavemente y hace un ligero zoom (respira)
         setTimeout(() => {
           if (loaderLogo) loaderLogo.classList.add('logo-breathe');
         }, 100);
 
-        // 2. Tras 1.8 segundos, desvanecemos toda la pantalla negra
         setTimeout(() => {
           if (loaderScreen) loaderScreen.style.opacity = '0';
-          document.body.style.overflow = ''; // Restauramos el scroll
+          document.body.style.overflow = '';
           
-          // 3. Destruimos el contenedor para que no bloquee clics
           setTimeout(() => {
             if (loaderScreen) loaderScreen.remove();
           }, 1000);
         }, 1800);
       });
 
-      // B. LÓGICA DE ANIMACIÓN AL HACER SCROLL
       function initAnimations() {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
@@ -117,24 +111,23 @@ import TechMarquee from '../components/TechMarquee.jsx';
       setTimeout(initAnimations, 300);
       setTimeout(initAnimations, 1000);
     </script>
+
     <script>
-  import Lenis from 'lenis';
+      import Lenis from 'lenis';
 
-  // Configuración de alto nivel (peso y curva de aceleración)
-  const lenis = new Lenis({
-    duration: 1.2, // Define el "peso" del scroll (1.2 es ideal para webs de portfolio)
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Curva ease-out exponencial
-    smoothWheel: true,
-    touchMultiplier: 2, // Hace que en móvil / trackpad responda más rápido
-  });
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        touchMultiplier: 2,
+      });
 
-  // Bucle de animación (Request Animation Frame)
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
 
-  requestAnimationFrame(raf);
-</script>
+      requestAnimationFrame(raf);
+    </script>
   </body>
 </html>

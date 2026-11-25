@@ -6,24 +6,34 @@ export default function HeroSection({ lang = 'es' }) {
   const t = TRANSLATIONS[lang];
   const [heroLoaded, setHeroLoaded] = useState(false);
 
-  // Referencias para efectos Parallax y Magnético
+  // Referencias para efectos Parallax y Magnético (sin re-renders)
   const sectionRef = useRef(null);
+  const parallaxTextRef = useRef(null);
   const scrollBtnRef = useRef(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const rafRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setHeroLoaded(true), 800);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
-  // --- 1. EFECTO PARALLAX SUTIL EN EL TEXTO SUPERIOR AL MOVER EL RATÓN ---
+  // --- 1. EFECTO PARALLAX SUTIL EN EL TEXTO SUPERIOR (0 RE-RENDERS) ---
   const handleMouseMove = (e) => {
-    if (!sectionRef.current) return;
+    if (!parallaxTextRef.current || window.innerWidth < 1024) return;
     const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const x = (clientX / innerWidth - 0.5) * 2;
-    const y = (clientY / innerHeight - 0.5) * 2;
-    setMousePosition({ x, y });
+
+    if (rafRef.current) return;
+    rafRef.current = requestAnimationFrame(() => {
+      const x = (clientX / window.innerWidth - 0.5) * -20;
+      const y = (clientY / window.innerHeight - 0.5) * -20;
+      if (parallaxTextRef.current) {
+        parallaxTextRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      }
+      rafRef.current = null;
+    });
   };
 
   // --- 2. BOTÓN DE SCROLL MAGNÉTICO ---
@@ -33,13 +43,16 @@ export default function HeroSection({ lang = 'es' }) {
     const rect = scrollBtnRef.current.getBoundingClientRect();
     const x = (e.clientX - rect.left - rect.width / 2) * 0.4;
     const y = (e.clientY - rect.top - rect.height / 2) * 0.4;
-    scrollBtnRef.current.style.transform = `translate(${x}px, ${y}px)`;
+    scrollBtnRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   };
 
   const handleScrollBtnLeave = () => {
     if (!scrollBtnRef.current) return;
-    scrollBtnRef.current.style.transform = `translate(0px, 0px)`;
+    scrollBtnRef.current.style.transform = `translate3d(0px, 0px, 0)`;
   };
+
+  const marquee1Text = Array(8).fill(t.heroMarquee1).join('\u00A0\u00A0\u00A0');
+  const marquee2Text = Array(8).fill(t.heroMarquee2).join('\u00A0\u00A0\u00A0');
 
   return (
     <div
@@ -89,8 +102,8 @@ export default function HeroSection({ lang = 'es' }) {
       >
         {/* TEXTOS SUPERIORES CON PARALLAX MOUSE */}
         <div
-          className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-12 relative z-10 transition-transform duration-700 ease-out"
-          style={{ transform: `translate(${mousePosition.x * -10}px, ${mousePosition.y * -10}px)` }}
+          ref={parallaxTextRef}
+          className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-12 relative z-10 transition-transform duration-700 ease-out will-change-transform"
         >
           <div className="lg:col-span-6">
             <p className="font-mono-tech text-[10px] uppercase leading-5 tracking-[0.18em] text-[#bfbfcd] whitespace-pre-line w-full md:max-w-[38rem] border-l border-white/20 pl-4">
@@ -105,26 +118,29 @@ export default function HeroSection({ lang = 'es' }) {
         </div>
 
         {/* CARRUSEL INFINITO CON ENTRADA ESCALONADA (STAGGER) */}
-        <div className="my-auto py-12 sm:py-20 w-screen relative left-1/2 -translate-x-1/2 overflow-hidden z-10 flex flex-col gap-16 md:gap-20">
+        <div
+          className="my-auto py-12 sm:py-20 w-screen relative left-1/2 -translate-x-1/2 overflow-hidden z-10 flex flex-col gap-16 md:gap-20"
+          style={{ contain: 'layout paint' }}
+        >
           {/* TRACK IZQUIERDA */}
           <div
-            className={`transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+            className={`transition-[transform,opacity] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
           >
             <div className="track-left hover:scale-[1.02] transition-transform duration-500 cursor-default">
-              <h1 className="font-display font-extrabold uppercase text-[#F5F5F7] marquee-typography drop-shadow-2xl">
-                {Array(8).fill(t.heroMarquee1).join('\u00A0\u00A0\u00A0')}
+              <h1 className="font-display font-extrabold uppercase text-[#F5F5F7] marquee-typography">
+                {marquee1Text}
               </h1>
             </div>
           </div>
 
           {/* TRACK DERECHA */}
           <div
-            className={`transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+            className={`transition-[transform,opacity] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
             style={{ transitionDelay: "150ms" }}
           >
             <div className="track-right hover:scale-[1.02] transition-transform duration-500 cursor-default">
-              <h1 className="font-display font-extrabold uppercase text-[#52525B] marquee-typography drop-shadow-2xl">
-                {Array(8).fill(t.heroMarquee2).join('\u00A0\u00A0\u00A0')}
+              <h1 className="font-display font-extrabold uppercase text-[#52525B] marquee-typography">
+                {marquee2Text}
               </h1>
             </div>
           </div>

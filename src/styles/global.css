@@ -17,7 +17,6 @@
     background-color: #070708;
     color: #F5F5F7;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -55,32 +54,26 @@ a {
   font-variant-numeric: tabular-nums;
 }
 
-/* --- LÍNEAS ULTRA FINAS (HAIRLINES) --- */
 .hairline-t { border-top: 1px solid rgba(255, 255, 255, 0.08); }
 .hairline-b { border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 .hairline-y { border-top: 1px solid rgba(255, 255, 255, 0.08); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 .hairline-box { border: 1px solid rgba(255, 255, 255, 0.08); }
 
-/* --- AJUSTES RESPONSIVOS FORZADOS (MOBILE FIRST) --- */
-
-/* Ajuste general de espaciado interior para móvil */
 .px-mobile-safe {
   padding-left: 20px;
   padding-right: 20px;
 }
 
-/* Tipografía gigante del Hero controlada en móvil */
 .hero-title {
-  font-size: clamp(3.5rem, 18vw, 13.5rem); /* Se encoge muchísimo más en móvil */
+  font-size: clamp(3.5rem, 18vw, 13.5rem);
   line-height: 0.85;
   letter-spacing: -0.04em;
-  margin-left: 0; /* Quita el margen negativo que lo sacaba de la pantalla */
+  margin-left: 0;
 }
 .hero-title-offset {
-  margin-left: 20px; /* Offset pequeño en móvil */
+  margin-left: 20px;
 }
 
-/* --- CUADRÍCULA BENTO Y ALTURAS CONTROLADAS --- */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -89,12 +82,10 @@ a {
   width: 100%;
 }
 
-/* En móvil, todas las tarjetas ocupan 12 columnas (100% del ancho) */
 .span-full, .span-7, .span-5 {
   grid-column: span 12 / span 12;
 }
 
-/* Alturas de imagen reducidas para móvil */
 .plate-cinematic { height: 260px; }
 .plate-editorial { height: 260px; }
 .plate-portrait  { height: 320px; }
@@ -107,7 +98,6 @@ a {
   width: 100%;
 }
 
-/* Media Queries para Tablet y Desktop */
 @media (min-width: 640px) {
   .px-mobile-safe {
     padding-left: 40px;
@@ -130,12 +120,10 @@ a {
     column-gap: 24px;
     row-gap: 64px;
   }
-  
-  /* Restaurar anchos originales en Desktop */
+
   .span-7 { grid-column: span 7 / span 7; }
   .span-5 { grid-column: span 5 / span 5; }
-  
-  /* Restaurar alturas originales en Desktop */
+
   .plate-cinematic { height: 480px; }
   .plate-editorial { height: 380px; }
   .plate-portrait  { height: 420px; }
@@ -149,7 +137,6 @@ a {
   }
 }
 
-/* --- ANIMACIONES Y UTILIDADES --- */
 .draw-line { position: relative; }
 .draw-line::after {
   content: "";
@@ -199,6 +186,7 @@ a {
   overflow: hidden;
   background-color: #0F0F11;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  contain: layout paint;
 }
 .plate-frame > img {
   position: absolute;
@@ -212,36 +200,6 @@ a {
   transform: scale(1.035);
 }
 
-/* MENÚ HAMBURGUESA PREMIUM */
-.hamburger-line { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; }
-.menu-open .line-1 { transform: translateY(6px) rotate(45deg); }
-.menu-open .line-2 { opacity: 0; }
-.menu-open .line-3 { transform: translateY(-6px) rotate(-45deg); }
-
-.mobile-menu-overlay {
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.mobile-menu-overlay.is-active { clip-path: inset(0 0 0 0); }
-
-.studio-grain { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.032'/%3E%3C/svg%3E"); }
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: #070708; }
-::-webkit-scrollbar-thumb { background: #27272A; }
-::-webkit-scrollbar-thumb:hover { background: #52525B; }
-@keyframes slowPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.92); } }
-.animate-status-pulse { animation: slowPulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.animate-fadeIn { animation: fadeIn 280ms ease-out both; }
-
-/* --- BLOQUEO ESTRICTO DE DESBORDAMIENTO MÓVIL --- */
-html, body {
-  overflow-x: hidden !important;
-  width: 100%;
-  position: relative;
-}
-
-/* --- ANIMACIONES DEL MENÚ HAMBURGUESA PREMIUM --- */
 .hamburger-line {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }
@@ -250,35 +208,62 @@ html, body {
 .menu-open .line-3 { transform: translateY(-6px) rotate(-45deg); }
 
 .mobile-menu-overlay {
-  clip-path: inset(0 0 100% 0); /* Empieza cortado desde abajo */
+  clip-path: inset(0 0 100% 0);
   transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .mobile-menu-overlay.is-active {
-  clip-path: inset(0 0 0 0); /* Se revela a pantalla completa */
+  clip-path: inset(0 0 0 0);
 }
-/* ==========================================================================
-   MOTOR DEL CARRUSEL INFINITO (MARQUEE)
-   ========================================================================== */
 
+.studio-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  mix-blend-mode: normal !important;
+  transform: translateZ(0);
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #070708; }
+::-webkit-scrollbar-thumb { background: #27272A; }
+::-webkit-scrollbar-thumb:hover { background: #52525B; }
+
+@keyframes slowPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.92); } }
+.animate-status-pulse { animation: slowPulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.animate-fadeIn { animation: fadeIn 280ms ease-out both; }
+
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+  position: relative;
+}
+
+/* ==========================================================================
+   MOTOR DEL CARRUSEL INFINITO 
+   ========================================================================== */
 @keyframes marquee-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes marquee-right {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
 .track-left {
   display: flex;
   width: max-content;
-  animation: marquee-left 550s linear infinite; 
+  will-change: transform;
+  animation: marquee-left 550s linear infinite;
 }
 
 .track-right {
   display: flex;
   width: max-content;
+  will-change: transform;
   animation: marquee-right 550s linear infinite;
 }
 
@@ -287,13 +272,11 @@ html, body {
   line-height: 0.9;
   white-space: nowrap;
 }
-/* Busca esta clase en tu archivo CSS */
+
 .svg-draw-live {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  
-  /* EL SECRETO ESTÁ AQUÍ: Aumenta los segundos (ej. 3.5s o 4s) */
-  animation: drawLine 3.5s ease-in-out forwards; 
+  animation: drawLine 3.5s ease-in-out forwards;
 }
 
 @keyframes drawLine {
@@ -302,10 +285,10 @@ html, body {
   }
 }
 
-/* --- LENIS SMOOTH SCROLL --- */
+
 html.lenis, html.lenis body {
   height: auto;
-  width: 100vw;
+  width: 100%;
 }
 
 .lenis.lenis-smooth {

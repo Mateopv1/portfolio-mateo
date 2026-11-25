@@ -88,7 +88,6 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
   const cardRef = useRef(null);
   const logoWrapRef = useRef(null);
 
-  // En móvil/tablet (<1024px), activa la versión en color automáticamente al hacer scroll
   useEffect(() => {
     const el = cardRef.current;
     if (!el || typeof window === 'undefined') return;
@@ -112,7 +111,6 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
           setIsInViewMobile(entry.isIntersecting);
         },
         {
-          // Se activa cuando la tarjeta entra en la franja central de la pantalla
           rootMargin: '-22% 0px -22% 0px',
           threshold: 0.35,
         }
@@ -161,13 +159,10 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
       onMouseLeave={handleCardMouseLeave}
       onMouseMove={handleCardMouseMove}
     >
-      {/* CAPA 1: Base blanca */}
       <div
         className="absolute inset-0 bg-white transition-opacity duration-500 ease-out pointer-events-none z-0"
         style={{ opacity: isActive ? 1 : 0 }}
       />
-
-      {/* CAPA 2: Degradado al 17% de opacidad */}
       <div
         className="absolute inset-0 transition-opacity duration-500 ease-out pointer-events-none z-[1]"
         style={{
@@ -176,7 +171,6 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
         }}
       />
 
-      {/* Etiqueta ID superior izquierda */}
       <div
         className={`absolute left-4 top-4 z-20 font-mono-tech text-[8px] sm:text-[9px] tracking-[0.18em] transition-colors duration-500 ${
           isActive ? "text-[#070708]/60" : "text-[#52525B]"
@@ -185,7 +179,6 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
         ID / {String(index + 1).padStart(2, "0")}
       </div>
 
-      {/* Muestras de color corporativo (esquina superior derecha) */}
       <div
         className={`absolute right-4 top-4 z-20 flex items-center gap-2 sm:gap-3 transition-all duration-500 ease-out pointer-events-none ${
           isActive ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
@@ -204,7 +197,6 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
         ))}
       </div>
 
-      {/* Contenedor de Logos (Negativo <-> Color) con Parallax */}
       <div
         ref={logoWrapRef}
         className="relative flex-1 w-full min-h-0 flex items-center justify-center p-8 sm:p-12 lg:p-14 z-10"
@@ -229,7 +221,6 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
         </div>
       </div>
 
-      {/* Footer técnico de la tarjeta */}
       <footer className="grid grid-cols-3 gap-2 border-t border-white/[0.06] px-4 py-3 sm:px-5 sm:py-4 font-mono-tech text-[8px] sm:text-[9px] uppercase tracking-[0.16em] relative z-20 bg-[#0F0F11]">
         <span className="text-[#F5F5F7] truncate">{project.name}</span>
         <span className="text-center text-[#8A8A93] truncate">
@@ -291,7 +282,6 @@ export default function BrandArchitecture({ lang: propLang = 'es', setHoveredCol
           ))}
         </div>
 
-        {/* Desplegable de Identidad Propia (MATEO | STUDIO) */}
         <StudioIdentityDrawer lang={lang} />
       </div>
     </section>

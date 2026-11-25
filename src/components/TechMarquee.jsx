@@ -148,7 +148,6 @@ export default function TechMarquee({ lang: propLang = 'es' }) {
       aria-label={label}
       className="relative w-full border-y border-white/[0.08] bg-[#070708]/90 py-7 sm:py-8 overflow-hidden select-none z-10 group"
     >
-      {/* Degradados laterales para fundido limpio con el fondo obsidiana */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-[#070708] to-transparent z-20" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-[#070708] to-transparent z-20" />
 

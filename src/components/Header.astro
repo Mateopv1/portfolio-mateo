@@ -1,9 +1,9 @@
 ---
 // src/components/Header.astro
 ---
-<header id="main-header" class="fixed z-50 bg-transparent border-b border-transparent transition-all duration-500 ease-out" style="top: 0; left: 0; width: 100%; box-sizing: border-box;">
+<header id="main-header" class="fixed z-50 bg-transparent border-b border-transparent transition-colors duration-300 ease-out" style="top: 0; left: 0; width: 100%; box-sizing: border-box;">
   
-  <nav class="mx-auto flex w-full max-w-[1720px] items-center justify-between px-6 py-4 md:px-10 md:py-5 lg:px-12 transition-all duration-500 ease-out" id="nav-container" aria-label="Primary navigation">
+  <nav class="mx-auto flex w-full max-w-[1720px] items-center justify-between px-6 py-4 md:px-10 md:py-5 lg:px-12 transition-[padding] duration-300 ease-out" id="nav-container" aria-label="Primary navigation">
     
     <!-- Logo Izquierda -->
     <a href="#top" class="relative z-[60] flex items-center group" style="text-decoration: none;">
@@ -65,7 +65,7 @@
   </nav>
 
   <!-- Cortina del Menú Móvil Premium -->
-  <div id="mobile-menu" class="group fixed inset-0 bg-[#070708] flex flex-col items-center justify-center px-6 z-40 h-screen w-screen overflow-hidden touch-none opacity-0 pointer-events-none transition-all duration-500 [&.is-active]:opacity-95 [&.is-active]:pointer-events-auto overscroll-none">
+  <div id="mobile-menu" class="group fixed inset-0 bg-[#070708] flex flex-col items-center justify-center px-6 z-40 h-screen w-screen overflow-hidden touch-none opacity-0 pointer-events-none transition-opacity duration-500 [&.is-active]:opacity-95 [&.is-active]:pointer-events-auto overscroll-none">
     
     <div class="flex flex-col items-center text-center gap-8 font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-[-0.03em] mt-10 w-full">
       <div class="overflow-hidden w-full">
@@ -104,11 +104,12 @@
 
 <script>
   const mainHeader = document.getElementById('main-header');
+  const headerLogo = document.getElementById('header-logo');
   const btn = document.getElementById('hamburger-btn');
   const menu = document.getElementById('mobile-menu');
   const navContainer = document.getElementById('nav-container');
   const links = document.querySelectorAll('.mobile-link');
-  
+
   const btnEsMobile = document.getElementById('lang-es-mobile');
   const btnEnMobile = document.getElementById('lang-en-mobile');
   const btnEsDesktop = document.getElementById('lang-es-desktop');
@@ -128,8 +129,8 @@
   function updateHeaderLanguage(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if(headerDict[lang] && headerDict[lang][key]) {
-        if(el.classList.contains('nav-link')) {
+      if (headerDict[lang] && headerDict[lang][key]) {
+        if (el.classList.contains('nav-link')) {
           el.children[0].innerText = headerDict[lang][key];
           el.children[1].innerText = headerDict[lang][key];
         } else {
@@ -141,8 +142,8 @@
 
   function setLanguage(lang) {
     const isEs = lang === 'es';
-    
-    if(btnEsDesktop && btnEnDesktop) {
+
+    if (btnEsDesktop && btnEnDesktop) {
       if (isEs) {
         btnEsDesktop.classList.add('text-[#F5F5F7]', 'font-bold');
         btnEsDesktop.querySelector('span:last-child').style.transform = 'scaleX(1)';
@@ -155,7 +156,7 @@
         btnEsDesktop.querySelector('span:last-child').style.transform = 'scaleX(0)';
       }
     }
-    
+
     if (btnEsMobile && btnEnMobile) {
       if (isEs) {
         btnEsMobile.classList.add('text-[#F5F5F7]', 'font-bold', 'underline');
@@ -170,7 +171,6 @@
     window.dispatchEvent(new CustomEvent('changeLanguage', { detail: lang }));
   }
 
-  // Prevenir eventos de scroll táctil en móvil (rebotes)
   function preventTouchMove(e) {
     e.preventDefault();
   }
@@ -179,13 +179,13 @@
     btn.addEventListener('click', () => {
       btn.classList.toggle('menu-open');
       menu.classList.toggle('is-active');
-      
+
       const isOpen = menu.classList.contains('is-active');
 
       if (isOpen) {
         document.body.style.overflow = 'hidden';
-        document.body.style.touchAction = 'none'; 
-        menu.addEventListener('touchmove', preventTouchMove, { passive: false }); 
+        document.body.style.touchAction = 'none';
+        menu.addEventListener('touchmove', preventTouchMove, { passive: false });
         if (window.lenis) window.lenis.stop();
       } else {
         document.body.style.overflow = '';
@@ -207,40 +207,63 @@
     });
   }
 
-  if(btnEsMobile) btnEsMobile.addEventListener('click', () => { setLanguage('es'); setTimeout(() => btn.click(), 400); });
-  if(btnEnMobile) btnEnMobile.addEventListener('click', () => { setLanguage('en'); setTimeout(() => btn.click(), 400); });
-  if(btnEsDesktop) btnEsDesktop.addEventListener('click', () => setLanguage('es'));
-  if(btnEnDesktop) btnEnDesktop.addEventListener('click', () => setLanguage('en'));
+  if (btnEsMobile) btnEsMobile.addEventListener('click', () => { setLanguage('es'); setTimeout(() => btn.click(), 400); });
+  if (btnEnMobile) btnEnMobile.addEventListener('click', () => { setLanguage('en'); setTimeout(() => btn.click(), 400); });
+  if (btnEsDesktop) btnEsDesktop.addEventListener('click', () => setLanguage('es'));
+  if (btnEnDesktop) btnEnDesktop.addEventListener('click', () => setLanguage('en'));
 
-  // --- SMART HEADER SCROLL ---
+  // --- SMART HEADER SCROLL (SIN REDISTRIBUCIÓN FORZADA) ---
+  let isScrolled = false;
+  let isCompact = false;
+  let ticking = false;
+
+  function updateHeaderOnScroll() {
+    const y = window.scrollY;
+    const nextScrolled = y > 50;
+    const nextCompact = y > 100;
+
+    if (nextScrolled !== isScrolled) {
+      isScrolled = nextScrolled;
+
+      if (headerLogo) {
+        headerLogo.style.filter = isScrolled ? 'brightness(0) invert(1)' : 'none';
+      }
+
+      if (mainHeader) {
+        if (isScrolled) {
+          mainHeader.classList.remove('bg-transparent', 'border-transparent');
+          mainHeader.classList.add('bg-[#070708]/90', 'backdrop-blur-md', 'border-white/10');
+        } else {
+          mainHeader.classList.add('bg-transparent', 'border-transparent');
+          mainHeader.classList.remove('bg-[#070708]/90', 'backdrop-blur-md', 'border-white/10');
+        }
+      }
+    }
+
+    if (nextCompact !== isCompact) {
+      isCompact = nextCompact;
+
+      if (navContainer) {
+        if (isCompact) {
+          navContainer.classList.remove('py-4', 'md:py-5');
+          navContainer.classList.add('py-2', 'md:py-3');
+        } else {
+          navContainer.classList.add('py-4', 'md:py-5');
+          navContainer.classList.remove('py-2', 'md:py-3');
+        }
+      }
+    }
+
+    ticking = false;
+  }
+
   window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    const logo = document.getElementById('header-logo');
-    
-    if (logo) {
-      if (currentScroll > 50) {
-        logo.style.filter = 'brightness(0) invert(1)';
-      } else {
-        logo.style.filter = 'none';
-      }
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateHeaderOnScroll);
     }
+  }, { passive: true });
 
-    if (mainHeader) {
-      if (currentScroll > 50) {
-        mainHeader.classList.remove('bg-transparent', 'border-transparent');
-        mainHeader.classList.add('bg-[#070708]/85', 'backdrop-blur-xl', 'border-white/10');
-      } else {
-        mainHeader.classList.add('bg-transparent', 'border-transparent');
-        mainHeader.classList.remove('bg-[#070708]/85', 'backdrop-blur-xl', 'border-white/10');
-      }
-    }
-
-    if (currentScroll > 100) {
-      navContainer.classList.remove('py-4', 'md:py-5');
-      navContainer.classList.add('py-2', 'md:py-3');
-    } else {
-      navContainer.classList.add('py-4', 'md:py-5');
-      navContainer.classList.remove('py-2', 'md:py-3');
-    }
-  });
+  // Estado inicial por si se recarga la web a mitad de página
+  updateHeaderOnScroll();
 </script>

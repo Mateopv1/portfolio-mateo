@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 import ScrambleText from './ScrambleText';
 import { TRANSLATIONS, FINE_ART_PLATES, EXHIBITIONS_DATA } from '../../data/portfolioData';
 
-// --- MODAL PARA OBRAS DE ARTE (Responsive móvil con info arriba + Split-Screen en escritorio) ---
 function ArtModal({ art, onClose }) {
   const [mounted, setMounted] = useState(false);
   const [showProcess, setShowProcess] = useState(false);
@@ -68,12 +67,10 @@ function ArtModal({ art, onClose }) {
         </div>
       )}
 
-      {/* MODAL PRINCIPAL (Scroll único en móvil, Split-Screen en escritorio) */}
       <div
         className="fixed inset-0 z-[9999999] bg-[#070708] w-screen h-[100dvh] overflow-y-auto md:overflow-hidden overscroll-contain hide-scrollbar"
         data-lenis-prevent="true"
       >
-        {/* BOTÓN CERRAR FIJO SIEMPRE ARRIBA A LA DERECHA */}
         <div className="fixed top-5 right-5 md:top-8 md:right-8 z-[10000000]">
           <button
             type="button"
@@ -85,7 +82,6 @@ function ArtModal({ art, onClose }) {
         </div>
 
         <div className="flex flex-col md:flex-row w-full min-h-full md:h-full">
-          {/* PANEL DE INFORMACIÓN (Arriba en móvil, Derecha en escritorio) */}
           <div className="order-1 md:order-2 w-full md:w-[35%] h-auto md:h-full flex flex-col border-b md:border-b-0 md:border-l border-white/10 bg-[#070708] shrink-0">
             <div className="flex-1 flex flex-col justify-center px-6 pt-20 pb-10 md:p-16">
               <div className="mb-4 flex justify-between font-mono-tech text-[9px] uppercase tracking-[0.2em] text-[#52525B]">
@@ -117,12 +113,10 @@ function ArtModal({ art, onClose }) {
             </div>
           </div>
 
-          {/* GALERÍA DE LA OBRA (Abajo en móvil, Izquierda con scroll propio en escritorio) */}
           <div
             className="order-2 md:order-1 w-full md:w-[65%] h-auto md:h-full md:overflow-y-auto hide-scrollbar px-5 py-10 pb-20 md:px-16 md:py-32 flex flex-col items-center justify-start gap-8 md:gap-16"
             data-lenis-prevent="true"
           >
-            {/* IMAGEN PRINCIPAL */}
             <div className="w-full max-w-5xl bg-black p-2 sm:p-3 border border-white/5 shadow-2xl flex items-center justify-center">
               <img
                 src={art.image}
@@ -132,7 +126,6 @@ function ArtModal({ art, onClose }) {
               />
             </div>
 
-            {/* IMÁGENES SECUNDARIAS */}
             {art.gallery &&
               art.gallery.map((imgSrc, index) => (
                 <div
@@ -202,7 +195,6 @@ function ArtModal({ art, onClose }) {
   );
 }
 
-// --- SECCIÓN PRINCIPAL EXPORTADA ---
 export default function FineArtsArchive({ lang = 'es' }) {
   const t = TRANSLATIONS[lang];
   const currentExhibitions = EXHIBITIONS_DATA[lang];

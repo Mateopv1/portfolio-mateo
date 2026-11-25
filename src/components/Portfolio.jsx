@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-// --- IMPORTAMOS NUESTROS COMPONENTES MODULARES ---
 import HeroSection from './portfolio/HeroSection';
 import FeaturedProjects from './portfolio/FeaturedProjects';
 import HybridProfile from './portfolio/HybridProfile';
@@ -10,10 +9,9 @@ import FineArtsArchive from './portfolio/FineArtsArchive';
 
 export default function Portfolio() {
   const [lang, setLang] = useState("es");
-  const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
   const [hoveredColor, setHoveredColor] = useState(null);
+  const spotlightRef = useRef(null);
 
-  // 1. EVENTO GLOBAL: Cambio de idioma
   useEffect(() => {
     const handleLanguageChange = (e) => {
       if (e.detail) setLang(e.detail);
@@ -22,16 +20,37 @@ export default function Portfolio() {
     return () => window.removeEventListener("changeLanguage", handleLanguageChange);
   }, []);
 
-  // 2. EVENTO GLOBAL: Seguir el ratón para la linterna (Spotlight)
   useEffect(() => {
-    const moveCursor = (e) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
+    if (typeof window === "undefined") return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+
+    let rafId = null;
+    let mouseX = -500;
+    let mouseY = -500;
+
+    const updateSpotlight = () => {
+      if (spotlightRef.current) {
+        spotlightRef.current.style.setProperty("--mouse-x", `${mouseX}px`);
+        spotlightRef.current.style.setProperty("--mouse-y", `${mouseY}px`);
+      }
+      rafId = null;
     };
-    window.addEventListener("mousemove", moveCursor);
-    return () => window.removeEventListener("mousemove", moveCursor);
+
+    const moveCursor = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateSpotlight);
+      }
+    };
+
+    window.addEventListener("mousemove", moveCursor, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", moveCursor);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
-  // 3. EVENTO GLOBAL: Animaciones al hacer Scroll (Intersection Observer)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -52,8 +71,7 @@ export default function Portfolio() {
 
   return (
     <main id="top" className="relative bg-[#070708] min-h-screen text-[#F5F5F7] overflow-x-hidden">
-      
-      {/* --- ESTILOS GLOBALES DE ANIMACIÓN CSS --- */}
+
       <style>{`
         .hero-slide-up { display: inline-block; transform: translateY(115%); opacity: 0; transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease; }
         .hero-slide-up.ready { transform: translateY(0%); opacity: 1; }
@@ -70,50 +88,48 @@ export default function Portfolio() {
         .group:hover .magnetic-arrow { transform: translate(4px, -4px) scale(1.08); }
         .svg-draw-live { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: drawVectorLive 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes drawVectorLive { to { stroke-dashoffset: 0; } }
+
+        /* Cuadrícula de fondo: linterna en escritorio, visible automáticamente en móvil/tablet */
+        .spotlight-grid {
+          --mouse-x: -500px;
+          --mouse-y: -500px;
+          background-image:
+            linear-gradient(rgba(245, 245, 247, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(245, 245, 247, 0.08) 1px, transparent 1px);
+          background-size: 40px 40px;
+          -webkit-mask-image: radial-gradient(circle 400px at var(--mouse-x) var(--mouse-y), black 0%, transparent 100%);
+          mask-image: radial-gradient(circle 400px at var(--mouse-x) var(--mouse-y), black 0%, transparent 100%);
+        }
+
+        @media (hover: none), (pointer: coarse) {
+          .spotlight-grid {
+            -webkit-mask-image: radial-gradient(circle 85vw at 50% 45%, black 20%, transparent 100%);
+            mask-image: radial-gradient(circle 85vw at 50% 45%, black 20%, transparent 100%);
+          }
+        }
       `}</style>
 
-      {/* --- EFECTOS GLOBALES DE FONDO --- */}
-      
-      {/* Capa de Brillo/Tinte Global (Se enciende al hacer hover en los proyectos) */}
-      <div 
-        className="fixed inset-0 pointer-events-none transition-colors duration-1000 ease-out z-[5] mix-blend-screen"
-        style={{ backgroundColor: hoveredColor || 'transparent' }}
+      <div
+        ref={spotlightRef}
+        className="spotlight-grid fixed inset-0 pointer-events-none z-[1]"
       />
 
-      {/* Linterna de Cuadrícula (Spotlight Grid que sigue al ratón) */}
-      <div 
-        className="fixed inset-0 pointer-events-none z-[1]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(245, 245, 247, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(245, 245, 247, 0.08) 1px, transparent 1px)`,
-          backgroundSize: '40px 40px',
-          WebkitMaskImage: `radial-gradient(circle 400px at ${cursorPos.x}px ${cursorPos.y}px, black 0%, transparent 100%)`,
-          maskImage: `radial-gradient(circle 400px at ${cursorPos.x}px ${cursorPos.y}px, black 0%, transparent 100%)`,
-        }}
-      />
-
-      {/* --- ENSAMBLAJE DE SECCIONES (LA MAGIA) --- */}
       <div className="relative z-10">
         
-        {/* Sección 0: Portada / Banner */}
         <HeroSection lang={lang} />
         
-        {/* Sección 1: Proyectos de Desarrollo */}
         <FeaturedProjects 
           lang={lang} 
           hoveredColor={hoveredColor} 
           setHoveredColor={setHoveredColor} 
         />
         
-        {/* Sección 2: Diagrama 360º Híbrido */}
         <HybridProfile lang={lang} />
 
-        {/* Cinta de Stack y Tecnologías */}
         <TechMarquee lang={lang} />
 
-        {/* Sección 3: Arquitectura de Marca (Luarcacom) */}
         <BrandArchitecture />
 
-        {/* Sección 4: Archivo de Bellas Artes */}
         <FineArtsArchive lang={lang} />
 
       </div>
