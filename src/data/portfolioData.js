@@ -93,7 +93,7 @@ export const FEATURED_PROJECTS_DATA = {
       disciplineTag: "REACT / PYTHON / IA & APOLLO.IO",
       index: "01",
       gridSpan: "full",
-      image: "/portfolio/proyectos/aratech/portada.jpg",
+      image: "/portfolio/proyectos/aratech/portada.webp",
       dimensions: "AUTOMATIZACIÓN COMERCIAL // FULL-STACK",
       year: "2026",
       brandColor: "rgba(139, 92, 246, 0.09)",
@@ -105,12 +105,12 @@ export const FEATURED_PROJECTS_DATA = {
       challenge: "El equipo comercial necesitaba detectar automáticamente nuevas vacantes en portales como LinkedIn e InfoJobs por sector (Tech, Legal, Banca), normalizar los datos sin duplicados e identificar a los responsables de contratación (HR Managers, Hiring Managers) para acelerar el primer contacto.",
       solution: "Se construyó una plataforma full-stack con backend en Python (captura programada, clasificación con IA y enriquecimiento vía API de Apollo.io) y un panel modular en React con servicios desacoplados para vacantes, empresas, candidatos, clientes, autenticación y chat IA. Desde la interfaz, el equipo revisa vacantes, edita notas de LinkedIn y borradores de email generados por IA y gestiona el estado de seguimiento.",
       gallery: [
-        { src: "/portfolio/proyectos/aratech/una.jpg", caption: "DASHBOARD PRINCIPAL // MÉTRICAS Y SCRAPERS" },
-        { src: "/portfolio/proyectos/aratech/dos.jpg", caption: "MODAL DE VACANTE // ENRIQUECIMIENTO APOLLO.IO" },
-        { src: "/portfolio/proyectos/aratech/tres.jpg", caption: "PANEL DE CUENTA // PREFERENCIAS E INTEGRACIONES" },
-        { src: "/portfolio/proyectos/aratech/cuatro.jpg", caption: "ACCESO // PANTALLA DE LOGIN CORPORATIVO" },
-        { src: "/portfolio/proyectos/aratech/seis.jpg", caption: "MOBILE-FIRST // LISTADO Y FILTROS DE CANDIDATOS" },
-        { src: "/portfolio/proyectos/aratech/cinco.jpg", caption: "MOBILE-FIRST // MENÚ DE NAVEGACIÓN LATERAL" }
+        { src: "/portfolio/proyectos/aratech/una.webp", caption: "DASHBOARD PRINCIPAL // MÉTRICAS Y SCRAPERS" },
+        { src: "/portfolio/proyectos/aratech/dos.webp", caption: "MODAL DE VACANTE // ENRIQUECIMIENTO APOLLO.IO" },
+        { src: "/portfolio/proyectos/aratech/tres.webp", caption: "PANEL DE CUENTA // PREFERENCIAS E INTEGRACIONES" },
+        { src: "/portfolio/proyectos/aratech/cuatro.webp", caption: "ACCESO // PANTALLA DE LOGIN CORPORATIVO" },
+        { src: "/portfolio/proyectos/aratech/seis.webp", caption: "MOBILE-FIRST // LISTADO Y FILTROS DE CANDIDATOS" },
+        { src: "/portfolio/proyectos/aratech/cinco.webp", caption: "MOBILE-FIRST // MENÚ DE NAVEGACIÓN LATERAL" }
       ]
     },
     {
@@ -123,7 +123,7 @@ export const FEATURED_PROJECTS_DATA = {
       disciplineTag: "JOOMLA / HTML5 & CSS3 / SEO",
       index: "02",
       gridSpan: "left-wide",
-      image: "/portfolio/proyectos/luarcacom/portada.jpg",
+      image: "/portfolio/proyectos/luarcacom/portada.webp",
       dimensions: "CMS A MEDIDA // MOBILE-FIRST",
       year: "2023—ACTUALIDAD",
       brandColor: "rgba(16, 185, 129, 0.09)",
@@ -135,15 +135,15 @@ export const FEATURED_PROJECTS_DATA = {
       challenge: "Cada cliente requería una identidad digital diferenciada y autogestionable sin sacrificar velocidad de carga, adaptabilidad móvil ni capacidad de posicionamiento en buscadores.",
       solution: "Se desarrollaron sitios web a medida principalmente sobre Joomla (complementado con CSS3/HTML5 personalizado), estructurando cada proyecto desde cero para maximizar la conversión, el rendimiento en móvil y la indexación orgánica (SEO) junto a campañas SEM.",
       gallery: [
-        { src: "/portfolio/proyectos/luarcacom/cinco.png", caption: "WEB CORPORATIVA // ARQUITECTURA DESKTOP" },
-        { src: "/portfolio/proyectos/luarcacom/seis.png", caption: "SISTEMA VISUAL // ESTRUCTURA DE CONTENIDOS" },
-        { src: "/portfolio/proyectos/luarcacom/dos.png", caption: "DISEÑO A MEDIDA // CONVERSIÓN Y SERVICIOS" },
-        { src: "/portfolio/proyectos/luarcacom/cuatro.png", caption: "CMS JOOMLA // MAQUETACIÓN PERSONALIZADA" },
-        { src: "/portfolio/proyectos/luarcacom/tres.png", caption: "INTERFAZ // JERARQUÍA Y LEGIBILIDAD" },
-        { src: "/portfolio/proyectos/luarcacom/siete.png", caption: "OPTIMIZACIÓN // PERFORMANCE Y SEO ON-PAGE" },
-        { src: "/portfolio/proyectos/luarcacom/unojf.jpg", caption: "PROYECTO CLIENTE // PORTADA Y BRANDING" },
-        { src: "/portfolio/proyectos/luarcacom/dosch.jpg", caption: "PROYECTO CLIENTE // CATÁLOGO Y DETALLE" },
-        { src: "/portfolio/proyectos/luarcacom/tresch.jpg", caption: "PROYECTO CLIENTE // ADAPTACIÓN VISUAL" }
+        { src: "/portfolio/proyectos/luarcacom/cinco.webp", caption: "WEB CORPORATIVA // ARQUITECTURA DESKTOP" },
+        { src: "/portfolio/proyectos/luarcacom/seis.webp", caption: "SISTEMA VISUAL // ESTRUCTURA DE CONTENIDOS" },
+        { src: "/portfolio/proyectos/luarcacom/dos.webp", caption: "DISEÑO A MEDIDA // CONVERSIÓN Y SERVICIOS" },
+        { src: "/portfolio/proyectos/luarcacom/cuatro.webp", caption: "CMS JOOMLA // MAQUETACIÓN PERSONALIZADA" },
+        { src: "/portfolio/proyectos/luarcacom/tres.webp", caption: "INTERFAZ // JERARQUÍA Y LEGIBILIDAD" },
+        { src: "/portfolio/proyectos/luarcacom/siete.webp", caption: "OPTIMIZACIÓN // PERFORMANCE Y SEO ON-PAGE" },
+        { src: "/portfolio/proyectos/luarcacom/unojf.webp", caption: "PROYECTO CLIENTE // PORTADA Y BRANDING" },
+        { src: "/portfolio/proyectos/luarcacom/dosch.webp", caption: "PROYECTO CLIENTE // CATÁLOGO Y DETALLE" },
+        { src: "/portfolio/proyectos/luarcacom/tresch.webp", caption: "PROYECTO CLIENTE // ADAPTACIÓN VISUAL" }
       ]
     },
     {
@@ -156,7 +156,7 @@ export const FEATURED_PROJECTS_DATA = {
       disciplineTag: "UX RESEARCH / UI DESIGN / ADOBE XD",
       index: "03",
       gridSpan: "right-narrow",
-      image: "/portfolio/proyectos/tfm/portada.jpg",
+      image: "/portfolio/proyectos/tfm/portada.webp",
       dimensions: "DISEÑO CENTRADO EN EL USUARIO // APP",
       year: "2022",
       brandColor: "rgba(52, 39, 123, 0.14)",
@@ -168,10 +168,10 @@ export const FEATURED_PROJECTS_DATA = {
       challenge: "Con la saturación vehicular de Quito y un sistema 'Pico y Placa' cada vez menos efectivo, el 62,6% de los encuestados valoraba negativamente el transporte público por falta de horarios fiables, desorganización e inseguridad. El reto era unificar autobús, taxi y bicicleta pública en una app clara y sin fricción.",
       solution: "Bajo metodología de Diseño Centrado en el Usuario (benchmarking de 6 apps, encuestas, personas, arquitectura jerárquica, wireframes y test con usuarios), se diseñó UNOW desde cero: identidad visual, set de iconos sobre retícula y prototipo en Adobe XD con seguimiento GPS en vivo, rutas multimodales y denuncias anónimas por código QR.",
       gallery: [
-        { src: "/portfolio/proyectos/tfm/wireframes-flujo.jpg", caption: "UX RESEARCH // WIREFRAMES Y FLUJO DE USUARIO" },
-        { src: "/portfolio/proyectos/tfm/sistema-visual-iconos.jpg", caption: "UI DESIGN // SISTEMA VISUAL E ICONOGRAFÍA" },
-        { src: "/portfolio/proyectos/tfm/ui-rutas-gps.jpg", caption: "PROTOTIPO // RUTAS Y SEGUIMIENTO GPS EN VIVO" },
-        { src: "/portfolio/proyectos/tfm/ui-multimodal-qr.jpg", caption: "FUNCIONALIDADES // MULTIMODAL Y DENUNCIAS QR" }
+        { src: "/portfolio/proyectos/tfm/wireframes-flujo.webp", caption: "UX RESEARCH // WIREFRAMES Y FLUJO DE USUARIO" },
+        { src: "/portfolio/proyectos/tfm/sistema-visual-iconos.webp", caption: "UI DESIGN // SISTEMA VISUAL E ICONOGRAFÍA" },
+        { src: "/portfolio/proyectos/tfm/ui-rutas-gps.webp", caption: "PROTOTIPO // RUTAS Y SEGUIMIENTO GPS EN VIVO" },
+        { src: "/portfolio/proyectos/tfm/ui-multimodal-qr.webp", caption: "FUNCIONALIDADES // MULTIMODAL Y DENUNCIAS QR" }
       ]
     },
     {
@@ -184,7 +184,7 @@ export const FEATURED_PROJECTS_DATA = {
       disciplineTag: "ANGULAR 17+ / DJANGO REST / DOCKER",
       index: "04",
       gridSpan: "left-narrow",
-      image: "/portfolio/proyectos/tfc/portada.jpg",
+      image: "/portfolio/proyectos/tfc/portada.webp",
       dimensions: "FULL-STACK SPA // ARQUITECTURA DESACOPLADA",
       year: "2026",
       brandColor: "rgba(243, 146, 0, 0.12)",
@@ -197,12 +197,12 @@ export const FEATURED_PROJECTS_DATA = {
       solution: "Se diseñó la identidad visual y el prototipo responsive en Figma y se desarrolló una arquitectura cliente-servidor desacoplada: SPA en Angular 17+ (Standalone Components, Signals, Route Guards e interceptores HTTP) conectada a una API REST en Django con autenticación JWT, verificación por email, hash PBKDF2-SHA256 y base de datos PostgreSQL normalizada en contenedores Docker.",
       repoUrl: "https://github.com/an-vila/Qubby",
       gallery: [
-        { src: "/portfolio/proyectos/tfc/qubby1.jpg", caption: "BRANDING // LOGOTIPO ISOMÉTRICO Y PALETA" },
-        { src: "/portfolio/proyectos/tfc/qubby2.png", caption: "UX/UI // SISTEMA DE PANTALLAS EN FIGMA" },
-        { src: "/portfolio/proyectos/tfc/qubby3.png", caption: "MOBILE-FIRST // ESCÁNER QR Y NAVEGACIÓN" },
-        { src: "/portfolio/proyectos/tfc/qubby4.png", caption: "FORMULARIO // ALTA DE OBJETOS Y ETIQUETAS" },
-        { src: "/portfolio/proyectos/tfc/qubby5.png", caption: "DETALLE // FICHA TÉCNICA Y ESTADO DEL ÍTEM" },
-        { src: "/portfolio/proyectos/tfc/qubby6.png", caption: "DESKTOP // LISTADO DE OBJETOS POR CAJA" }
+        { src: "/portfolio/proyectos/tfc/qubby1.webp", caption: "BRANDING // LOGOTIPO ISOMÉTRICO Y PALETA" },
+        { src: "/portfolio/proyectos/tfc/qubby2.webp", caption: "UX/UI // SISTEMA DE PANTALLAS EN FIGMA" },
+        { src: "/portfolio/proyectos/tfc/qubby3.webp", caption: "MOBILE-FIRST // ESCÁNER QR Y NAVEGACIÓN" },
+        { src: "/portfolio/proyectos/tfc/qubby4.webp", caption: "FORMULARIO // ALTA DE OBJETOS Y ETIQUETAS" },
+        { src: "/portfolio/proyectos/tfc/qubby5.webp", caption: "DETALLE // FICHA TÉCNICA Y ESTADO DEL ÍTEM" },
+        { src: "/portfolio/proyectos/tfc/qubby6.webp", caption: "DESKTOP // LISTADO DE OBJETOS POR CAJA" }
       ]
     },
     {
@@ -215,7 +215,7 @@ export const FEATURED_PROJECTS_DATA = {
       disciplineTag: "BRANDING / ICONOGRAFÍA / ADOBE CC",
       index: "05",
       gridSpan: "right-wide",
-      image: "/portfolio/proyectos/lapila/portada.jpg",
+      image: "/portfolio/proyectos/lapila/portada.webp",
       dimensions: "DISEÑO SOSTENIBLE // PRINT & DIGITAL",
       year: "2022",
       brandColor: "rgba(16, 185, 129, 0.09)",
@@ -227,11 +227,11 @@ export const FEATURED_PROJECTS_DATA = {
       challenge: "Traducir la filosofía de diseño estratégico y sostenible del estudio a proyectos locales con necesidades muy diversas —turismo rural, transporte y servicios— manteniendo coherencia gráfica entre soportes impresos, señalética y canales digitales.",
       solution: "Para 'Flora & Fauna — Casa de Aldea' se diseñó un calendario perpetuo promocional, un sistema modular de miniaturas e iconos para el feed de Instagram, retoque fotográfico web, un contrato interactivo y la vectorización técnica de la placa oficial de Casa de Aldea. Además, se colaboró en la iconografía y panelado de una estación de servicio y en papelería corporativa.",
       gallery: [
-        { src: "/portfolio/proyectos/lapila/pila1.png", caption: "FLORA & FAUNA // CALENDARIO PERPETUO Y QR" },
-        { src: "/portfolio/proyectos/lapila/pila3.png", caption: "FLORA & FAUNA // PAPELERÍA Y FIRMA DE CORREO" },
-        { src: "/portfolio/proyectos/lapila/pila4.png", caption: "SOCIAL MEDIA & VECTOR // FEED IG Y PLACA CASA DE ALDEA" },
-        { src: "/portfolio/proyectos/lapila/pila2.png", caption: "TURITAXI CUIDEIRU // TARJETA Y FIRMA CORPORATIVA" },
-        { src: "/portfolio/proyectos/lapila/pila5.png", caption: "GRUPO URO // ICONOGRAFÍA Y SEÑALÉTICA ÁREA DE SERVICIO" }
+        { src: "/portfolio/proyectos/lapila/pila1.webp", caption: "FLORA & FAUNA // CALENDARIO PERPETUO Y QR" },
+        { src: "/portfolio/proyectos/lapila/pila3.webp", caption: "FLORA & FAUNA // PAPELERÍA Y FIRMA DE CORREO" },
+        { src: "/portfolio/proyectos/lapila/pila4.webp", caption: "SOCIAL MEDIA & VECTOR // FEED IG Y PLACA CASA DE ALDEA" },
+        { src: "/portfolio/proyectos/lapila/pila2.webp", caption: "TURITAXI CUIDEIRU // TARJETA Y FIRMA CORPORATIVA" },
+        { src: "/portfolio/proyectos/lapila/pila5.webp", caption: "GRUPO URO // ICONOGRAFÍA Y SEÑALÉTICA ÁREA DE SERVICIO" }
       ]
     }
   ],
@@ -246,7 +246,7 @@ export const FEATURED_PROJECTS_DATA = {
       disciplineTag: "REACT / PYTHON / AI & APOLLO.IO",
       index: "01",
       gridSpan: "full",
-      image: "/portfolio/proyectos/aratech/portada.jpg",
+      image: "/portfolio/proyectos/aratech/portada.webp",
       dimensions: "SALES AUTOMATION // FULL-STACK",
       year: "2026",
       brandColor: "rgba(139, 92, 246, 0.09)",
@@ -258,12 +258,12 @@ export const FEATURED_PROJECTS_DATA = {
       challenge: "The sales team needed to automatically detect new job postings across LinkedIn and InfoJobs by vertical (Tech, Legal, Banking), normalize records without duplicates, and pinpoint key hiring decision-makers to speed up outbound prospecting.",
       solution: "Built a full-stack platform pairing a Python backend (scheduled vacancy capture, AI classification, and Apollo.io API enrichment) with a modular React dashboard featuring dedicated services for vacancies, companies, candidates, clients, authentication, and AI chat. Sales reps can review leads, edit AI-generated LinkedIn notes and cold email drafts, and track pipeline status in one place.",
       gallery: [
-        { src: "/portfolio/proyectos/aratech/una.jpg", caption: "MAIN DASHBOARD // METRICS & SCRAPERS" },
-        { src: "/portfolio/proyectos/aratech/dos.jpg", caption: "VACANCY MODAL // APOLLO.IO ENRICHMENT" },
-        { src: "/portfolio/proyectos/aratech/tres.jpg", caption: "ACCOUNT SETTINGS // INTEGRATIONS & PROFILE" },
-        { src: "/portfolio/proyectos/aratech/cuatro.jpg", caption: "AUTHENTICATION // CORPORATE LOGIN SCREEN" },
-        { src: "/portfolio/proyectos/aratech/seis.jpg", caption: "MOBILE-FIRST // CANDIDATE LIST & FILTERS" },
-        { src: "/portfolio/proyectos/aratech/cinco.jpg", caption: "MOBILE-FIRST // SIDE NAVIGATION DRAWER" }
+        { src: "/portfolio/proyectos/aratech/una.webp", caption: "MAIN DASHBOARD // METRICS & SCRAPERS" },
+        { src: "/portfolio/proyectos/aratech/dos.webp", caption: "VACANCY MODAL // APOLLO.IO ENRICHMENT" },
+        { src: "/portfolio/proyectos/aratech/tres.webp", caption: "ACCOUNT SETTINGS // INTEGRATIONS & PROFILE" },
+        { src: "/portfolio/proyectos/aratech/cuatro.webp", caption: "AUTHENTICATION // CORPORATE LOGIN SCREEN" },
+        { src: "/portfolio/proyectos/aratech/seis.webp", caption: "MOBILE-FIRST // CANDIDATE LIST & FILTERS" },
+        { src: "/portfolio/proyectos/aratech/cinco.webp", caption: "MOBILE-FIRST // SIDE NAVIGATION DRAWER" }
       ]
     },
     {
@@ -276,7 +276,7 @@ export const FEATURED_PROJECTS_DATA = {
       disciplineTag: "JOOMLA / HTML5 & CSS3 / SEO",
       index: "02",
       gridSpan: "left-wide",
-      image: "/portfolio/proyectos/luarcacom/portada.jpg",
+      image: "/portfolio/proyectos/luarcacom/portada.webp",
       dimensions: "CUSTOM CMS // MOBILE-FIRST",
       year: "2023—PRESENT",
       brandColor: "rgba(16, 185, 129, 0.09)",
@@ -287,16 +287,16 @@ export const FEATURED_PROJECTS_DATA = {
       ],
       challenge: "Each client needed a tailored, easy-to-manage corporate website without compromising loading speed, mobile responsiveness, or search engine visibility.",
       solution: "Built custom websites primarily on Joomla with tailored HTML5/CSS3 styling, crafting bespoke visual hierarchies engineered for user retention, Mobile-First performance, organic SEO, and SEM campaigns.",
-     gallery: [
-        { src: "/portfolio/proyectos/luarcacom/cinco.png", caption: "WEB CORPORATIVA // ARQUITECTURA DESKTOP", scrollable: true },
-        { src: "/portfolio/proyectos/luarcacom/seis.png", caption: "SISTEMA VISUAL // ESTRUCTURA DE CONTENIDOS", scrollable: true },
-        { src: "/portfolio/proyectos/luarcacom/dos.png", caption: "DISEÑO A MEDIDA // CONVERSIÓN Y SERVICIOS", scrollable: true },
-        { src: "/portfolio/proyectos/luarcacom/cuatro.png", caption: "CMS JOOMLA // MAQUETACIÓN PERSONALIZADA", scrollable: true },
-        { src: "/portfolio/proyectos/luarcacom/tres.png", caption: "INTERFAZ // JERARQUÍA Y LEGIBILIDAD", scrollable: true },
-        { src: "/portfolio/proyectos/luarcacom/siete.png", caption: "OPTIMIZACIÓN // PERFORMANCE Y SEO ON-PAGE", scrollable: true },
-        { src: "/portfolio/proyectos/luarcacom/unojf.jpg", caption: "PROYECTO CLIENTE // PORTADA Y BRANDING", scrollable: true },
-        { src: "/portfolio/proyectos/luarcacom/dosch.jpg", caption: "PROYECTO CLIENTE // CATÁLOGO Y DETALLE", scrollable: true },
-        { src: "/portfolio/proyectos/luarcacom/tresch.jpg", caption: "PROYECTO CLIENTE // ADAPTACIÓN VISUAL", scrollable: true }
+      gallery: [
+        { src: "/portfolio/proyectos/luarcacom/cinco.webp", caption: "WEB CORPORATIVA // ARQUITECTURA DESKTOP", scrollable: true },
+        { src: "/portfolio/proyectos/luarcacom/seis.webp", caption: "SISTEMA VISUAL // ESTRUCTURA DE CONTENIDOS", scrollable: true },
+        { src: "/portfolio/proyectos/luarcacom/dos.webp", caption: "DISEÑO A MEDIDA // CONVERSIÓN Y SERVICIOS", scrollable: true },
+        { src: "/portfolio/proyectos/luarcacom/cuatro.webp", caption: "CMS JOOMLA // MAQUETACIÓN PERSONALIZADA", scrollable: true },
+        { src: "/portfolio/proyectos/luarcacom/tres.webp", caption: "INTERFAZ // JERARQUÍA Y LEGIBILIDAD", scrollable: true },
+        { src: "/portfolio/proyectos/luarcacom/siete.webp", caption: "OPTIMIZACIÓN // PERFORMANCE Y SEO ON-PAGE", scrollable: true },
+        { src: "/portfolio/proyectos/luarcacom/unojf.webp", caption: "PROYECTO CLIENTE // PORTADA Y BRANDING", scrollable: true },
+        { src: "/portfolio/proyectos/luarcacom/dosch.webp", caption: "PROYECTO CLIENTE // CATÁLOGO Y DETALLE", scrollable: true },
+        { src: "/portfolio/proyectos/luarcacom/tresch.webp", caption: "PROYECTO CLIENTE // ADAPTACIÓN VISUAL", scrollable: true }
       ]
     },
     {
@@ -309,7 +309,7 @@ export const FEATURED_PROJECTS_DATA = {
       disciplineTag: "UX RESEARCH / UI DESIGN / ADOBE XD",
       index: "03",
       gridSpan: "right-narrow",
-      image: "/portfolio/proyectos/tfm/portada.jpg",
+      image: "/portfolio/proyectos/tfm/portada.webp",
       dimensions: "USER-CENTERED DESIGN // MOBILE APP",
       year: "2022",
       brandColor: "rgba(52, 39, 123, 0.14)",
@@ -321,10 +321,10 @@ export const FEATURED_PROJECTS_DATA = {
       challenge: "Amid severe traffic congestion in Quito and an increasingly ineffective 'Pico y Placa' restriction, 62.6% of surveyed commuters rated public transit poorly due to unreliable schedules, disorganization, and safety concerns. The goal was to unify bus, taxi, and public bike services into one clear, frictionless interface.",
       solution: "Following a User-Centered Design process (6-app benchmarking, user surveys, personas, hierarchical IA, low-fi wireframes, and usability testing), UNOW was built from scratch: brand identity, grid-based custom iconography, and an Adobe XD prototype featuring live GPS tracking, multimodal routing, and anonymous QR incident reporting.",
       gallery: [
-        { src: "/portfolio/proyectos/tfm/wireframes-flujo.jpg", caption: "UX RESEARCH // WIREFRAMES & USER FLOW" },
-        { src: "/portfolio/proyectos/tfm/sistema-visual-iconos.jpg", caption: "UI DESIGN // VISUAL SYSTEM & ICONOGRAPHY" },
-        { src: "/portfolio/proyectos/tfm/ui-rutas-gps.jpg", caption: "PROTOTYPE // LIVE GPS ROUTING" },
-        { src: "/portfolio/proyectos/tfm/ui-multimodal-qr.jpg", caption: "FEATURES // MULTIMODAL & QR REPORTING" }
+        { src: "/portfolio/proyectos/tfm/wireframes-flujo.webp", caption: "UX RESEARCH // WIREFRAMES & USER FLOW" },
+        { src: "/portfolio/proyectos/tfm/sistema-visual-iconos.webp", caption: "UI DESIGN // VISUAL SYSTEM & ICONOGRAPHY" },
+        { src: "/portfolio/proyectos/tfm/ui-rutas-gps.webp", caption: "PROTOTYPE // LIVE GPS ROUTING" },
+        { src: "/portfolio/proyectos/tfm/ui-multimodal-qr.webp", caption: "FEATURES // MULTIMODAL & QR REPORTING" }
       ]
     },
     {
@@ -337,7 +337,7 @@ export const FEATURED_PROJECTS_DATA = {
       disciplineTag: "ANGULAR 17+ / DJANGO REST / DOCKER",
       index: "04",
       gridSpan: "left-narrow",
-      image: "/portfolio/proyectos/tfc/portada.jpg",
+      image: "/portfolio/proyectos/tfc/portada.webp",
       dimensions: "FULL-STACK SPA // DECOUPLED ARCHITECTURE",
       year: "2026",
       brandColor: "rgba(243, 146, 0, 0.12)",
@@ -348,14 +348,14 @@ export const FEATURED_PROJECTS_DATA = {
       ],
       challenge: "Turning cluttered spaces (moves, storage rooms, or workshops) into an intuitive digital inventory accessible to any user profile—enabling instant box lookup via free printable QR codes without opening containers.",
       solution: "Designed the visual identity and responsive UI in Figma, then engineered a decoupled client-server architecture: an Angular 17+ SPA (Standalone Components, Signals, Route Guards, and HTTP interceptors) consuming a Django REST API with JWT authentication, email verification, PBKDF2-SHA256 hashing, and a normalized PostgreSQL database running in Docker.",
-  repoUrl: "https://github.com/an-vila/Qubby",
+      repoUrl: "https://github.com/an-vila/Qubby",
       gallery: [
-        { src: "/portfolio/proyectos/tfc/qubby1.jpg", caption: "BRANDING // LOGOTIPO ISOMÉTRICO Y PALETA" },
-        { src: "/portfolio/proyectos/tfc/qubby2.png", caption: "UX/UI // SISTEMA DE PANTALLAS EN FIGMA" },
-        { src: "/portfolio/proyectos/tfc/qubby3.png", caption: "MOBILE-FIRST // ESCÁNER QR Y NAVEGACIÓN" },
-        { src: "/portfolio/proyectos/tfc/qubby4.png", caption: "FORMULARIO // ALTA DE OBJETOS Y ETIQUETAS" },
-        { src: "/portfolio/proyectos/tfc/qubby5.png", caption: "DETALLE // FICHA TÉCNICA Y ESTADO DEL ÍTEM" },
-        { src: "/portfolio/proyectos/tfc/qubby6.png", caption: "DESKTOP // LISTADO DE OBJETOS POR CAJA" }
+        { src: "/portfolio/proyectos/tfc/qubby1.webp", caption: "BRANDING // LOGOTIPO ISOMÉTRICO Y PALETA" },
+        { src: "/portfolio/proyectos/tfc/qubby2.webp", caption: "UX/UI // SISTEMA DE PANTALLAS EN FIGMA" },
+        { src: "/portfolio/proyectos/tfc/qubby3.webp", caption: "MOBILE-FIRST // ESCÁNER QR Y NAVEGACIÓN" },
+        { src: "/portfolio/proyectos/tfc/qubby4.webp", caption: "FORMULARIO // ALTA DE OBJETOS Y ETIQUETAS" },
+        { src: "/portfolio/proyectos/tfc/qubby5.webp", caption: "DETALLE // FICHA TÉCNICA Y ESTADO DEL ÍTEM" },
+        { src: "/portfolio/proyectos/tfc/qubby6.webp", caption: "DESKTOP // LISTADO DE OBJETOS POR CAJA" }
       ]
     },
     {
@@ -368,7 +368,7 @@ export const FEATURED_PROJECTS_DATA = {
       disciplineTag: "BRANDING / ICONOGRAPHY / ADOBE CC",
       index: "05",
       gridSpan: "right-wide",
-      image: "/portfolio/proyectos/lapila/portada.jpg",
+      image: "/portfolio/proyectos/lapila/portada.webp",
       dimensions: "SUSTAINABLE DESIGN // PRINT & DIGITAL",
       year: "2022",
       brandColor: "rgba(16, 185, 129, 0.09)",
@@ -380,11 +380,11 @@ export const FEATURED_PROJECTS_DATA = {
       challenge: "Translating the studio's strategic and sustainable design ethos into diverse local client projects—rural hospitality, transport, and retail—while maintaining visual consistency across print, signage, and digital touchpoints.",
       solution: "Created a promotional perpetual calendar, a modular icon grid for Instagram, web photo retouching, an interactive contract, and a precision vectorization of the official 'Casa de Aldea' plaque for Flora & Fauna. Also contributed custom iconography and signage concepts for a service station alongside corporate stationery.",
       gallery: [
-        { src: "/portfolio/proyectos/lapila/pila1.png", caption: "FLORA & FAUNA // PERPETUAL CALENDAR & QR" },
-        { src: "/portfolio/proyectos/lapila/pila3.png", caption: "FLORA & FAUNA // STATIONERY & EMAIL SIGNATURE" },
-        { src: "/portfolio/proyectos/lapila/pila4.png", caption: "SOCIAL & VECTOR // IG GRID & OFFICIAL PLAQUE" },
-        { src: "/portfolio/proyectos/lapila/pila2.png", caption: "TURITAXI CUIDEIRU // BUSINESS CARD & EMAIL SIGNATURE" },
-        { src: "/portfolio/proyectos/lapila/pila5.png", caption: "GRUPO URO // ICONOGRAPHY & SERVICE STATION SIGNAGE" }
+        { src: "/portfolio/proyectos/lapila/pila1.webp", caption: "FLORA & FAUNA // PERPETUAL CALENDAR & QR" },
+        { src: "/portfolio/proyectos/lapila/pila3.webp", caption: "FLORA & FAUNA // STATIONERY & EMAIL SIGNATURE" },
+        { src: "/portfolio/proyectos/lapila/pila4.webp", caption: "SOCIAL & VECTOR // IG GRID & OFFICIAL PLAQUE" },
+        { src: "/portfolio/proyectos/lapila/pila2.webp", caption: "TURITAXI CUIDEIRU // BUSINESS CARD & EMAIL SIGNATURE" },
+        { src: "/portfolio/proyectos/lapila/pila5.webp", caption: "GRUPO URO // ICONOGRAPHY & SERVICE STATION SIGNAGE" }
       ]
     }
   ]
@@ -452,24 +452,25 @@ export const FINE_ART_PLATES = [
     medium: "Óleo sobre tabla (DM) y bocetos a lápiz",
     dimensions: "100 × 80 CM / 100 × 70 CM",
     edition: "SERIE EXPOSITIVA (OBRAS EN PROCESO)",
-    image: "/portfolio/ilustraciones/tfg/8.jpg",
+    image: "/portfolio/ilustraciones/tfg/8.webp",
     gallery: [
-      "/portfolio/ilustraciones/tfg/3.jpg",
-      "/portfolio/ilustraciones/tfg/1.jpg"
+      "/portfolio/ilustraciones/tfg/3.webp",
+      "/portfolio/ilustraciones/tfg/1.webp"
     ],
     processGallery: [
-      "/portfolio/ilustraciones/tfg/10.jpg",
-      "/portfolio/ilustraciones/tfg/2.jpg",
-      "/portfolio/ilustraciones/tfg/9.jpg",
-      "/portfolio/ilustraciones/tfg/4.jpg",
-      "/portfolio/ilustraciones/tfg/5.jpg",
-      "/portfolio/ilustraciones/tfg/6.jpg",
-      "/portfolio/ilustraciones/tfg/7.jpg",
-      "/portfolio/ilustraciones/tfg/11.jpg",
-      "/portfolio/ilustraciones/tfg/12.jpg",
-      "/portfolio/ilustraciones/tfg/13.jpg",
-      "/portfolio/ilustraciones/tfg/14.jpg",
-      "/portfolio/ilustraciones/tfg/15.png"
+      "/portfolio/ilustraciones/tfg/10.webp",
+      "/portfolio/ilustraciones/tfg/2.webp",
+      "/portfolio/ilustraciones/tfg/9.webp",
+      "/portfolio/ilustraciones/tfg/4.webp",
+      "/portfolio/ilustraciones/tfg/5.webp",
+      "/portfolio/ilustraciones/tfg/6.webp",
+      "/portfolio/ilustraciones/tfg/7.webp",
+      "/portfolio/ilustraciones/tfg/11.webp",
+      "/portfolio/ilustraciones/tfg/12.webp",
+      "/portfolio/ilustraciones/tfg/13.webp",
+      "/portfolio/ilustraciones/tfg/14.webp",
+      "/portfolio/ilustraciones/tfg/15.webp",
+      "/portfolio/ilustraciones/tfg/16.webp"
     ],
     description: "Proyecto expositivo de Trabajo de Fin de Grado en Bellas Artes (USAL) concebido como homenaje a las madres e hijos/as del centro de acogida 'Ave María' de Salamanca (las obras mostradas corresponden a piezas en proceso no terminadas en su totalidad debido a las limitaciones del contexto de pandemia). Lejos de idealizar la maternidad, la serie busca inmortalizar la trascendencia del vínculo afectivo mediante el retrato psicológico. Construidas a base de pincelada gestual, manchas y una paleta cálida inspirada en la luz del atardecer, las piezas concentran el detalle expresivo en los rostros y las miradas —siguiendo referentes como Domenico Ghirlandaio y Amanda Greavette— a partir de sesiones fotográficas, composición digital y bocetos previos al grafito."
   },
@@ -481,17 +482,17 @@ export const FINE_ART_PLATES = [
     medium: "Adobe Illustrator & Composición Geométrica Digital",
     dimensions: "4000 × 5000 PX",
     edition: "SERIE DIGITAL",
-    image: "/portfolio/ilustraciones/ilustracion-dibu/ocho.jpg",
+    image: "/portfolio/ilustraciones/ilustracion-dibu/ocho.webp",
     gallery: [
-      "/portfolio/ilustraciones/ilustracion-dibu/uno.jpg",
-      "/portfolio/ilustraciones/ilustracion-dibu/dos.jpg",
-      "/portfolio/ilustraciones/ilustracion-dibu/tres.jpg"
+      "/portfolio/ilustraciones/ilustracion-dibu/uno.webp",
+      "/portfolio/ilustraciones/ilustracion-dibu/dos.webp",
+      "/portfolio/ilustraciones/ilustracion-dibu/tres.webp"
     ],
     processGallery: [
-      "/portfolio/ilustraciones/ilustracion-dibu/cuatro.jpg",
-      "/portfolio/ilustraciones/ilustracion-dibu/cinco.jpg",
-      "/portfolio/ilustraciones/ilustracion-dibu/seis.jpg",
-      "/portfolio/ilustraciones/ilustracion-dibu/siete.jpg"
+      "/portfolio/ilustraciones/ilustracion-dibu/cuatro.webp",
+      "/portfolio/ilustraciones/ilustracion-dibu/cinco.webp",
+      "/portfolio/ilustraciones/ilustracion-dibu/seis.webp",
+      "/portfolio/ilustraciones/ilustracion-dibu/siete.webp"
     ],
     description: "Exploración de la geometría pura y el color mediante herramientas digitales. La obra se basa en una retícula matemática estricta para lograr un equilibrio visual perfecto."
   },
@@ -503,16 +504,16 @@ export const FINE_ART_PLATES = [
     medium: "Grafito, carbón prensado y técnica mixta",
     dimensions: "100 × 70 CM",
     edition: "OBRA ORIGINAL",
-    image: "/portfolio/ilustraciones/retratos/cuatro.jpg",
+    image: "/portfolio/ilustraciones/retratos/cuatro.webp",
     gallery: [
-      "/portfolio/ilustraciones/retratos/uno.jpg",
-      "/portfolio/ilustraciones/retratos/dos.jpg",
-      "/portfolio/ilustraciones/retratos/tres.jpg"
+      "/portfolio/ilustraciones/retratos/uno.webp",
+      "/portfolio/ilustraciones/retratos/dos.webp",
+      "/portfolio/ilustraciones/retratos/tres.webp"
     ],
     processGallery: [
-      "/portfolio/ilustraciones/retratos/cinco.jpg",
-      "/portfolio/ilustraciones/retratos/seis.jpg",
-      "/portfolio/ilustraciones/retratos/siete.jpg"
+      "/portfolio/ilustraciones/retratos/cinco.webp",
+      "/portfolio/ilustraciones/retratos/seis.webp",
+      "/portfolio/ilustraciones/retratos/siete.webp"
     ],
     description: "Estudio anatómico enfocado en la tensión muscular y el volumen corporal mediante la técnica de claroscuro clásico, desarrollado durante mi etapa en la USAL."
   },

@@ -22,8 +22,11 @@ const BRAND_PROJECTS = [
     year: "2026",
     span: "lg:col-span-12",
     aspect: "aspect-[4/3] sm:aspect-[16/9] lg:aspect-[16/5.5]",
-    negativoImg: "/portfolio/logos/unonegativo.png",
-    colorImg: "/portfolio/logos/uno.png",
+    logoMaxH: "max-h-[100px] sm:max-h-[155px] lg:max-h-[215px]",
+    width: 861,
+    height: 219,
+    negativoImg: "/portfolio/logos/unonegativo.webp",
+    colorImg: "/portfolio/logos/uno.webp",
     colorLeft: "#28A9E0",
     colorRight: "#3B44B0",
     palette: ["#28A9E0", "#3B44B0"],
@@ -35,8 +38,11 @@ const BRAND_PROJECTS = [
     year: "2025",
     span: "lg:col-span-8",
     aspect: "aspect-[4/3] lg:aspect-[16/10]",
-    negativoImg: "/portfolio/logos/cinconegativo.png",
-    colorImg: "/portfolio/logos/cinco.png",
+    logoMaxH: "max-h-[95px] sm:max-h-[145px] lg:max-h-[195px]",
+    width: 1039,
+    height: 246,
+    negativoImg: "/portfolio/logos/cinconegativo.webp",
+    colorImg: "/portfolio/logos/cinco.webp",
     colorLeft: "#0083B0",
     colorRight: "#39B518",
     palette: ["#0083B0", "#39B518"],
@@ -48,8 +54,11 @@ const BRAND_PROJECTS = [
     year: "2025",
     span: "lg:col-span-4",
     aspect: "aspect-[4/3] lg:aspect-auto lg:h-full",
-    negativoImg: "/portfolio/logos/cuatronegativo.png",
-    colorImg: "/portfolio/logos/cuatro.png",
+    logoMaxH: "max-h-[80px] sm:max-h-[115px] lg:max-h-[140px]",
+    width: 669,
+    height: 253,
+    negativoImg: "/portfolio/logos/cuatronegativo.webp",
+    colorImg: "/portfolio/logos/cuatro.webp",
     colorLeft: "#1D9AD6",
     colorRight: "#1D569B",
     palette: ["#1D9AD6", "#1D569B"],
@@ -61,8 +70,11 @@ const BRAND_PROJECTS = [
     year: "2024",
     span: "lg:col-span-5",
     aspect: "aspect-[4/3]",
-    negativoImg: "/portfolio/logos/dosnegativo.png",
-    colorImg: "/portfolio/logos/dos.png",
+    logoMaxH: "max-h-[80px] sm:max-h-[115px] lg:max-h-[140px]",
+    width: 521,
+    height: 339,
+    negativoImg: "/portfolio/logos/dosnegativo.webp",
+    colorImg: "/portfolio/logos/dos.webp",
     colorLeft: "#9E7652",
     colorRight: "#634229",
     palette: ["#9E7652", "#634229"],
@@ -74,8 +86,11 @@ const BRAND_PROJECTS = [
     year: "2024",
     span: "lg:col-span-7",
     aspect: "aspect-[4/3] lg:aspect-auto lg:h-full",
-    negativoImg: "/portfolio/logos/tresnegativo.png",
-    colorImg: "/portfolio/logos/tres.png",
+    logoMaxH: "max-h-[80px] sm:max-h-[115px] lg:max-h-[140px]",
+    width: 594,
+    height: 308,
+    negativoImg: "/portfolio/logos/tresnegativo.webp",
+    colorImg: "/portfolio/logos/tres.webp",
     colorLeft: "#00713C",
     colorRight: "#006837",
     palette: ["#00713C"],
@@ -173,7 +188,7 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
 
       <div
         className={`absolute left-4 top-4 z-20 font-mono-tech text-[8px] sm:text-[9px] tracking-[0.18em] transition-colors duration-500 ${
-          isActive ? "text-[#070708]/60" : "text-[#52525B]"
+          isActive ? "text-[#070708]/60" : "text-[#A1A1AA]"
         }`}
       >
         ID / {String(index + 1).padStart(2, "0")}
@@ -206,7 +221,11 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
           <img
             src={project.negativoImg}
             alt={`${project.name} negativo`}
-            className={`max-h-[80px] sm:max-h-[115px] lg:max-h-[140px] max-w-full w-auto h-auto object-contain transition-opacity duration-500 ease-out select-none ${
+            width={project.width}
+            height={project.height}
+            loading="lazy"
+            decoding="async"
+            className={`${project.logoMaxH} max-w-full w-auto h-auto object-contain transition-opacity duration-500 ease-out select-none ${
               isActive ? "opacity-0" : "opacity-100"
             }`}
           />
@@ -214,7 +233,11 @@ function BrandLogoCard({ project, index, lang, setHoveredColor }) {
           <img
             src={project.colorImg}
             alt={project.name}
-            className={`absolute max-h-[80px] sm:max-h-[115px] lg:max-h-[140px] max-w-full w-auto h-auto object-contain transition-opacity duration-500 ease-out select-none ${
+            width={project.width}
+            height={project.height}
+            loading="lazy"
+            decoding="async"
+            className={`absolute ${project.logoMaxH} max-w-full w-auto h-auto object-contain transition-opacity duration-500 ease-out select-none ${
               isActive ? "opacity-100" : "opacity-0"
             }`}
           />

@@ -302,7 +302,7 @@ export default function HybridProfile({ lang = 'es' }) {
         {/* COLUMNA DERECHA: ILUSTRACIÓN SIN BORDES CON RESPIRACIÓN SUTIL */}
         <div className="lg:col-span-5 relative w-full min-h-[480px] sm:min-h-[560px] lg:min-h-[640px] overflow-hidden bg-[#070708]">
           <img
-            src="/mateo.png"
+            src="/mateo.webp"
             alt="Mateo Paredes — Ilustración autorretrato"
             loading="lazy"
             decoding="async"
