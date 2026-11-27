@@ -57,13 +57,14 @@ export default function Portfolio() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    const elements = document.querySelectorAll(".scroll-reveal, .draw-border, .scroll-card");
+    const elements = document.querySelectorAll(".scroll-reveal:not(.in-view), .draw-border:not(.in-view), .scroll-card:not(.in-view)");
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
@@ -71,24 +72,7 @@ export default function Portfolio() {
 
   return (
     <main id="top" className="relative bg-[#070708] min-h-screen text-[#F5F5F7] overflow-x-hidden">
-
       <style>{`
-        .hero-slide-up { display: inline-block; transform: translateY(115%); opacity: 0; transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease; }
-        .hero-slide-up.ready { transform: translateY(0%); opacity: 1; }
-        .scroll-reveal { display: inline-block; transform: translateY(105%); opacity: 0; transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease; }
-        .scroll-reveal.in-view { transform: translateY(0%); opacity: 1; }
-        .scroll-card { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease-out, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
-        .scroll-card.in-view { opacity: 1; transform: translateY(0px); }
-        .draw-border { position: relative; }
-        .draw-border::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: rgba(255, 255, 255, 0.14); transform: scaleX(0); transform-origin: left center; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s; }
-        .draw-border.in-view::after { transform: scaleX(1); }
-        .card-zoom-img { transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease !important; }
-        .group:hover .card-zoom-img { transform: scale(1.045) !important; }
-        .magnetic-arrow { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, color 0.25s ease; }
-        .group:hover .magnetic-arrow { transform: translate(4px, -4px) scale(1.08); }
-        .svg-draw-live { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: drawVectorLive 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes drawVectorLive { to { stroke-dashoffset: 0; } }
-
         /* Cuadrícula de fondo: linterna en escritorio, visible automáticamente en móvil/tablet */
         .spotlight-grid {
           --mouse-x: -500px;
@@ -115,25 +99,17 @@ export default function Portfolio() {
       />
 
       <div className="relative z-10">
-        
         <HeroSection lang={lang} />
-        
-        <FeaturedProjects 
-          lang={lang} 
-          hoveredColor={hoveredColor} 
-          setHoveredColor={setHoveredColor} 
+        <FeaturedProjects
+          lang={lang}
+          hoveredColor={hoveredColor}
+          setHoveredColor={setHoveredColor}
         />
-        
         <HybridProfile lang={lang} />
-
         <TechMarquee lang={lang} />
-
         <BrandArchitecture />
-
         <FineArtsArchive lang={lang} />
-
       </div>
-
     </main>
   );
 }

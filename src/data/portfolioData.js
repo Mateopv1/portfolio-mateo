@@ -4,7 +4,7 @@ export const TRANSLATIONS = {
   es: {
     heroMarquee1: "CÓDIGO  FRONT-END  REACT JAVASCRIPT  ",
     heroMarquee2: "DISEÑO  UX/UI  BELLAS ARTES FIGMA  ",
-    roleLocation: "Desarrollador Front-End | Diseñador UX/UI | Marketing Digital\nLuarca / Madrid / Remoto",
+    roleLocation: "Desarrollador Front-End | Diseñador UX/UI | Marketing Digital\nAsturias / Remoto",
     heroBio: "Construyo interfaces digitales donde el rigor del código se encuentra con la dirección de arte. Transformo conceptos complejos en experiencias web precisas, accesibles y diseñadas para convertir.",
     selectedPortfolio: "Portfolio seleccionado\n2017—2026",
     disciplineCross: "Desarrollo Front-End × Diseño UX/UI × Bellas Artes",
@@ -38,12 +38,12 @@ export const TRANSLATIONS = {
     aboutP1: "Empecé pintando retratos al óleo en Salamanca y acabé escribiendo código y diseñando sistemas digitales. Aunque parezcan mundos opuestos, para mí parten del mismo lugar: observar con atención, entender a las personas y cuidar cada detalle.",
     aboutP2: "Ese recorrido me permite abordar cada proyecto desde los dos lados: diseñar una interfaz con intención estética y desarrollarla con código limpio, escalable y pensado para durar.",
     aboutMetaLeft: "FIG 02. AUTORRETRATO // CARBONCILLO DIGITAL",
-    aboutMetaRight: "LUARCA / MADRID / REMOTO",
+    aboutMetaRight: "ASTURIAS / REMOTO",
   },
   en: {
-    heroMarquee1: "CODE  FRONT-END  REACT JAVASCRIPT ✦ ",
+    heroMarquee1: "CODE  FRONT-END  REACT JAVASCRIPT  ",
     heroMarquee2: "DESIGN  UX/UI  FINE ARTS FIGMA  ",
-    roleLocation: "Front-End Developer | UX/UI Designer | Digital Marketing\nLuarca / Madrid / Remote",
+    roleLocation: "Front-End Developer | UX/UI Designer | Digital Marketing\nAsturias / Remote",
     heroBio: "Building digital interfaces where code rigor meets art direction. Turning complex concepts into precise, accessible, and conversion-driven web experiences.",
     selectedPortfolio: "Selected portfolio\n2017—2026",
     disciplineCross: "Front-End Development × UX/UI Design × Fine Arts",
@@ -77,7 +77,7 @@ export const TRANSLATIONS = {
     aboutP1: "I started out painting oil portraits in Salamanca and ended up writing code and designing digital systems. They may look like opposite worlds, yet to me they start from the exact same place: observing closely, understanding people, and caring about every detail.",
     aboutP2: "That path lets me approach every project from both sides: designing an interface with visual intent and building it with clean, scalable code made to last.",
     aboutMetaLeft: "FIG 02. SELF-PORTRAIT // DIGITAL CHARCOAL",
-    aboutMetaRight: "LUARCA / MADRID / REMOTE",
+    aboutMetaRight: "ASTURIAS / REMOTE",
   }
 };
 

@@ -11,9 +11,9 @@ const ABOUT_PARTICLES = Array.from({ length: 60 }, (_, i) => {
   return {
     top: `${(seed1 * 92 + 4).toFixed(1)}%`,
     left: isPortraitZone
-      ? `${(55 + seed2 * 43).toFixed(1)}%` // Concentrados sobre la cara y el retrato
-      : `${(seed2 * 96 + 2).toFixed(1)}%`, // Repartidos por toda la sección
-    size: Number((1.5 + seed3 * 2.5).toFixed(1)), // Entre 1.5px y 4px
+      ? `${(55 + seed2 * 43).toFixed(1)}%`
+      : `${(seed2 * 96 + 2).toFixed(1)}%`,
+    size: Number((1.5 + seed3 * 2.5).toFixed(1)),
     dur: `${(8 + seed1 * 9).toFixed(1)}s`,
     delay: `-${(seed2 * 14).toFixed(1)}s`,
     op: Number((isPortraitZone ? 0.45 + seed3 * 0.45 : 0.25 + seed3 * 0.35).toFixed(2)),
@@ -30,7 +30,6 @@ function HybridDisciplineDiagram({ activeLayer }) {
   const containerRef = useRef(null);
   const svgRef = useRef(null);
 
-  // --- EFECTO PARALLAX INTERNO MAGNÉTICO ---
   const handleMouseMove = (e) => {
     if (!svgRef.current || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
@@ -72,7 +71,7 @@ function HybridDisciplineDiagram({ activeLayer }) {
         <span style={{ width: "6px", height: "6px", backgroundColor: "#F5F5F7", display: "inline-block" }} />
         <span>FIG 01. ARQUITECTURA HÍBRIDA // DAW × UX × ARTE</span>
       </div>
-      <div className="absolute top-4 right-4 font-mono-tech text-[9px] tracking-[0.18em] text-[#52525B] z-10">
+      <div className="absolute top-4 right-4 font-mono-tech text-[9px] tracking-[0.18em] text-[#A1A1AA] z-10">
         REACT / FIGMA / ADOBE CC
       </div>
 
@@ -141,7 +140,6 @@ export default function HybridProfile({ lang = 'es' }) {
     { value: "INK", label: t.layerInk },
   ];
 
-  // Motor que rota las capas automáticamente
   useEffect(() => {
     if (!isAutoPlaying) return;
     const layers = ["BOTH", "SYSTEM", "INK"];
@@ -204,7 +202,7 @@ export default function HybridProfile({ lang = 'es' }) {
             <div className="mt-8 grid grid-cols-1 gap-6 hairline-t pt-5 sm:grid-cols-3">
               {t.pillars.map(([number, label]) => (
                 <div key={number}>
-                  <span className="font-mono-tech text-[9px] text-[#52525B]">[{number}]</span>
+                  <span className="font-mono-tech text-[9px] text-[#A1A1AA]">[{number}]</span>
                   <p className="mt-2 text-xs uppercase tracking-[0.08em] text-[#B7B7BD]">{label}</p>
                 </div>
               ))}
@@ -213,7 +211,7 @@ export default function HybridProfile({ lang = 'es' }) {
         </div>
       </div>
 
-      {/* ESTILOS DE PARTÍCULAS SUAVES Y RESPIRACIÓN DEL RETRATO */}
+      {/* ESTILOS DE PARTÍCULAS SUAVES Y RESPIRACIÓN DEL RETRATO (SIN WILL-CHANGE MASIVO) */}
       <style>{`
         @keyframes aboutFloatDot {
           0% {
@@ -241,11 +239,9 @@ export default function HybridProfile({ lang = 'es' }) {
         }
         .about-dot {
           animation: aboutFloatDot var(--duration, 10s) ease-in-out var(--delay, 0s) infinite;
-          will-change: transform, opacity;
         }
         .portrait-breathe {
           animation: portraitBreathe 14s ease-in-out infinite;
-          will-change: transform;
         }
         @media (prefers-reduced-motion: reduce) {
           .about-dot,
@@ -255,7 +251,7 @@ export default function HybridProfile({ lang = 'es' }) {
         }
       `}</style>
 
-      {/* BLOQUE INFERIOR: SOBRE MÍ FULL-BLEED (TEXTO IZQUIERDA + ILUSTRACIÓN A SANGRE DERECHA) */}
+      {/* BLOQUE INFERIOR: SOBRE MÍ FULL-BLEED */}
       <div className="relative w-full hairline-t grid grid-cols-1 lg:grid-cols-12 items-stretch overflow-hidden">
         
         {/* PARTÍCULAS BLANCAS SUAVES FLOTANDO POR TODA LA SECCIÓN Y EL RETRATO */}
@@ -294,7 +290,7 @@ export default function HybridProfile({ lang = 'es' }) {
             <p className="text-[#8A8A93]">{t.aboutP2}</p>
           </div>
 
-          <div className="mt-10 pt-6 border-t border-white/10 max-w-xl flex flex-wrap items-center gap-x-6 gap-y-2 font-mono-tech text-[9px] uppercase tracking-[0.18em] text-[#52525B]">
+          <div className="mt-10 pt-6 border-t border-white/10 max-w-xl flex flex-wrap items-center gap-x-6 gap-y-2 font-mono-tech text-[9px] uppercase tracking-[0.18em] text-[#A1A1AA]">
             <span>BELLAS ARTES (USAL)</span>
             <span>/</span>
             <span>DISEÑO GRÁFICO &amp; UX</span>
@@ -309,9 +305,9 @@ export default function HybridProfile({ lang = 'es' }) {
             src="/mateo.png"
             alt="Mateo Paredes — Ilustración autorretrato"
             loading="lazy"
+            decoding="async"
             className="portrait-breathe absolute inset-0 w-full h-full object-cover object-center grayscale contrast-110"
           />
-          {/* Fundido suave en el borde izquierdo (escritorio) y superior (móvil) */}
           <div
             className="pointer-events-none absolute inset-0 hidden lg:block"
             style={{
